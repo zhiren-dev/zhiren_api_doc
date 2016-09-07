@@ -1,0 +1,588 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>API Reference</title>
+
+    <style>
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #f8f8f2;
+  background-color: #272822;
+}
+.highlight .err {
+  color: #151515;
+  background-color: #ac4142;
+}
+.highlight .c, .highlight .cd, .highlight .cm, .highlight .c1, .highlight .cs {
+  color: #505050;
+}
+.highlight .cp {
+  color: #f4bf75;
+}
+.highlight .nt {
+  color: #f4bf75;
+}
+.highlight .o, .highlight .ow {
+  color: #d0d0d0;
+}
+.highlight .p, .highlight .pi {
+  color: #d0d0d0;
+}
+.highlight .gi {
+  color: #90a959;
+}
+.highlight .gd {
+  color: #ac4142;
+}
+.highlight .gh {
+  color: #6a9fb5;
+  background-color: #151515;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #aa759f;
+}
+.highlight .kc {
+  color: #d28445;
+}
+.highlight .kt {
+  color: #d28445;
+}
+.highlight .kd {
+  color: #d28445;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #90a959;
+}
+.highlight .sr {
+  color: #75b5aa;
+}
+.highlight .si {
+  color: #8f5536;
+}
+.highlight .se {
+  color: #8f5536;
+}
+.highlight .nn {
+  color: #f4bf75;
+}
+.highlight .nc {
+  color: #f4bf75;
+}
+.highlight .no {
+  color: #f4bf75;
+}
+.highlight .na {
+  color: #6a9fb5;
+}
+.highlight .m, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mb, .highlight .mx {
+  color: #90a959;
+}
+.highlight .ss {
+  color: #90a959;
+}
+    </style>
+    <link href="stylesheets/screen.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all.js"></script>
+  </head>
+
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;javascript&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar.png" />
+      </span>
+    </a>
+    <div class="tocify-wrapper">
+      <img style="width: 200px; display:block; margin: 20px auto;" src="https://zhirenhr.com/about_us/images/logo@2x.png" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="shell">shell</a>
+              <a href="#" data-language-name="ruby">ruby</a>
+              <a href="#" data-language-name="javascript">javascript</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <div id="toc">
+      </div>
+        <ul class="toc-footer">
+            <li><a href='https://zhirenhr.com'>知人主页</a></li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        
+          <h1 id=">概述</h1>
+
+<p>欢迎使用知人 API v2.0。通过 API 你可以在你自己的应用中接入知人提供的服务。</p>
+
+<p>知人 API v2.0 遵循 RESTful 风格。</p>
+
+<ol>
+<li>请求中的业务数据以 JSON 格式传递，认证数据则以 URL 查询参数的形式传递。</li>
+<li>响应以 HTTP Status Code 来表示成功（2xx）或失败，如果失败，则会在响应体中以 JSON 格式给出详细的错误信息。</li>
+</ol>
+
+<p>目前本系统只提供了 Ruby SDK。</p>
+
+          <h1 id=">概念</h1>
+
+<h3 id="company">Company - 公司</h3>
+
+<p>每当一家公司在『知人』开通服务，那么系统就会创建一条 Company 记录。</p>
+
+<h4 id="company">Company 对象属性</h4>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>string</td>
+<td></td>
+<td>yes</td>
+<td>用于唯一区分一家公司的标识符</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td></td>
+<td>yes</td>
+<td>公司名称</td>
+</tr>
+<tr>
+<td>full_name</td>
+<td>string</td>
+<td></td>
+<td>no</td>
+<td>公司全称</td>
+</tr>
+<tr>
+<td>logo</td>
+<td>string</td>
+<td></td>
+<td>no</td>
+<td>公司 logo URL</td>
+</tr>
+</tbody></table>
+
+<h3 id="employee">Employee - 员工</h3>
+
+<p>一个公司拥有多个员工。员工是本系统核心概念之一。</p>
+
+<h4 id="employee">Employee 对象属性</h4>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>string</td>
+<td></td>
+<td>yes</td>
+<td>姓名</td>
+</tr>
+<tr>
+<td>sex</td>
+<td>integer</td>
+<td></td>
+<td>yes</td>
+<td>性别（0 表示男性，1 表示女性）</td>
+</tr>
+<tr>
+<td>email</td>
+<td>string</td>
+<td></td>
+<td>yes</td>
+<td>邮箱</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>string</td>
+<td></td>
+<td>yes</td>
+<td>手机号</td>
+</tr>
+<tr>
+<td>id_number</td>
+<td>string</td>
+<td></td>
+<td>yes</td>
+<td>身份证号码</td>
+</tr>
+<tr>
+<td>address</td>
+<td>string</td>
+<td></td>
+<td>yes</td>
+<td>住址</td>
+</tr>
+<tr>
+<td>bank_card</td>
+<td>string</td>
+<td></td>
+<td>yes</td>
+<td>银行卡号</td>
+</tr>
+<tr>
+<td>phone</td>
+<td>string</td>
+<td></td>
+<td>yes</td>
+<td>照片</td>
+</tr>
+<tr>
+<td>marriage</td>
+<td>string</td>
+<td></td>
+<td>yes</td>
+<td>婚姻状况（0 表示单身，1 表示已婚，2 表示离异）</td>
+</tr>
+<tr>
+<td>birthday</td>
+<td>string</td>
+<td></td>
+<td>yes</td>
+<td>生日</td>
+</tr>
+<tr>
+<td>join_date</td>
+<td>string</td>
+<td></td>
+<td>yes</td>
+<td>入职日期</td>
+</tr>
+</tbody></table>
+
+          <h1 id="authentication">Authentication - 认证</h1>
+
+<p>通过 API 请求『知人』时，每一个需要验证的请求都要进行签名，签名需要用到 <code class="prettyprint">access_key</code> 与 <code class="prettyprint">secret_key</code>。</p>
+
+<p>这里有一个概念需要说明一下。签名用于验证第三方发过来的请求, 比如 『访客』。我们讲第三方称为『Product』。</p>
+
+<table><thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>access_key</strong></td>
+<td>访问识别码，当你申请成为『访客』客户端，您会获得一对  access_key 和 secret_key, 其中 access_key 必须在每次请求中附上，以便于我们知道请求来自于您。而 secret_key 请务必放在私有的空间，千万不可在请求中传递。</td>
+</tr>
+<tr>
+<td><strong>signature</strong></td>
+<td>使用你的 secret_key 进行签名后的字符串， 具体签名的方法后面会进一步描述</td>
+</tr>
+<tr>
+<td><strong>tonce</strong></td>
+<td>请求时间, 必须以 <a href="https://en.wikipedia.org/wiki/Unix_time">Unix Time</a> 的格式发送, tonce与服务器时间不得超过正负30秒, 否则请求将视为无效。</td>
+</tr>
+<tr>
+<td><strong>payload</strong></td>
+<td>被签名的数据体部分， 用 JSON 进行编码。</td>
+</tr>
+</tbody></table>
+
+<h3 id=">签名的算法</h3>
+
+<p>我们用伪代码表示签名的算法如下：</p>
+
+<p><strong>signature = HMAC-SHA256( secret_key, string_to_sign )</strong></p>
+
+<p>首先根据请求的参数，把参数转换为 string_to_sign, 然后用 HMAC-SHA256 算法， 和你的 secret_key 进行签名。
+所获得的签名结果必须在每次请求代入，并以 “signature” 为名作为参数， 我们将以此对你的请求合法性进行验证。</p>
+
+<h3 id="string_to_sign">string_to_sign 的生成方式</h3>
+
+<p>上面的公式中有一个string_to_sign， 这里我们详细谈谈它，string_to_sign 由五部分组成：</p>
+
+<table><thead>
+<tr>
+<th>组成部分</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>http_method</strong></td>
+<td>必须为大写， 比如 &ldquo;POST&rdquo;, &ldquo;GET&rdquo;, &ldquo;DELETE&rdquo;, &ldquo;PATCH&rdquo; 等</td>
+</tr>
+<tr>
+<td><strong>path</strong></td>
+<td>假设你请求的uri为 https://fk.zhirenhr.com/api/v1/apple 那么 path 应该为 /api/v1/apple</td>
+</tr>
+<tr>
+<td><strong>access_key</strong></td>
+<td>访问识别码</td>
+</tr>
+<tr>
+<td><strong>tonce</strong></td>
+<td>请求时间</td>
+</tr>
+<tr>
+<td><strong>payload</strong></td>
+<td>被签名的数据体部分， 用 JSON 进行编码。</td>
+</tr>
+</tbody></table>
+
+<p>那么最终用于签名的原字符串，就是把这五个部分链接起来皆可(注意顺序不可颠倒)：</p>
+<pre class="highlight plaintext"><code>    string_to_sign ＝ http_method + path + access_key + tonce + payload.to_json
+    signature = OpenSSL::HMAC.hexdigest 'SHA256', secret_key, string_to_sign
+</code></pre>
+<pre class="highlight ruby"><code>  <span class="c1">### 签名算法 Ruby 实现</span>
+  <span class="n">string_to_sign</span> <span class="err">＝</span> <span class="s2">"</span><span class="si">#{</span><span class="n">http_method</span><span class="si">}#{</span><span class="n">path</span><span class="si">}#{</span><span class="n">access_key</span><span class="si">}#{</span><span class="n">tonce</span><span class="si">}#{</span><span class="n">payload</span><span class="p">.</span><span class="nf">to_json</span><span class="si">}</span><span class="s2">"</span>
+  <span class="no">OpenSSL</span><span class="o">::</span><span class="no">HMAC</span><span class="p">.</span><span class="nf">hexdigest</span> <span class="s1">'SHA256'</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">,</span> <span class="n">string_to_sign</span>
+</code></pre>
+
+<p>然后将 signature，一并发送给服务器端即可（算法如右）</p>
+
+          <h1 id="company">Company - 公司</h1>
+
+<p>暂无 API。</p>
+
+          <h1 id="employees">Employees - 员工</h1>
+
+<h2 id="get-all-employees">Get All Employees</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v1/employees</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payload</td>
+<td>JSON字符串</td>
+<td></td>
+<td>是</td>
+<td>JSON Payload</td>
+</tr>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<p><strong>Payload Schema</strong></p>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>区别公司 的标识符</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>Employee 对象数组</p>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>字符串</td>
+<td></td>
+<td>姓名</td>
+</tr>
+<tr>
+<td>sex</td>
+<td>字符串</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>email</td>
+<td>字符</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>字符</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>id_number</td>
+<td>字符</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>address</td>
+<td>字符</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>bank_card</td>
+<td>字符</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>photo</td>
+<td>字符</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>marriage</td>
+<td>字符</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>birthday</td>
+<td>字符</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>join_date</td>
+<td>字符</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+
+          <h1 id="errors">Errors - 错误代码</h1>
+
+<p>正常API返回的 HTTP Status Code 为 2xx 或 3xx。如果遇到错误，HTTP Status Code 为 4xx 或 5xx,
+同时返回报文内容会包含具体错误信息，包括错误代码和错误消息。</p>
+
+<h2 id="api">API 错误代码列表</h2>
+
+<table><thead>
+<tr>
+<th>错误代码</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>1xxx</strong></td>
+<td><strong>认证错误</strong></td>
+</tr>
+<tr>
+<td>1001</td>
+<td>缺少 access key</td>
+</tr>
+<tr>
+<td>1002</td>
+<td>缺少签名</td>
+</tr>
+<tr>
+<td>1003</td>
+<td>缺少 tonce</td>
+</tr>
+<tr>
+<td>1101</td>
+<td>签名无效</td>
+</tr>
+<tr>
+<td>1102</td>
+<td>tonce 无效</td>
+</tr>
+<tr>
+<td>1103</td>
+<td>附件校验无效</td>
+</tr>
+<tr>
+<td><strong>2xxx</strong></td>
+<td><strong>参数错误</strong></td>
+</tr>
+<tr>
+<td>2001</td>
+<td>未实现：API参数验证错误</td>
+</tr>
+<tr>
+<td>2002</td>
+<td>未实现：对象验证错误</td>
+</tr>
+<tr>
+<td>2003</td>
+<td>未实现：无效的身份事项代码</td>
+</tr>
+<tr>
+<td>2004</td>
+<td>JSON 格式错误</td>
+</tr>
+<tr>
+<td><strong>9xxx</strong></td>
+<td><strong>其他错误</strong></td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="shell">shell</a>
+                <a href="#" data-language-name="ruby">ruby</a>
+                <a href="#" data-language-name="javascript">javascript</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
