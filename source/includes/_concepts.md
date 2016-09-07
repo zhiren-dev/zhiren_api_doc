@@ -29,7 +29,7 @@ id_number | string  |        | yes  | 身份证号码
 address   | string  |        | yes  | 住址
 bank_card | string  |        | yes  | 银行卡号
 phone     | string  |        | yes  | 照片
-marriage  | string  |        | yes  | 婚姻状况（0 表示单身，1 表示已婚，2 表示离异）
+marriage  | integer |        | yes  | 婚姻状况（0 表示单身，1 表示已婚，2 表示离异）
 birthday  | string  |        | yes  | 生日
 join_date | string  |        | yes  | 入职日期
 

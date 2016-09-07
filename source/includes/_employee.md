@@ -23,18 +23,5 @@ token | 字符串 |        | 是   | 区别公司 的标识符
 
 ### Response
 
-Employee 对象数组
+[Employee 对象](#employee)数组
 
-属性      | 类型   | 默认值 | 描述
-----------|--------|--------|------|
-name      | 字符串 |        | 姓名
-sex       | 字符串 |        |
-email     | 字符   |        |
-mobile    | 字符   |        |
-id_number | 字符   |        |
-address   | 字符   |        |
-bank_card | 字符   |        |
-photo     | 字符   |        |
-marriage  | 字符   |        |
-birthday  | 字符   |        |
-join_date | 字符   |        |
