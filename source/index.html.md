@@ -16,6 +16,7 @@ includes:
   - company
   - employee
   - errors
+  - changelog
 
 search: true
 ---
