@@ -28,7 +28,7 @@
 组成部分 | 描述
 -------- | -------
 **http_method** | 必须为大写， 比如 "POST", "GET", "DELETE", "PATCH" 等
-**path** | 假设你请求的uri为 https://fk.zhirenhr.com/api/v1/apple 那么 path 应该为 /api/v1/apple
+**path** | 假设你请求的uri为 https://zhirenhr.com/api/v1/apple 那么 path 应该为 /api/v1/apple
 **access_key** | 访问识别码
 **tonce** | 请求时间
 **payload** | 被签名的数据体部分， 用 JSON 进行编码。

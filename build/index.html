@@ -123,7 +123,7 @@
 
 <p>欢迎使用知人 API v2.0。通过 API 你可以在你自己的应用中接入知人提供的服务。</p>
 
-<p>知人 API v2.0 遵循 RESTful 风格。</p>
+<p>知人 API v2.0 遵循 RESTful 风格，所有 API 的 URL 都是 <code class="prettyprint">https://zhirenhr.com/api/v2/&lt;apiname&gt;</code>。</p>
 
 <ol>
 <li>请求中的业务数据以 JSON 格式传递，认证数据则以 URL 查询参数的形式传递。</li>
@@ -328,7 +328,7 @@
 </tr>
 <tr>
 <td><strong>path</strong></td>
-<td>假设你请求的uri为 https://fk.zhirenhr.com/api/v1/apple 那么 path 应该为 /api/v1/apple</td>
+<td>假设你请求的uri为 https://zhirenhr.com/api/v1/apple 那么 path 应该为 /api/v1/apple</td>
 </tr>
 <tr>
 <td><strong>access_key</strong></td>
@@ -365,7 +365,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET /api/v1/employees</code></p>
+<p><code class="prettyprint">GET https://zhirenhr.com/api/v1/employees</code></p>
 
 <h3 id="http-parameters">HTTP Parameters</h3>
 
@@ -515,7 +515,9 @@
 
 <h2 id="api-documentation-changelog">API documentation Changelog</h2>
 
-<p>暂无。</p>
+<ul>
+<li>2016-09-09 补充 API host（https://zhirenhr.com/api/v1/<apiname>）</li>
+</ul>
 
       </div>
       <div class="dark-box">

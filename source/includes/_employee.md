@@ -4,7 +4,7 @@
 
 ### HTTP Request
 
-`GET /api/v1/employees`
+`GET https://zhirenhr.com/api/v1/employees`
 
 ### HTTP Parameters
 

@@ -6,4 +6,4 @@
 
 ## API documentation Changelog
 
-暂无。
+* 2016-09-09 补充 API host（https://zhirenhr.com/api/v1/<apiname>）
