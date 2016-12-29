@@ -7,14 +7,17 @@ language_tabs:
   - javascript
 
 toc_footers:
-  - <a href='https://zhirenhr.com'>知人主页</a>
+  - <a href='https://zhiren.com'>知人主页</a>
 
 includes:
   - introduction
   - concepts
   - authentication
   - company
-  - employee
+  - attendant_employees
+  - company_tokens
+  - employees
+  - notify_employees
   - errors
   - changelog
 

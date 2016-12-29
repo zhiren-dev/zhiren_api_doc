@@ -112,31 +112,30 @@
       <div id="toc">
       </div>
         <ul class="toc-footer">
-            <li><a href='https://zhirenhr.com'>知人主页</a></li>
+            <li><a href='https://zhiren.com'>知人主页</a></li>
         </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
         
-          <h1 id="introduction">Introduction</h1>
+          <h1 id="introduction">Introduction - 序言</h1>
 
-<p>欢迎使用知人 API v2.0。通过 API 你可以在你自己的应用中接入知人提供的服务。</p>
+<p>欢迎使用知人的应用编程接口 API v2.0 通过 API 您可以接入知人提供的大部分服务。</p>
 
-<p>知人 API v2.0 遵循 RESTful 风格，所有 API 的 URL 都是 <code class="prettyprint">https://zhirenhr.com/api/v2/&lt;apiname&gt;</code>。</p>
+<p>知人 API v2.0 遵循 RESTful 风格，所有 API 的 URL 都是 <code class="prettyprint">https://zhiren.com/api/v2/&lt;apiname&gt;</code>。</p>
 
 <ol>
 <li>请求中的业务数据以 JSON 格式传递，认证数据则以 URL 查询参数的形式传递。</li>
+<li>POST 请求的 Content-Type 为 <code class="prettyprint">application/x-www-form-urlencoded</code></li>
 <li>响应以 HTTP Status Code 来表示成功（2xx）或失败，如果失败，则会在响应体中以 JSON 格式给出详细的错误信息。</li>
 </ol>
-
-<p>目前本系统只提供了 Ruby SDK。</p>
 
           <h1 id="concepts">Concepts - 概念</h1>
 
 <h3 id="company">Company - 公司</h3>
 
-<p>每当一家公司在『知人』开通服务，那么系统就会创建一条 Company 记录。</p>
+<p>每当一家公司在知人开通服务，系统就会创建一条 Company 记录。</p>
 
 <h4 id="company">Company 对象属性</h4>
 
@@ -275,9 +274,9 @@
 
           <h1 id="authentication">Authentication - 认证</h1>
 
-<p>通过 API 请求『知人』时，每一个需要验证的请求都要进行签名，签名需要用到 <code class="prettyprint">access_key</code> 与 <code class="prettyprint">secret_key</code>。</p>
+<p>知人第三方服务称为 Product，通过 API 请求知人时，每一个需要验证的请求都要进行签名。</p>
 
-<p>这里有一个概念需要说明一下。签名用于验证第三方发过来的请求, 比如 『访客』。我们将第三方称为『Product』。</p>
+<p>Product 对应每个 Company 都有唯一的 <code class="prettyprint">access_key</code> 与 <code class="prettyprint">secret_key</code> 。</p>
 
 <table><thead>
 <tr>
@@ -287,34 +286,33 @@
 </thead><tbody>
 <tr>
 <td><strong>access_key</strong></td>
-<td>访问识别码，当你申请成为『访客』客户端，您会获得一对  access_key 和 secret_key, 其中 access_key 必须在每次请求中附上，以便于我们知道请求来自于您。而 secret_key 请务必放在私有的空间，千万不可在请求中传递。</td>
+<td>访问识别码，当您成为知人第三方服务，对应每个开通服务的公司，都会有一对 access_key 和 secret_key, 其中 access_key 必须在每次请求中附上，而 secret_key 请务必放在私有的空间，千万不可在请求中传递。</td>
 </tr>
 <tr>
 <td><strong>signature</strong></td>
-<td>使用你的 secret_key 进行签名后的字符串， 具体签名的方法后面会进一步描述</td>
+<td>使用你的 secret_key 进行签名后的字符串，放入 header 的自定义字段 x-zhiren-signature</td>
 </tr>
 <tr>
 <td><strong>tonce</strong></td>
-<td>请求时间, 必须以 <a href="https://en.wikipedia.org/wiki/Unix_time">Unix Time</a> 的格式发送, tonce与服务器时间不得超过正负30秒, 否则请求将视为无效。</td>
+<td>请求时间, 必须以 <a href="https://en.wikipedia.org/wiki/Unix_time">Unix Time</a> 的格式发送, tonce与服务器时间不得超过正负 5 分钟, 否则请求将视为无效。</td>
 </tr>
 <tr>
 <td><strong>payload</strong></td>
-<td>被签名的数据体部分， 用 JSON 进行编码。</td>
+<td>被签名的数据体部分，用 JSON 进行编码。</td>
 </tr>
 </tbody></table>
 
-<h3 id=">签名的算法</h3>
+<h3 id="signature">signature 的算法</h3>
 
 <p>我们用伪代码表示签名的算法如下：</p>
 
 <p><strong>signature = HMAC-SHA256( secret_key, string_to_sign )</strong></p>
 
-<p>首先根据请求的参数，把参数转换为 string_to_sign, 然后用 HMAC-SHA256 算法， 和你的 secret_key 进行签名。
-所获得的签名结果必须在每次请求代入，并以 “signature” 为名作为参数， 我们将以此对你的请求合法性进行验证。</p>
+<p>首先根据请求的参数，把参数转换为 string_to_sign, 然后用 HMAC-SHA256 算法和你的 secret_key 进行签名。</p>
 
 <h3 id="string_to_sign">string_to_sign 的生成方式</h3>
 
-<p>上面的公式中有一个string_to_sign， 这里我们详细谈谈它，string_to_sign 由五部分组成：</p>
+<p>上面的公式中的 string_to_sign 由五部分组成：</p>
 
 <table><thead>
 <tr>
@@ -328,7 +326,7 @@
 </tr>
 <tr>
 <td><strong>path</strong></td>
-<td>假设你请求的uri为 https://zhirenhr.com/api/v1/apple 那么 path 应该为 /api/v1/apple</td>
+<td>假设你请求的uri为 https://zhiren.com/api/v2/example 那么 path 应该为 /api/v2/example</td>
 </tr>
 <tr>
 <td><strong>access_key</strong></td>
@@ -343,29 +341,119 @@
 <td>被签名的数据体部分， 用 JSON 进行编码。</td>
 </tr>
 </tbody></table>
-
-<p>那么最终用于签名的原字符串，就是把这五个部分链接起来皆可(注意顺序不可颠倒)：</p>
 <pre class="highlight plaintext"><code>    string_to_sign ＝ http_method + path + access_key + tonce + payload.to_json
     signature = OpenSSL::HMAC.hexdigest 'SHA256', secret_key, string_to_sign
 </code></pre>
-<pre class="highlight ruby"><code>  <span class="c1">### 签名算法 Ruby 实现</span>
-  <span class="n">string_to_sign</span> <span class="err">＝</span> <span class="s2">"</span><span class="si">#{</span><span class="n">http_method</span><span class="si">}#{</span><span class="n">path</span><span class="si">}#{</span><span class="n">access_key</span><span class="si">}#{</span><span class="n">tonce</span><span class="si">}#{</span><span class="n">payload</span><span class="p">.</span><span class="nf">to_json</span><span class="si">}</span><span class="s2">"</span>
-  <span class="no">OpenSSL</span><span class="o">::</span><span class="no">HMAC</span><span class="p">.</span><span class="nf">hexdigest</span> <span class="s1">'SHA256'</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">,</span> <span class="n">string_to_sign</span>
-</code></pre>
 
-<p>然后将 signature，一并发送给服务器端即可（算法如右）</p>
+<p>那么最终用于签名的原字符串，就是把这五个部分链接起来皆可（注意顺序不可颠倒）。</p>
 
           <h1 id="company">Company - 公司</h1>
 
 <p>暂无 API。</p>
 
-          <h1 id="employees">Employees - 员工</h1>
+          <h1 id="attendant-employees">Attendant Employees - 出勤员工</h1>
 
-<h2 id="get-all-employees">Get All Employees</h2>
+<h2 id="employeepresenter">EmployeePresenter 对象</h2>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>字符串</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td>字符串</td>
+<td></td>
+<td>姓名</td>
+</tr>
+<tr>
+<td>sex</td>
+<td>枚举串</td>
+<td></td>
+<td>性别</td>
+</tr>
+<tr>
+<td>email</td>
+<td>字符串</td>
+<td></td>
+<td>邮箱</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>字符串</td>
+<td></td>
+<td>手机号</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>字符串</td>
+<td></td>
+<td>手机号</td>
+</tr>
+<tr>
+<td>id_number</td>
+<td>字符串</td>
+<td></td>
+<td>身份证号</td>
+</tr>
+<tr>
+<td>address</td>
+<td>字符串</td>
+<td></td>
+<td>详细地址</td>
+</tr>
+<tr>
+<td>bank_card</td>
+<td>字符串</td>
+<td></td>
+<td>银行卡号</td>
+</tr>
+<tr>
+<td>photo</td>
+<td>字符串</td>
+<td></td>
+<td>头像</td>
+</tr>
+<tr>
+<td>marriage</td>
+<td>字符串</td>
+<td></td>
+<td>婚姻状况</td>
+</tr>
+<tr>
+<td>birthday</td>
+<td>字符串</td>
+<td></td>
+<td>公历生日</td>
+</tr>
+<tr>
+<td>join_date</td>
+<td>日期</td>
+<td></td>
+<td>入职日期</td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>字符串</td>
+<td></td>
+<td>头像</td>
+</tr>
+</tbody></table>
+
+<h2 id="check-attendance-today">Check attendance today - 检查某位员工今日是否出勤</h2>
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET https://zhirenhr.com/api/v1/employees</code></p>
+<p><code class="prettyprint">GET /api/v2/employees/:guid/check_attendance</code></p>
 
 <h3 id="http-parameters">HTTP Parameters</h3>
 
@@ -424,13 +512,630 @@
 <td>字符串</td>
 <td></td>
 <td>是</td>
-<td>区别公司 的标识符</td>
+<td>区别公司的标识符</td>
 </tr>
 </tbody></table>
 
 <h3 id="response">Response</h3>
 
-<p><a href="#employee">Employee 对象</a>数组</p>
+<p>EmployeePresenter 对象</p>
+
+          <h1 id="companytokens">CompanyTokens - 公司令牌</h1>
+
+<h2 id="companypresenter">CompanyPresenter 对象</h2>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>字符串</td>
+<td></td>
+<td>姓名</td>
+</tr>
+<tr>
+<td>name</td>
+<td>字符串</td>
+<td></td>
+<td>公司简称</td>
+</tr>
+<tr>
+<td>full_name</td>
+<td>字符串</td>
+<td></td>
+<td>公司全称</td>
+</tr>
+<tr>
+<td>logo</td>
+<td>字符串</td>
+<td></td>
+<td>logo</td>
+</tr>
+</tbody></table>
+
+<h2 id="update-the-token">Update The Token - 更新公司令牌</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH /api/v2/company_tokens/:guid</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payload</td>
+<td>JSON字符串</td>
+<td></td>
+<td>是</td>
+<td>JSON Payload</td>
+</tr>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<p><strong>Payload Schema</strong></p>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>区别公司的标识符</td>
+</tr>
+<tr>
+<td>zhiren_visitor_token</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>fangke 提供给 zhiren 的令牌</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>CompanyPresenter 对象</p>
+
+          <h1 id="employees">Employees - 员工</h1>
+
+<h2 id="employee">Employee 对象</h2>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>字符串</td>
+<td></td>
+<td>姓名</td>
+</tr>
+<tr>
+<td>sex</td>
+<td>字符串</td>
+<td></td>
+<td>性别</td>
+</tr>
+<tr>
+<td>email</td>
+<td>字符串</td>
+<td></td>
+<td>邮箱</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>字符串</td>
+<td></td>
+<td>手机号</td>
+</tr>
+<tr>
+<td>id_number</td>
+<td>字符串</td>
+<td></td>
+<td>身份证号</td>
+</tr>
+<tr>
+<td>address</td>
+<td>字符串</td>
+<td></td>
+<td>详细地址</td>
+</tr>
+<tr>
+<td>bank_card</td>
+<td>字符串</td>
+<td></td>
+<td>银行卡号</td>
+</tr>
+<tr>
+<td>photo</td>
+<td>字符串</td>
+<td></td>
+<td>头像</td>
+</tr>
+<tr>
+<td>marriage</td>
+<td>字符串</td>
+<td></td>
+<td>婚姻状况</td>
+</tr>
+<tr>
+<td>birthday</td>
+<td>日期</td>
+<td></td>
+<td>公历生日</td>
+</tr>
+<tr>
+<td>join_date</td>
+<td>日期</td>
+<td></td>
+<td>入职日期</td>
+</tr>
+</tbody></table>
+
+<h2 id="employeepresenter">EmployeePresenter 对象</h2>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>字符串</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td>字符串</td>
+<td></td>
+<td>姓名</td>
+</tr>
+<tr>
+<td>sex</td>
+<td>枚举串</td>
+<td></td>
+<td>性别</td>
+</tr>
+<tr>
+<td>email</td>
+<td>字符串</td>
+<td></td>
+<td>邮箱</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>字符串</td>
+<td></td>
+<td>手机号</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>字符串</td>
+<td></td>
+<td>手机号</td>
+</tr>
+<tr>
+<td>id_number</td>
+<td>字符串</td>
+<td></td>
+<td>身份证号</td>
+</tr>
+<tr>
+<td>address</td>
+<td>字符串</td>
+<td></td>
+<td>详细地址</td>
+</tr>
+<tr>
+<td>bank_card</td>
+<td>字符串</td>
+<td></td>
+<td>银行卡号</td>
+</tr>
+<tr>
+<td>photo</td>
+<td>字符串</td>
+<td></td>
+<td>头像</td>
+</tr>
+<tr>
+<td>marriage</td>
+<td>字符串</td>
+<td></td>
+<td>婚姻状况</td>
+</tr>
+<tr>
+<td>birthday</td>
+<td>字符串</td>
+<td></td>
+<td>公历生日</td>
+</tr>
+<tr>
+<td>join_date</td>
+<td>日期</td>
+<td></td>
+<td>入职日期</td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>字符串</td>
+<td></td>
+<td>头像</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-employees">Get All Employees - 获得公司全部员工的信息</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v2/employees</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payload</td>
+<td>JSON字符串</td>
+<td></td>
+<td>是</td>
+<td>JSON Payload</td>
+</tr>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<p><strong>Payload Schema</strong></p>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>区别公司的标识符</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>Employee 对象数组</p>
+
+<h2 id="get-the-employee-by-mobile">Get the Employee by Mobile - 根据员工手机号查找某一员工的信息</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v2/employees/:mobile</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payload</td>
+<td>JSON字符串</td>
+<td></td>
+<td>是</td>
+<td>JSON Payload</td>
+</tr>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<p><strong>Payload Schema</strong></p>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>区别公司的标识符</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>EmployeePresenter 对象</p>
+
+          <h1 id="notifyemployees">NotifyEmployees - 员工提醒</h1>
+
+<h2 id="employeepresenter">EmployeePresenter 对象</h2>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>字符串</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td>字符串</td>
+<td></td>
+<td>姓名</td>
+</tr>
+<tr>
+<td>sex</td>
+<td>枚举串</td>
+<td></td>
+<td>性别</td>
+</tr>
+<tr>
+<td>email</td>
+<td>字符串</td>
+<td></td>
+<td>邮箱</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>字符串</td>
+<td></td>
+<td>手机号</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>字符串</td>
+<td></td>
+<td>手机号</td>
+</tr>
+<tr>
+<td>id_number</td>
+<td>字符串</td>
+<td></td>
+<td>身份证号</td>
+</tr>
+<tr>
+<td>address</td>
+<td>字符串</td>
+<td></td>
+<td>详细地址</td>
+</tr>
+<tr>
+<td>bank_card</td>
+<td>字符串</td>
+<td></td>
+<td>银行卡号</td>
+</tr>
+<tr>
+<td>photo</td>
+<td>字符串</td>
+<td></td>
+<td>头像</td>
+</tr>
+<tr>
+<td>marriage</td>
+<td>字符串</td>
+<td></td>
+<td>婚姻状况</td>
+</tr>
+<tr>
+<td>birthday</td>
+<td>字符串</td>
+<td></td>
+<td>公历生日</td>
+</tr>
+<tr>
+<td>join_date</td>
+<td>日期</td>
+<td></td>
+<td>入职日期</td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>字符串</td>
+<td></td>
+<td>头像</td>
+</tr>
+</tbody></table>
+
+<h2 id="notify-employee-by-guid">Notify Employee By Guid - 提醒员工接见访客</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">POST /api/v2/employees/:guid/notify</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payload</td>
+<td>JSON字符串</td>
+<td></td>
+<td>是</td>
+<td>JSON Payload</td>
+</tr>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<p><strong>Payload Schema</strong></p>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>区别公司的标识符</td>
+</tr>
+<tr>
+<td>name</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>访客姓名</td>
+</tr>
+<tr>
+<td>time</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>到访时间</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>EmployeePresenter 对象</p>
 
           <h1 id="errors">Errors - 错误代码</h1>
 
@@ -451,7 +1156,7 @@
 </tr>
 <tr>
 <td>1001</td>
-<td>缺少 access key</td>
+<td>缺少 access_key</td>
 </tr>
 <tr>
 <td>1002</td>
@@ -475,11 +1180,11 @@
 </tr>
 <tr>
 <td>1104</td>
-<td>不存在的公司</td>
+<td>没有找到对应的公司</td>
 </tr>
 <tr>
 <td>1105</td>
-<td>不存在的 Product</td>
+<td>access_key 无效</td>
 </tr>
 <tr>
 <td><strong>2xxx</strong></td>
@@ -516,7 +1221,7 @@
 <h2 id="api-documentation-changelog">API documentation Changelog</h2>
 
 <ul>
-<li>2016-09-09 补充 API host（https://zhirenhr.com/api/v1/<apiname>）</li>
+<li>2016-09-09 补充 API host（https://zhiren.com/api/v1/<apiname>）</li>
 </ul>
 
       </div>
