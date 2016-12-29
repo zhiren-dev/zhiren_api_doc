@@ -6,8 +6,6 @@
 
 `POST /api/v2/moka_candidates`
 
-`Content-Type: application/x-www-form-urlencoded;charset=utf-8`
-
 ### HTTP Parameters
 
 参数       | 类型       | 默认值 | 必须 | 描述
