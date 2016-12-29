@@ -296,7 +296,7 @@
 </tr>
 <tr>
 <td><strong>payload</strong></td>
-<td>被签名的数据体部分，用 JSON 进行编码。</td>
+<td>被签名的数据体部分，JSON 格式的字符串。</td>
 </tr>
 </tbody></table>
 
@@ -336,7 +336,7 @@
 </tr>
 <tr>
 <td><strong>payload</strong></td>
-<td>被签名的数据体部分， 用 JSON 进行编码。</td>
+<td>被签名的数据体部分，JSON 格式的字符串。</td>
 </tr>
 </tbody></table>
 <pre class="highlight plaintext"><code>    string_to_sign ＝ http_method + path + access_key + tonce + payload.to_json
