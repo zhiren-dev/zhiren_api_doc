@@ -14,10 +14,11 @@ includes:
   - concepts
   - authentication
   - company
-  - attendant_employees
   - company_tokens
   - employees
+  - attendant_employees
   - notify_employees
+  - moka
   - errors
   - changelog
 
