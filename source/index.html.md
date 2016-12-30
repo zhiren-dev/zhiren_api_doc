@@ -1,13 +1,14 @@
 ---
-title: API Reference
+title: Zhiren API Reference
 
 language_tabs:
-  - shell
   - ruby
   - javascript
+  - python
 
 toc_footers:
   - <a href='https://zhiren.com'>知人主页</a>
+  - <a href='https://github.com/mycolorway/zhiren_api_doc'>贡献文档</a>
 
 includes:
   - introduction
