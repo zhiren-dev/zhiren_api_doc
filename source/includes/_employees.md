@@ -60,7 +60,7 @@ token | 字符串 |        | 是   | 区别公司的标识符
 
 ### Response
 
-Employee 对象数组
+JSON 格式的 EmployeePresenter 对象数组
 
 
 ## Get the Employee by Mobile - 根据员工手机号查找某一员工的信息
@@ -87,4 +87,4 @@ token | 字符串 |        | 是   | 区别公司的标识符
 
 ### Response
 
-EmployeePresenter 对象
+JSON 格式的 EmployeePresenter 对象
