@@ -22,6 +22,17 @@ Product 对应每个 Company 都有唯一的 `access_key` 与 `secret_key` 。
 ### string_to_sign 的生成方式
 上面的公式中的 string_to_sign 由五部分组成：
 
+```ruby
+  string_to_sign ＝ http_method + path + access_key + tonce + payload.to_json
+  signature = OpenSSL::HMAC.hexdigest 'SHA256', secret_key, string_to_sign
+```
+
+```javascript
+var utf8 = require("utf8");
+var crypto = require("crypto");
+signature = crypto.createHmac('sha256', secret_key).update(utf8.encode(payload_str)).digest('hex');
+```
+
 组成部分 | 描述
 -------- | -------
 **http_method** | 必须为大写， 比如 "POST", "GET", "DELETE", "PATCH" 等
@@ -30,9 +41,6 @@ Product 对应每个 Company 都有唯一的 `access_key` 与 `secret_key` 。
 **tonce** | 请求时间
 **payload** | 被签名的数据体部分，JSON 格式的字符串。
 
-```
-    string_to_sign ＝ http_method + path + access_key + tonce + payload.to_json
-    signature = OpenSSL::HMAC.hexdigest 'SHA256', secret_key, string_to_sign
-```
+
 
 那么最终用于签名的原字符串，就是把这五个部分链接起来皆可（注意顺序不可颠倒）。

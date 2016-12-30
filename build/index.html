@@ -311,6 +311,13 @@
 <h3 id="string_to_sign">string_to_sign 的生成方式</h3>
 
 <p>上面的公式中的 string_to_sign 由五部分组成：</p>
+<pre class="highlight ruby"><code>  <span class="n">string_to_sign</span> <span class="err">＝</span> <span class="n">http_method</span> <span class="o">+</span> <span class="n">path</span> <span class="o">+</span> <span class="n">access_key</span> <span class="o">+</span> <span class="n">tonce</span> <span class="o">+</span> <span class="n">payload</span><span class="p">.</span><span class="nf">to_json</span>
+  <span class="n">signature</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">HMAC</span><span class="p">.</span><span class="nf">hexdigest</span> <span class="s1">'SHA256'</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">,</span> <span class="n">string_to_sign</span>
+</code></pre>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">utf8</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"utf8"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">crypto</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"crypto"</span><span class="p">);</span>
+<span class="nx">signature</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">createHmac</span><span class="p">(</span><span class="s1">'sha256'</span><span class="p">,</span> <span class="nx">secret_key</span><span class="p">).</span><span class="nx">update</span><span class="p">(</span><span class="nx">utf8</span><span class="p">.</span><span class="nx">encode</span><span class="p">(</span><span class="nx">payload_str</span><span class="p">)).</span><span class="nx">digest</span><span class="p">(</span><span class="s1">'hex'</span><span class="p">);</span>
+</code></pre>
 
 <table><thead>
 <tr>
@@ -339,9 +346,6 @@
 <td>被签名的数据体部分，JSON 格式的字符串。</td>
 </tr>
 </tbody></table>
-<pre class="highlight plaintext"><code>    string_to_sign ＝ http_method + path + access_key + tonce + payload.to_json
-    signature = OpenSSL::HMAC.hexdigest 'SHA256', secret_key, string_to_sign
-</code></pre>
 
 <p>那么最终用于签名的原字符串，就是把这五个部分链接起来皆可（注意顺序不可颠倒）。</p>
 
