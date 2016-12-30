@@ -19,6 +19,7 @@ includes:
   - employees
   - attendant_employees
   - notify_employees
+  - departments
   - moka
   - errors
   - changelog
