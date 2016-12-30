@@ -1140,6 +1140,220 @@
 
 <p>EmployeePresenter 对象</p>
 
+          <h1 id="department">Department - 员工</h1>
+
+<h2 id="department">Department 对象</h2>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>字符串</td>
+<td></td>
+<td>部门名称</td>
+</tr>
+<tr>
+<td>guid</td>
+<td>字符串</td>
+<td></td>
+<td>部门唯一标识符</td>
+</tr>
+</tbody></table>
+
+<h2 id="departmentpresenter">DepartmentPresenter 对象</h2>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>name</td>
+<td>字符串</td>
+<td></td>
+<td>部门名称</td>
+</tr>
+<tr>
+<td>uuid</td>
+<td>字符串</td>
+<td></td>
+<td>部门唯一标识符</td>
+</tr>
+<tr>
+<td>superior_uuid</td>
+<td>字符串</td>
+<td></td>
+<td>上级部门唯一标识符</td>
+</tr>
+<tr>
+<td>sub_company</td>
+<td>字符串</td>
+<td></td>
+<td>子公司名称</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-departments">Get All Departments - 获得公司全部部门的信息</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v2/departments</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 Departments 对象数组</p>
+<pre class="highlight plaintext"><code>[
+    {
+        "name": "管理组",
+        "uuid": "7684be70c34c554c8fdc062eba4382be",
+        "superior_uuid": null,
+        "sub_company": "成都彩程软件设计有限公司"
+    },
+    {
+        "name": "运营组",
+        "uuid": "8674be70c34c554c8fdc062eba4382be",
+        "superior_uuid": null,
+        "sub_company": "成都彩程软件设计有限公司"
+    },
+    {
+        "name": "系统组",
+        "uuid": "8689be70c34c554c8fdc062eba4382be",
+        "superior_uuid": null,
+        "sub_company": "成都彩程软件设计有限公司"
+    },
+    {
+        "name": "知人",
+        "uuid": "8684qe70c34c554c8fdc062eba4382be",
+        "superior_uuid": null,
+        "sub_company": "成都彩程软件设计有限公司"
+    },
+    {
+        "name": "Tower",
+        "uuid": "8684be00c34c554c8fdc062eba4382be",
+        "superior_uuid": null,
+        "sub_company": "成都彩程软件设计有限公司"
+    },
+    {
+        "name": "行政组",
+        "uuid": "8684be70c34c524c8fdc062eba4382be",
+        "superior_uuid": null,
+        "sub_company": "成都彩程软件设计有限公司"
+    },
+    {
+        "name": "产品组",
+        "uuid": "8684be70c34c554c8fdc062eba4382ke",
+        "superior_uuid": null,
+        "sub_company": "成都彩程软件设计有限公司"
+    },
+    {
+        "name": "移动客户端",
+        "uuid": "8684be70c34c554c8fdc062eba4382bp",
+        "superior_uuid": null,
+        "sub_company": "成都彩程软件设计有限公司"
+    },
+    {
+        "name": "测试部门",
+        "uuid": "49c932694bcab42f688863561cf746e1",
+        "superior_uuid": "8684be70c34c554c8fdc062eba4382be",
+        "sub_company": "成都彩程软件设计有限公司"
+    }
+]
+</code></pre>
+
+<h2 id="get-the-department-by-uuid">Get the Department by uuid - 根据部门唯一标识符查找某一部门的信息</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v2/departments/:uuid</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 EmployeePresenter 对象</p>
+<pre class="highlight json"><code><span class="p">{</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"管理组"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7684be70c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sub_company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"成都彩程软件设计有限公司"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+
           <h1 id="moka-crm">Moka - 招聘 CRM</h1>
 
 <h2 id="create-candidates">Create candidates - 创建候选人</h2>
