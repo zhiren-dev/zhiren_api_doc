@@ -9,10 +9,5 @@
 2. Setup the server: `bundle exec middleman server` then open `http://localhost:4567`
 3. Edit markdown files under `source/includes/`
 4. Use `bundle exec middleman build` to build
-5. Push or make a PR 🎉
-
-
-
-
-
-
+5. If add new doc file then add file name to includes section in the index.html.md
+6. Push or make a PR 🎉
