@@ -311,7 +311,7 @@
 <h3 id="string_to_sign">string_to_sign 的生成方式</h3>
 
 <p>上面的公式中的 string_to_sign 由五部分组成：</p>
-<pre class="highlight ruby"><code>  <span class="n">string_to_sign</span> <span class="err">＝</span> <span class="n">http_method</span> <span class="o">+</span> <span class="n">path</span> <span class="o">+</span> <span class="n">access_key</span> <span class="o">+</span> <span class="n">tonce</span> <span class="o">+</span> <span class="n">payload</span><span class="p">.</span><span class="nf">to_json</span>
+<pre class="highlight ruby"><code>  <span class="n">string_to_sign</span> <span class="o">=</span> <span class="n">http_method</span> <span class="o">+</span> <span class="n">path</span> <span class="o">+</span> <span class="n">access_key</span> <span class="o">+</span> <span class="n">tonce</span> <span class="o">+</span> <span class="n">payload</span><span class="p">.</span><span class="nf">to_json</span>
   <span class="n">signature</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">HMAC</span><span class="p">.</span><span class="nf">hexdigest</span> <span class="s1">'SHA256'</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">,</span> <span class="n">string_to_sign</span>
 </code></pre>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">utf8</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"utf8"</span><span class="p">);</span>

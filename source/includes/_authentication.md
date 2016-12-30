@@ -23,7 +23,7 @@ Product 对应每个 Company 都有唯一的 `access_key` 与 `secret_key` 。
 上面的公式中的 string_to_sign 由五部分组成：
 
 ```ruby
-  string_to_sign ＝ http_method + path + access_key + tonce + payload.to_json
+  string_to_sign = http_method + path + access_key + tonce + payload.to_json
   signature = OpenSSL::HMAC.hexdigest 'SHA256', secret_key, string_to_sign
 ```
 
