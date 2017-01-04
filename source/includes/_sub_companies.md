@@ -12,7 +12,7 @@ registered_address  | 字符串 |        | 注册地址
 boss  | 字符串 |        | 法人姓名
 
 
-## Get All SubCompanies - 获得全部分公司的信息
+## Get All SubCompanies - 获得所有分公司的信息
 
 ### HTTP Request
 
@@ -31,7 +31,7 @@ signature  | 字符串     |        | 是   | 请求签名
 JSON 格式的 SubCompanyPresenter 对象数组
 
 
-## Get The SubCompany By SubCompanyUUID - 根据员分公司 SubCompanyUUID 获取某个分公司的信息
+## Get The SubCompany By SubCompanyUUID - 根据分公司 SubCompanyUUID 获取某个分公司的信息
 
 ### HTTP Request
 
@@ -50,7 +50,7 @@ signature  | 字符串     |        | 是   | 请求签名
 JSON 格式的 SubCompanyPresenter 对象
 
 
-## Get All Employees Under The SubCompany By SubCompanyUUID - 根据员分公司的 SubCompanyUUID 获取某个分公司的信息
+## Get All Employees Under The SubCompany By SubCompanyUUID - 根据分公司的 SubCompanyUUID 获取某个分公司所有员工的信息
 
 ### HTTP Request
 
@@ -68,7 +68,7 @@ signature  | 字符串     |        | 是   | 请求签名
 
 JSON 格式的 EmployeePresenter 对象数组
 
-## Get One Employee Under The SubCompany By SubCompanyUUID - 根据员分公司的 SubCompanyUUID 获取某个分公司所有员工的信息
+## Get One Employee Under The SubCompany By SubCompanyUUID - 根据分公司的 SubCompanyUUID 获取某个分公司某个员工的信息
 
 ### HTTP Request
 
@@ -87,7 +87,7 @@ signature  | 字符串     |        | 是   | 请求签名
 JSON 格式的 EmployeePresenter 对象数组
 
 
-## Get All Departments Under The SubCompany By SubCompanyUUID - 根据员分公司的 SubCompanyUUID 获取某个分公司所有部门的信息
+## Get All Departments Under The SubCompany By SubCompanyUUID - 根据分公司的 SubCompanyUUID 获取某个分公司所有部门的信息
 
 ### HTTP Request
 
@@ -105,7 +105,7 @@ signature  | 字符串     |        | 是   | 请求签名
 
 JSON 格式的 DepartmentPresenter 对象数组
 
-## Get One Department Under The SubCompany By SubCompanyUUID - 根据员分公司的 SubCompanyUUID 获取某个分公司某个部门的信息
+## Get One Department Under The SubCompany By SubCompanyUUID - 根据分公司的 SubCompanyUUID 获取某个分公司某个部门的信息
 
 ### HTTP Request
 

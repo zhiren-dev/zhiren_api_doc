@@ -404,7 +404,7 @@
 </tr>
 </tbody></table>
 
-<h2 id="get-all-subcompanies">Get All SubCompanies - 获得全部分公司的信息</h2>
+<h2 id="get-all-subcompanies">Get All SubCompanies - 获得所有分公司的信息</h2>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -448,7 +448,7 @@
 
 <p>JSON 格式的 SubCompanyPresenter 对象数组</p>
 
-<h2 id="get-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get The SubCompany By SubCompanyUUID - 根据员分公司 SubCompanyUUID 获取某个分公司的信息</h2>
+<h2 id="get-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get The SubCompany By SubCompanyUUID - 根据分公司 SubCompanyUUID 获取某个分公司的信息</h2>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -492,7 +492,7 @@
 
 <p>JSON 格式的 SubCompanyPresenter 对象</p>
 
-<h2 id="get-all-employees-under-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get All Employees Under The SubCompany By SubCompanyUUID - 根据员分公司的 SubCompanyUUID 获取某个分公司的信息</h2>
+<h2 id="get-all-employees-under-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get All Employees Under The SubCompany By SubCompanyUUID - 根据分公司的 SubCompanyUUID 获取某个分公司所有员工的信息</h2>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -536,7 +536,7 @@
 
 <p>JSON 格式的 EmployeePresenter 对象数组</p>
 
-<h2 id="get-one-employee-under-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get One Employee Under The SubCompany By SubCompanyUUID - 根据员分公司的 SubCompanyUUID 获取某个分公司所有员工的信息</h2>
+<h2 id="get-one-employee-under-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get One Employee Under The SubCompany By SubCompanyUUID - 根据分公司的 SubCompanyUUID 获取某个分公司某个员工的信息</h2>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -580,7 +580,7 @@
 
 <p>JSON 格式的 EmployeePresenter 对象数组</p>
 
-<h2 id="get-all-departments-under-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get All Departments Under The SubCompany By SubCompanyUUID - 根据员分公司的 SubCompanyUUID 获取某个分公司所有部门的信息</h2>
+<h2 id="get-all-departments-under-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get All Departments Under The SubCompany By SubCompanyUUID - 根据分公司的 SubCompanyUUID 获取某个分公司所有部门的信息</h2>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -624,7 +624,7 @@
 
 <p>JSON 格式的 DepartmentPresenter 对象数组</p>
 
-<h2 id="get-one-department-under-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get One Department Under The SubCompany By SubCompanyUUID - 根据员分公司的 SubCompanyUUID 获取某个分公司某个部门的信息</h2>
+<h2 id="get-one-department-under-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get One Department Under The SubCompany By SubCompanyUUID - 根据分公司的 SubCompanyUUID 获取某个分公司某个部门的信息</h2>
 
 <h3 id="http-request">HTTP Request</h3>
 
@@ -1792,7 +1792,7 @@
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2007-09"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2011-09"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"school"</span><span class="p">:</span><span class="w"> </span><span class="s2">"北京大学"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"school"</span><span class="p">:</span><span class="w"> </span><span class="s2">"北京大学"</span><span class="p">,</span><span class="w"> </span><span class="err">//必填</span><span class="w">
       </span><span class="nt">"speciality"</span><span class="p">:</span><span class="w"> </span><span class="s2">"数学与应用数学"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"academicDegree"</span><span class="p">:</span><span class="w"> </span><span class="s2">"理学学士"</span><span class="w">
     </span><span class="p">}</span><span class="w">
@@ -1801,15 +1801,15 @@
     </span><span class="p">{</span><span class="w">
       </span><span class="nt">"startDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-05"</span><span class="p">,</span><span class="w">
       </span><span class="nt">"endDate"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2014-05"</span><span class="p">,</span><span class="w">
-      </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"腾讯广研"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"腾讯广研"</span><span class="p">,</span><span class="w"> </span><span class="err">//必填</span><span class="w">
       </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"前端工程师"</span><span class="w">
     </span><span class="p">}</span><span class="w">
   </span><span class="p">],</span><span class="w">
   </span><span class="nt">"resumeUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://url.com/file"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"jobTitle"</span><span class="p">:</span><span class="w"> </span><span class="s2">"前端工程师"</span><span class="p">,</span><span class="w">
   </span><span class="nt">"operator"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"李四"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lisi@a.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"李四"</span><span class="p">,</span><span class="w"> </span><span class="err">//必填</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"lisi@a.com"</span><span class="p">,</span><span class="w"> </span><span class="err">//必填</span><span class="w">
     </span><span class="nt">"phone"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15828748567"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="nt">"interviewFeedbackUrl"</span><span class="p">:</span><span class="w"> </span><span class="s2">"http://url.com/file"</span><span class="p">,</span><span class="w">
@@ -1934,7 +1934,7 @@
 </tr>
 <tr>
 <td>offerAttachmentUrls</td>
-<td></td>
+<td>array</td>
 <td></td>
 <td>否</td>
 <td>offer 附件下载</td>
