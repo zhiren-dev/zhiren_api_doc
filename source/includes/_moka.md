@@ -32,7 +32,7 @@ signature  | 字符串     |        | 是   | 请求签名
     {
       "startDate": "2007-09",
       "endDate": "2011-09",
-      "school": "北京大学",
+      "school": "北京大学", //必填
       "speciality": "数学与应用数学",
       "academicDegree": "理学学士"
     }
@@ -41,15 +41,15 @@ signature  | 字符串     |        | 是   | 请求签名
     {
       "startDate": "2012-05",
       "endDate": "2014-05",
-      "company": "腾讯广研",
+      "company": "腾讯广研", //必填
       "title": "前端工程师"
     }
   ],
   "resumeUrl": "http://url.com/file",
   "jobTitle": "前端工程师",
   "operator": {
-    "name": "李四",
-    "email": "lisi@a.com",
+    "name": "李四", //必填
+    "email": "lisi@a.com", //必填
     "phone": "15828748567"
   },
   "interviewFeedbackUrl": "http://url.com/file",
@@ -75,7 +75,7 @@ educationInfo        | hash   |    | 否 | 教育经历
 experienceInfo       | hash   |    | 否 | 工作经历
 resumeUrl            | string |    | 否 | 简历下载url
 interviewFeedbackUrl | string |    | 否 | 面试反馈文件下载url
-offerAttachmentUrls  |        |    | 否 | offer 附件下载
+offerAttachmentUrls  | array  |    | 否 | offer 附件下载
 offerInfo            | hash   |    | 否 | offer 信息
 
 ### Response
