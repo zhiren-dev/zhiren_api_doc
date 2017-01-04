@@ -15,6 +15,7 @@ includes:
   - concepts
   - authentication
   - company
+  - sub_companies
   - company_tokens
   - employees
   - attendant_employees

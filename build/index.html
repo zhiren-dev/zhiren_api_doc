@@ -118,7 +118,7 @@
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-
+        
           <h1 id="introduction">Introduction - 序言</h1>
 
 <p>欢迎使用知人的应用编程接口 API v2.0 通过 API 您可以接入知人提供的大部分服务。</p>
@@ -354,6 +354,320 @@
 
 <p>暂无 API。</p>
 
+          <h1 id="subcompany">SubCompany - 子公司</h1>
+
+<h2 id="subcompanypresenter">SubCompanyPresenter 对象</h2>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>字符串</td>
+<td></td>
+<td>分公司唯一标识符</td>
+</tr>
+<tr>
+<td>company_uuid</td>
+<td>字符串</td>
+<td></td>
+<td>母公司唯一标识符</td>
+</tr>
+<tr>
+<td>name</td>
+<td>字符串</td>
+<td></td>
+<td>分公司名称</td>
+</tr>
+<tr>
+<td>short_name</td>
+<td>字符串</td>
+<td></td>
+<td>分公司简称</td>
+</tr>
+<tr>
+<td>registered_address</td>
+<td>字符串</td>
+<td></td>
+<td>注册地址</td>
+</tr>
+<tr>
+<td>boss</td>
+<td>字符串</td>
+<td></td>
+<td>法人姓名</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-subcompanies">Get All SubCompanies - 获得全部分公司的信息</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v2/sub_companies</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 SubCompanyPresenter 对象数组</p>
+
+<h2 id="get-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get The SubCompany By SubCompanyUUID - 根据员分公司 SubCompanyUUID 获取某个分公司的信息</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v2/sub_companies/:sub_company_uuid</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 SubCompanyPresenter 对象</p>
+
+<h2 id="get-all-employees-under-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get All Employees Under The SubCompany By SubCompanyUUID - 根据员分公司的 SubCompanyUUID 获取某个分公司的信息</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v2/sub_companies/:sub_company_uuid/employees</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 EmployeePresenter 对象数组</p>
+
+<h2 id="get-one-employee-under-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get One Employee Under The SubCompany By SubCompanyUUID - 根据员分公司的 SubCompanyUUID 获取某个分公司所有员工的信息</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v2/sub_companies/:sub_company_uuid/employees/:uuid</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 EmployeePresenter 对象数组</p>
+
+<h2 id="get-all-departments-under-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get All Departments Under The SubCompany By SubCompanyUUID - 根据员分公司的 SubCompanyUUID 获取某个分公司所有部门的信息</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v2/sub_companies/:sub_company_uuid/departments</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 DepartmentPresenter 对象数组</p>
+
+<h2 id="get-one-department-under-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get One Department Under The SubCompany By SubCompanyUUID - 根据员分公司的 SubCompanyUUID 获取某个分公司某个部门的信息</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v2/sub_companies/:sub_company_uuid/departments/:uuid</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 DepartmentPresenter 对象数组</p>
+
           <h1 id="companytokens">CompanyTokens - 公司令牌</h1>
 
 <h2 id="companypresenter">CompanyPresenter 对象</h2>
@@ -507,6 +821,12 @@
 <td>手机号</td>
 </tr>
 <tr>
+<td>empno</td>
+<td>字符串</td>
+<td></td>
+<td>员工编号</td>
+</tr>
+<tr>
 <td>id_number</td>
 <td>字符串</td>
 <td></td>
@@ -547,6 +867,30 @@
 <td>日期</td>
 <td></td>
 <td>入职日期</td>
+</tr>
+<tr>
+<td>leave_date</td>
+<td>日期</td>
+<td></td>
+<td>离职日期</td>
+</tr>
+<tr>
+<td>status</td>
+<td>字符串</td>
+<td></td>
+<td>员工状态，&quot;regular&quot; 表示在职，&quot;dimission&quot; 表示离职。</td>
+</tr>
+<tr>
+<td>department_uuid</td>
+<td>字符串</td>
+<td></td>
+<td>所在部门唯一标示</td>
+</tr>
+<tr>
+<td>exmail</td>
+<td>字符串</td>
+<td></td>
+<td>企业邮箱地址</td>
 </tr>
 </tbody></table>
 
@@ -589,6 +933,12 @@
 <td>字符串</td>
 <td></td>
 <td>手机号</td>
+</tr>
+<tr>
+<td>empno</td>
+<td>字符串</td>
+<td></td>
+<td>员工编号</td>
 </tr>
 <tr>
 <td>phone_number</td>
@@ -643,6 +993,30 @@
 <td>字符串</td>
 <td></td>
 <td>头像</td>
+</tr>
+<tr>
+<td>leave_date</td>
+<td>日期</td>
+<td></td>
+<td>离职日期</td>
+</tr>
+<tr>
+<td>status</td>
+<td>字符串</td>
+<td></td>
+<td>员工状态，&quot;regular&quot; 表示在职，&quot;dimission&quot; 表示离职。</td>
+</tr>
+<tr>
+<td>department_uuid</td>
+<td>字符串</td>
+<td></td>
+<td>所在部门唯一标示</td>
+</tr>
+<tr>
+<td>exmail</td>
+<td>字符串</td>
+<td></td>
+<td>企业邮箱地址</td>
 </tr>
 </tbody></table>
 
@@ -1140,7 +1514,7 @@
 
 <p>EmployeePresenter 对象</p>
 
-          <h1 id="departments"> Departments - 部门</h1>
+          <h1 id="departments">Departments - 部门</h1>
 
 <h2 id="department">Department 对象</h2>
 
