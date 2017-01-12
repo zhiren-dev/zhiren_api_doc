@@ -188,86 +188,122 @@
 <th>属性</th>
 <th>类型</th>
 <th>默认值</th>
-<th>必须</th>
 <th>描述</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>name</td>
-<td>string</td>
+<td>uuid</td>
+<td>字符串</td>
 <td></td>
-<td>yes</td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td>字符串</td>
+<td></td>
 <td>姓名</td>
 </tr>
 <tr>
 <td>sex</td>
-<td>integer</td>
+<td>枚举串</td>
 <td></td>
-<td>yes</td>
-<td>性别（0 表示男性，1 表示女性）</td>
+<td>性别</td>
 </tr>
 <tr>
 <td>email</td>
-<td>string</td>
+<td>字符串</td>
 <td></td>
-<td>yes</td>
 <td>邮箱</td>
 </tr>
 <tr>
 <td>mobile</td>
-<td>string</td>
+<td>字符串</td>
 <td></td>
-<td>yes</td>
+<td>手机号</td>
+</tr>
+<tr>
+<td>empno</td>
+<td>字符串</td>
+<td></td>
+<td>员工编号</td>
+</tr>
+<tr>
+<td>phone_number</td>
+<td>字符串</td>
+<td></td>
 <td>手机号</td>
 </tr>
 <tr>
 <td>id_number</td>
-<td>string</td>
+<td>字符串</td>
 <td></td>
-<td>yes</td>
-<td>身份证号码</td>
+<td>身份证号</td>
 </tr>
 <tr>
 <td>address</td>
-<td>string</td>
+<td>字符串</td>
 <td></td>
-<td>yes</td>
-<td>住址</td>
+<td>详细地址</td>
 </tr>
 <tr>
 <td>bank_card</td>
-<td>string</td>
+<td>字符串</td>
 <td></td>
-<td>yes</td>
 <td>银行卡号</td>
 </tr>
 <tr>
-<td>phone</td>
-<td>string</td>
+<td>photo</td>
+<td>字符串</td>
 <td></td>
-<td>yes</td>
-<td>照片</td>
+<td>头像</td>
 </tr>
 <tr>
 <td>marriage</td>
-<td>integer</td>
+<td>字符串</td>
 <td></td>
-<td>yes</td>
-<td>婚姻状况（0 表示单身，1 表示已婚，2 表示离异）</td>
+<td>婚姻状况</td>
 </tr>
 <tr>
 <td>birthday</td>
-<td>string</td>
+<td>字符串</td>
 <td></td>
-<td>yes</td>
-<td>生日</td>
+<td>公历生日</td>
 </tr>
 <tr>
 <td>join_date</td>
-<td>string</td>
+<td>日期</td>
 <td></td>
-<td>yes</td>
 <td>入职日期</td>
+</tr>
+<tr>
+<td>avatar</td>
+<td>字符串</td>
+<td></td>
+<td>头像</td>
+</tr>
+<tr>
+<td>leave_date</td>
+<td>日期</td>
+<td></td>
+<td>离职日期</td>
+</tr>
+<tr>
+<td>status</td>
+<td>字符串</td>
+<td></td>
+<td>员工状态，&quot;regular&quot; 表示在职，&quot;dimission&quot; 表示离职。</td>
+</tr>
+<tr>
+<td>department_uuid</td>
+<td>字符串</td>
+<td></td>
+<td>所在部门唯一标示</td>
+</tr>
+<tr>
+<td>exmail</td>
+<td>字符串</td>
+<td></td>
+<td>企业邮箱地址</td>
 </tr>
 </tbody></table>
 
@@ -356,7 +392,7 @@
 
           <h1 id="subcompany">SubCompany - 子公司</h1>
 
-<h2 id="subcompanypresenter">SubCompanyPresenter 对象</h2>
+<h2 id="subcompany">SubCompany 对象</h2>
 
 <table><thead>
 <tr>
@@ -446,7 +482,7 @@
 
 <h3 id="response">Response</h3>
 
-<p>JSON 格式的 SubCompanyPresenter 对象数组</p>
+<p>JSON 格式的 SubCompany 对象数组</p>
 
 <h2 id="get-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get The SubCompany By SubCompanyUUID - 根据分公司 SubCompanyUUID 获取某个分公司的信息</h2>
 
@@ -490,7 +526,7 @@
 
 <h3 id="response">Response</h3>
 
-<p>JSON 格式的 SubCompanyPresenter 对象</p>
+<p>JSON 格式的 SubCompany 对象</p>
 
 <h2 id="get-all-employees-under-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get All Employees Under The SubCompany By SubCompanyUUID - 根据分公司的 SubCompanyUUID 获取某个分公司所有员工的信息</h2>
 
@@ -534,7 +570,7 @@
 
 <h3 id="response">Response</h3>
 
-<p>JSON 格式的 EmployeePresenter 对象数组</p>
+<p>JSON 格式的 Employee 对象数组</p>
 
 <h2 id="get-one-employee-under-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get One Employee Under The SubCompany By SubCompanyUUID - 根据分公司的 SubCompanyUUID 获取某个分公司某个员工的信息</h2>
 
@@ -578,7 +614,7 @@
 
 <h3 id="response">Response</h3>
 
-<p>JSON 格式的 EmployeePresenter 对象数组</p>
+<p>JSON 格式的 Employee 对象数组</p>
 
 <h2 id="get-all-departments-under-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get All Departments Under The SubCompany By SubCompanyUUID - 根据分公司的 SubCompanyUUID 获取某个分公司所有部门的信息</h2>
 
@@ -622,7 +658,7 @@
 
 <h3 id="response">Response</h3>
 
-<p>JSON 格式的 DepartmentPresenter 对象数组</p>
+<p>JSON 格式的 Department 对象数组</p>
 
 <h2 id="get-one-department-under-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get One Department Under The SubCompany By SubCompanyUUID - 根据分公司的 SubCompanyUUID 获取某个分公司某个部门的信息</h2>
 
@@ -666,11 +702,11 @@
 
 <h3 id="response">Response</h3>
 
-<p>JSON 格式的 DepartmentPresenter 对象数组</p>
+<p>JSON 格式的 Department 对象数组</p>
 
           <h1 id="companytokens">CompanyTokens - 公司令牌</h1>
 
-<h2 id="companypresenter">CompanyPresenter 对象</h2>
+<h2 id="company">Company 对象</h2>
 
 <table><thead>
 <tr>
@@ -782,119 +818,11 @@
 
 <h3 id="response">Response</h3>
 
-<p>CompanyPresenter 对象</p>
+<p>Company 对象</p>
 
           <h1 id="employees">Employees - 员工</h1>
 
 <h2 id="employee">Employee 对象</h2>
-
-<table><thead>
-<tr>
-<th>属性</th>
-<th>类型</th>
-<th>默认值</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>name</td>
-<td>字符串</td>
-<td></td>
-<td>姓名</td>
-</tr>
-<tr>
-<td>sex</td>
-<td>字符串</td>
-<td></td>
-<td>性别</td>
-</tr>
-<tr>
-<td>email</td>
-<td>字符串</td>
-<td></td>
-<td>邮箱</td>
-</tr>
-<tr>
-<td>mobile</td>
-<td>字符串</td>
-<td></td>
-<td>手机号</td>
-</tr>
-<tr>
-<td>empno</td>
-<td>字符串</td>
-<td></td>
-<td>员工编号</td>
-</tr>
-<tr>
-<td>id_number</td>
-<td>字符串</td>
-<td></td>
-<td>身份证号</td>
-</tr>
-<tr>
-<td>address</td>
-<td>字符串</td>
-<td></td>
-<td>详细地址</td>
-</tr>
-<tr>
-<td>bank_card</td>
-<td>字符串</td>
-<td></td>
-<td>银行卡号</td>
-</tr>
-<tr>
-<td>photo</td>
-<td>字符串</td>
-<td></td>
-<td>头像</td>
-</tr>
-<tr>
-<td>marriage</td>
-<td>字符串</td>
-<td></td>
-<td>婚姻状况</td>
-</tr>
-<tr>
-<td>birthday</td>
-<td>日期</td>
-<td></td>
-<td>公历生日</td>
-</tr>
-<tr>
-<td>join_date</td>
-<td>日期</td>
-<td></td>
-<td>入职日期</td>
-</tr>
-<tr>
-<td>leave_date</td>
-<td>日期</td>
-<td></td>
-<td>离职日期</td>
-</tr>
-<tr>
-<td>status</td>
-<td>字符串</td>
-<td></td>
-<td>员工状态，&quot;regular&quot; 表示在职，&quot;dimission&quot; 表示离职。</td>
-</tr>
-<tr>
-<td>department_uuid</td>
-<td>字符串</td>
-<td></td>
-<td>所在部门唯一标示</td>
-</tr>
-<tr>
-<td>exmail</td>
-<td>字符串</td>
-<td></td>
-<td>企业邮箱地址</td>
-</tr>
-</tbody></table>
-
-<h2 id="employeepresenter">EmployeePresenter 对象</h2>
 
 <table><thead>
 <tr>
@@ -1160,11 +1088,11 @@
 
 <h3 id="response">Response</h3>
 
-<p>JSON 格式的 EmployeePresenter 对象</p>
+<p>JSON 格式的 Employee 对象</p>
 
           <h1 id="attendant-employees">Attendant Employees - 出勤员工</h1>
 
-<h2 id="employeepresenter">EmployeePresenter 对象</h2>
+<h2 id="employee">Employee 对象</h2>
 
 <table><thead>
 <tr>
@@ -1329,11 +1257,11 @@
 
 <h3 id="response">Response</h3>
 
-<p>EmployeePresenter 对象</p>
+<p>Employee 对象</p>
 
           <h1 id="notifyemployees">NotifyEmployees - 员工提醒</h1>
 
-<h2 id="employeepresenter">EmployeePresenter 对象</h2>
+<h2 id="employee">Employee 对象</h2>
 
 <table><thead>
 <tr>
@@ -1512,35 +1440,11 @@
 
 <h3 id="response">Response</h3>
 
-<p>EmployeePresenter 对象</p>
+<p>Employee 对象</p>
 
           <h1 id="departments">Departments - 部门</h1>
 
 <h2 id="department">Department 对象</h2>
-
-<table><thead>
-<tr>
-<th>属性</th>
-<th>类型</th>
-<th>默认值</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>name</td>
-<td>字符串</td>
-<td></td>
-<td>部门名称</td>
-</tr>
-<tr>
-<td>guid</td>
-<td>字符串</td>
-<td></td>
-<td>部门唯一标识符</td>
-</tr>
-</tbody></table>
-
-<h2 id="departmentpresenter">DepartmentPresenter 对象</h2>
 
 <table><thead>
 <tr>
@@ -1618,64 +1522,64 @@
 
 <h3 id="response">Response</h3>
 
-<p>JSON 格式的 Departments 对象数组</p>
-<pre class="highlight plaintext"><code>[
-    {
-        "name": "管理组",
-        "uuid": "7684be70c34c554c8fdc062eba4382be",
-        "superior_uuid": null,
-        "sub_company": "成都彩程软件设计有限公司"
-    },
-    {
-        "name": "运营组",
-        "uuid": "8674be70c34c554c8fdc062eba4382be",
-        "superior_uuid": null,
-        "sub_company": "成都彩程软件设计有限公司"
-    },
-    {
-        "name": "系统组",
-        "uuid": "8689be70c34c554c8fdc062eba4382be",
-        "superior_uuid": null,
-        "sub_company": "成都彩程软件设计有限公司"
-    },
-    {
-        "name": "知人",
-        "uuid": "8684qe70c34c554c8fdc062eba4382be",
-        "superior_uuid": null,
-        "sub_company": "成都彩程软件设计有限公司"
-    },
-    {
-        "name": "Tower",
-        "uuid": "8684be00c34c554c8fdc062eba4382be",
-        "superior_uuid": null,
-        "sub_company": "成都彩程软件设计有限公司"
-    },
-    {
-        "name": "行政组",
-        "uuid": "8684be70c34c524c8fdc062eba4382be",
-        "superior_uuid": null,
-        "sub_company": "成都彩程软件设计有限公司"
-    },
-    {
-        "name": "产品组",
-        "uuid": "8684be70c34c554c8fdc062eba4382ke",
-        "superior_uuid": null,
-        "sub_company": "成都彩程软件设计有限公司"
-    },
-    {
-        "name": "移动客户端",
-        "uuid": "8684be70c34c554c8fdc062eba4382bp",
-        "superior_uuid": null,
-        "sub_company": "成都彩程软件设计有限公司"
-    },
-    {
-        "name": "测试部门",
-        "uuid": "49c932694bcab42f688863561cf746e1",
-        "superior_uuid": "8684be70c34c554c8fdc062eba4382be",
-        "sub_company": "成都彩程软件设计有限公司"
-    }
-]
-</code></pre>
+<p>JSON 格式的 Department 对象数组</p>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"管理组"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7684be70c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sub_company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"成都彩程软件设计有限公司"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"运营组"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8674be70c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sub_company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"成都彩程软件设计有限公司"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"系统组"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8689be70c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sub_company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"成都彩程软件设计有限公司"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"知人"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8684qe70c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sub_company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"成都彩程软件设计有限公司"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tower"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8684be00c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sub_company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"成都彩程软件设计有限公司"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"行政组"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8684be70c34c524c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sub_company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"成都彩程软件设计有限公司"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"产品组"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8684be70c34c554c8fdc062eba4382ke"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sub_company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"成都彩程软件设计有限公司"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"移动客户端"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8684be70c34c554c8fdc062eba4382bp"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sub_company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"成都彩程软件设计有限公司"</span><span class="w">
+    </span><span class="p">},</span><span class="w">
+    </span><span class="p">{</span><span class="w">
+        </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"测试部门"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49c932694bcab42f688863561cf746e1"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8684be70c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"sub_company"</span><span class="p">:</span><span class="w"> </span><span class="s2">"成都彩程软件设计有限公司"</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
 
 <h2 id="get-the-department-by-uuid">Get the Department by uuid - 根据部门唯一标识符查找某一部门的信息</h2>
 
@@ -1719,7 +1623,7 @@
 
 <h3 id="response">Response</h3>
 
-<p>JSON 格式的 EmployeePresenter 对象</p>
+<p>JSON 格式的 Employee 对象</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"管理组"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7684be70c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
@@ -2038,6 +1942,7 @@
 <ul>
 <li>2016-09-09 补充 API host（https://zhiren.com/api/v1/<apiname>）</li>
 <li>2016-12-29 新增员工提醒、出勤员工、Moka 候选人 API</li>
+<li>2017-01-08 新增获取子公司、子公司部门、子公司员工信息的 API</li>
 </ul>
 
       </div>
