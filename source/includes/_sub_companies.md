@@ -1,6 +1,6 @@
 # SubCompany - 子公司
 
-## SubCompanyPresenter 对象
+## SubCompany 对象
 
 属性      | 类型   | 默认值 | 描述
 ----------|--------|--------|------|
@@ -28,7 +28,7 @@ signature  | 字符串     |        | 是   | 请求签名
 
 ### Response
 
-JSON 格式的 SubCompanyPresenter 对象数组
+JSON 格式的 SubCompany 对象数组
 
 
 ## Get The SubCompany By SubCompanyUUID - 根据分公司 SubCompanyUUID 获取某个分公司的信息
@@ -47,7 +47,7 @@ signature  | 字符串     |        | 是   | 请求签名
 
 ### Response
 
-JSON 格式的 SubCompanyPresenter 对象
+JSON 格式的 SubCompany 对象
 
 
 ## Get All Employees Under The SubCompany By SubCompanyUUID - 根据分公司的 SubCompanyUUID 获取某个分公司所有员工的信息
@@ -66,7 +66,7 @@ signature  | 字符串     |        | 是   | 请求签名
 
 ### Response
 
-JSON 格式的 EmployeePresenter 对象数组
+JSON 格式的 Employee 对象数组
 
 ## Get One Employee Under The SubCompany By SubCompanyUUID - 根据分公司的 SubCompanyUUID 获取某个分公司某个员工的信息
 
@@ -84,7 +84,7 @@ signature  | 字符串     |        | 是   | 请求签名
 
 ### Response
 
-JSON 格式的 EmployeePresenter 对象数组
+JSON 格式的 Employee 对象数组
 
 
 ## Get All Departments Under The SubCompany By SubCompanyUUID - 根据分公司的 SubCompanyUUID 获取某个分公司所有部门的信息
@@ -103,7 +103,7 @@ signature  | 字符串     |        | 是   | 请求签名
 
 ### Response
 
-JSON 格式的 DepartmentPresenter 对象数组
+JSON 格式的 Department 对象数组
 
 ## Get One Department Under The SubCompany By SubCompanyUUID - 根据分公司的 SubCompanyUUID 获取某个分公司某个部门的信息
 
@@ -121,4 +121,4 @@ signature  | 字符串     |        | 是   | 请求签名
 
 ### Response
 
-JSON 格式的 DepartmentPresenter 对象数组
+JSON 格式的 Department 对象数组

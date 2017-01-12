@@ -1,6 +1,6 @@
 # NotifyEmployees - 员工提醒
 
-## EmployeePresenter 对象
+## Employee 对象
 
 属性      | 类型   | 默认值 | 描述
 ----------|--------|--------|------|
@@ -44,4 +44,4 @@ time  | 字符串 |        | 是   | 到访时间
 
 ### Response
 
-EmployeePresenter 对象
+Employee 对象

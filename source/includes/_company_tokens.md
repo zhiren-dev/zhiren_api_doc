@@ -1,6 +1,6 @@
 # CompanyTokens - 公司令牌
 
-## CompanyPresenter 对象
+## Company 对象
 
 属性      | 类型   | 默认值 | 描述
 ----------|--------|--------|------|
@@ -33,4 +33,4 @@ zhiren_visitor_token | 字符串 |        | 是   | fangke 提供给 zhiren 的�
 
 ### Response
 
-CompanyPresenter 对象
+Company 对象

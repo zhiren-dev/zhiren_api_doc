@@ -19,17 +19,24 @@ logo      | string |        | no   | 公司 logo URL
 
 #### Employee 对象属性
 
-属性      | 类型    | 默认值 | 必须 | 描述
-----------|---------|--------|------|------------------------------------------------|
-name      | string  |        | yes  | 姓名
-sex       | integer |        | yes  | 性别（0 表示男性，1 表示女性）
-email     | string  |        | yes  | 邮箱
-mobile    | string  |        | yes  | 手机号
-id_number | string  |        | yes  | 身份证号码
-address   | string  |        | yes  | 住址
-bank_card | string  |        | yes  | 银行卡号
-phone     | string  |        | yes  | 照片
-marriage  | integer |        | yes  | 婚姻状况（0 表示单身，1 表示已婚，2 表示离异）
-birthday  | string  |        | yes  | 生日
-join_date | string  |        | yes  | 入职日期
-
+属性      | 类型   | 默认值 | 描述
+----------|--------|--------|------|
+uuid      | 字符串 |        |
+name      | 字符串 |        | 姓名
+sex       | 枚举串 |        | 性别
+email     | 字符串 |        | 邮箱
+mobile    | 字符串 |        | 手机号
+empno     | 字符串 |        | 员工编号
+phone_number | 字符串|      | 手机号
+id_number | 字符串 |        | 身份证号
+address   | 字符串 |        | 详细地址
+bank_card | 字符串 |        | 银行卡号
+photo     | 字符串 |        | 头像
+marriage  | 字符串 |        | 婚姻状况
+birthday  | 字符串 |        | 公历生日
+join_date | 日期   |        | 入职日期
+avatar    | 字符串 |        | 头像
+leave_date | 日期  |        | 离职日期
+status     | 字符串 |       | 员工状态，"regular" 表示在职，"dimission" 表示离职。
+department_uuid | 字符串 |       | 所在部门唯一标示
+exmail | 字符串 |       | 企业邮箱地址

@@ -4,14 +4,6 @@
 
 属性      | 类型   | 默认值 | 描述
 ----------|--------|--------|------|
-name       | 字符串 |        | 部门名称
-guid       | 字符串 |        | 部门唯一标识符
-
-
-## DepartmentPresenter 对象
-
-属性      | 类型   | 默认值 | 描述
-----------|--------|--------|------|
 name      | 字符串 |         | 部门名称
 uuid       | 字符串 |        | 部门唯一标识符
 superior_uuid | 字符串 |     | 上级部门唯一标识符
@@ -34,9 +26,9 @@ signature  | 字符串     |        | 是   | 请求签名
 
 ### Response
 
-JSON 格式的 Departments 对象数组
+JSON 格式的 Department 对象数组
 
-```
+```json
 [
     {
         "name": "管理组",
@@ -111,9 +103,9 @@ signature  | 字符串     |        | 是   | 请求签名
 
 ### Response
 
-JSON 格式的 EmployeePresenter 对象
+JSON 格式的 Employee 对象
 
-```
+```json
 {
     "name": "管理组",
     "uuid": "7684be70c34c554c8fdc062eba4382be",

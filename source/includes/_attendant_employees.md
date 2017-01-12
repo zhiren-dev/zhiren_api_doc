@@ -1,6 +1,6 @@
 # Attendant Employees - 出勤员工
 
-## EmployeePresenter 对象
+## Employee 对象
 
 属性      | 类型   | 默认值 | 描述
 ----------|--------|--------|------|
@@ -42,4 +42,4 @@ token | 字符串 |        | 是   | 区别公司的标识符
 
 ### Response
 
-EmployeePresenter 对象
+Employee 对象
