@@ -121,7 +121,7 @@ companyName                 | string |    | 是 | 公司名称
 
 ### HTTP Request
 
-`DELETE /api/v2/moka_binds/:bind_code`
+`POST /api/v2/moka_unbinds`
 
 ### HTTP Parameters
 
