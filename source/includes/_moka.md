@@ -81,3 +81,58 @@ offerInfo            | hash   |    | 否 | offer 信息
 ### Response
 
 `{ error_code: 0, error_message: 'ok' }`
+
+
+## Bind Company - 将 moka 中的公司与知人中的公司进行绑定
+
+### HTTP Request
+
+`PATCH /api/v2/moka_binds/:bind_code`
+
+### HTTP Parameters
+
+参数       | 类型       | 默认值 | 必须 | 描述
+-----------|------------|--------|------|----------------------------|
+access_key | 字符串     |        | 是   | API Key
+tonce      | 整型       |        | 是   | 以秒为单位的UNIX timestamp
+signature  | 字符串     |        | 是   | 请求签名
+
+### Response
+
+`{ error_code: 0, error_message: 'ok' }`
+
+## Unbind Company - 将 moka 中的公司与知人中的公司进行解绑
+
+### HTTP Request
+
+`DELETE /api/v2/moka_binds/:bind_code`
+
+### HTTP Parameters
+
+参数       | 类型       | 默认值 | 必须 | 描述
+-----------|------------|--------|------|----------------------------|
+access_key | 字符串     |        | 是   | API Key
+tonce      | 整型       |        | 是   | 以秒为单位的UNIX timestamp
+signature  | 字符串     |        | 是   | 请求签名
+
+### Response
+
+`{ error_code: 0, error_message: 'ok' }`
+
+## Check Bind Code - 检查 bind code 是否有效
+
+### HTTP Request
+
+`GET /api/v2/moka_binds/:bind_code`
+
+### HTTP Parameters
+
+参数       | 类型       | 默认值 | 必须 | 描述
+-----------|------------|--------|------|----------------------------|
+access_key | 字符串     |        | 是   | API Key
+tonce      | 整型       |        | 是   | 以秒为单位的UNIX timestamp
+signature  | 字符串     |        | 是   | 请求签名
+
+### Response
+
+`{ error_code: 0, error_message: 'ok' }`

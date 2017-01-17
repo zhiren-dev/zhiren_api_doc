@@ -1856,6 +1856,138 @@
 
 <p><code class="prettyprint">{ error_code: 0, error_message: &#39;ok&#39; }</code></p>
 
+<h2 id="bind-company-moka">Bind Company - 将 moka 中的公司与知人中的公司进行绑定</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">PATCH /api/v2/moka_binds/:bind_code</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p><code class="prettyprint">{ error_code: 0, error_message: &#39;ok&#39; }</code></p>
+
+<h2 id="unbind-company-moka">Unbind Company - 将 moka 中的公司与知人中的公司进行解绑</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">DELETE /api/v2/moka_binds/:bind_code</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p><code class="prettyprint">{ error_code: 0, error_message: &#39;ok&#39; }</code></p>
+
+<h2 id="check-bind-code-bind-code">Check Bind Code - 检查 bind code 是否有效</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v2/moka_binds/:bind_code</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p><code class="prettyprint">{ error_code: 0, error_message: &#39;ok&#39; }</code></p>
+
           <h1 id="errors">Errors - 错误代码</h1>
 
 <p>正常API返回的 HTTP Status Code 为 2xx 或 3xx。如果遇到错误，HTTP Status Code 为 4xx 或 5xx,
@@ -1915,7 +2047,7 @@
 </tr>
 <tr>
 <td>2002</td>
-<td>未实现：对象验证错误</td>
+<td>对象验证错误</td>
 </tr>
 <tr>
 <td>2003</td>
@@ -1924,6 +2056,18 @@
 <tr>
 <td>2004</td>
 <td>JSON 格式错误</td>
+</tr>
+<tr>
+<td><strong>3xxx</strong></td>
+<td><strong>参数错误</strong></td>
+</tr>
+<tr>
+<td>3001</td>
+<td>没有权限访问该 API</td>
+</tr>
+<tr>
+<td>3002</td>
+<td>bind_code 已过期</td>
 </tr>
 <tr>
 <td><strong>9xxx</strong></td>
@@ -1943,6 +2087,7 @@
 <li>2016-09-09 补充 API host（https://zhiren.com/api/v1/<apiname>）</li>
 <li>2016-12-29 新增员工提醒、出勤员工、Moka 候选人 API</li>
 <li>2017-01-08 新增获取子公司、子公司部门、子公司员工信息的 API</li>
+<li>2017-01-17 新增绑定、解绑 Moka 公司以及查询 bind_code 有效性的 API</li>
 </ul>
 
       </div>
