@@ -93,9 +93,25 @@ offerInfo            | hash   |    | 否 | offer 信息
 
 参数       | 类型       | 默认值 | 必须 | 描述
 -----------|------------|--------|------|----------------------------|
+payload    | JSON字符串 |        | 是   | JSON Payload
 access_key | 字符串     |        | 是   | API Key
 tonce      | 整型       |        | 是   | 以秒为单位的UNIX timestamp
 signature  | 字符串     |        | 是   | 请求签名
+
+### Payload Schema
+
+```JSON
+{
+  "apiKey": "95dv8R869ELP30NLI4Zg96RqM120N1mQ",
+  "companyName": "彩程设计"
+}
+
+```
+
+属性  | 类型   | 默认值 | 必须 | 描述
+------|--------|--------|------|-------------------|
+apiKey                   | string |    | 是 | Moka 公司唯一标识符
+companyName                 | string |    | 是 | 公司名称
 
 ### Response
 

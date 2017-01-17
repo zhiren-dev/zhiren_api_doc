@@ -1874,6 +1874,13 @@
 </tr>
 </thead><tbody>
 <tr>
+<td>payload</td>
+<td>JSON字符串</td>
+<td></td>
+<td>是</td>
+<td>JSON Payload</td>
+</tr>
+<tr>
 <td>access_key</td>
 <td>字符串</td>
 <td></td>
@@ -1893,6 +1900,39 @@
 <td></td>
 <td>是</td>
 <td>请求签名</td>
+</tr>
+</tbody></table>
+
+<h3 id="payload-schema">Payload Schema</h3>
+<pre class="highlight plaintext"><code>{
+  "apiKey": "95dv8R869ELP30NLI4Zg96RqM120N1mQ",
+  "companyName": "彩程设计"
+}
+
+</code></pre>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>apiKey</td>
+<td>string</td>
+<td></td>
+<td>是</td>
+<td>Moka 公司唯一标识符</td>
+</tr>
+<tr>
+<td>companyName</td>
+<td>string</td>
+<td></td>
+<td>是</td>
+<td>公司名称</td>
 </tr>
 </tbody></table>
 
