@@ -22,6 +22,7 @@ includes:
   - notify_employees
   - departments
   - moka
+  - attendances
   - errors
   - changelog
 
