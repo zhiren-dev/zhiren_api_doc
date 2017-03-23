@@ -4,7 +4,7 @@
 
 ### HTTP Request
 
-`POST api/v2/attendances`
+`POST /api/v2/attendance_punches`
 
 ### HTTP Parameters
 
