@@ -7,7 +7,6 @@
 name      | 字符串 |         | 部门名称
 uuid       | 字符串 |        | 部门唯一标识符
 superior_uuid | 字符串 |     | 上级部门唯一标识符
-sub_company   | 字符串 |     | 子公司名称
 
 
 ## Get All Departments - 获得公司全部部门的信息
@@ -33,56 +32,47 @@ JSON 格式的 Department 对象数组
     {
         "name": "管理组",
         "uuid": "7684be70c34c554c8fdc062eba4382be",
-        "superior_uuid": null,
-        "sub_company": "成都彩程软件设计有限公司"
+        "superior_uuid": null
     },
     {
         "name": "运营组",
         "uuid": "8674be70c34c554c8fdc062eba4382be",
-        "superior_uuid": null,
-        "sub_company": "成都彩程软件设计有限公司"
+        "superior_uuid": null
     },
     {
         "name": "系统组",
         "uuid": "8689be70c34c554c8fdc062eba4382be",
-        "superior_uuid": null,
-        "sub_company": "成都彩程软件设计有限公司"
+        "superior_uuid": null
     },
     {
         "name": "知人",
         "uuid": "8684qe70c34c554c8fdc062eba4382be",
-        "superior_uuid": null,
-        "sub_company": "成都彩程软件设计有限公司"
+        "superior_uuid": null
     },
     {
         "name": "Tower",
         "uuid": "8684be00c34c554c8fdc062eba4382be",
-        "superior_uuid": null,
-        "sub_company": "成都彩程软件设计有限公司"
+        "superior_uuid": null
     },
     {
         "name": "行政组",
         "uuid": "8684be70c34c524c8fdc062eba4382be",
-        "superior_uuid": null,
-        "sub_company": "成都彩程软件设计有限公司"
+        "superior_uuid": null
     },
     {
         "name": "产品组",
         "uuid": "8684be70c34c554c8fdc062eba4382ke",
-        "superior_uuid": null,
-        "sub_company": "成都彩程软件设计有限公司"
+        "superior_uuid": null
     },
     {
         "name": "移动客户端",
         "uuid": "8684be70c34c554c8fdc062eba4382bp",
-        "superior_uuid": null,
-        "sub_company": "成都彩程软件设计有限公司"
+        "superior_uuid": null
     },
     {
         "name": "测试部门",
         "uuid": "49c932694bcab42f688863561cf746e1",
-        "superior_uuid": "8684be70c34c554c8fdc062eba4382be",
-        "sub_company": "成都彩程软件设计有限公司"
+        "superior_uuid": "8684be70c34c554c8fdc062eba4382be"
     }
 ]
 ```
@@ -109,7 +99,6 @@ JSON 格式的 Employee 对象
 {
     "name": "管理组",
     "uuid": "7684be70c34c554c8fdc062eba4382be",
-    "superior_uuid": null,
-    "sub_company": "成都彩程软件设计有限公司"
+    "superior_uuid": null
 }
 ```
