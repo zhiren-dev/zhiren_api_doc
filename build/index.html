@@ -616,94 +616,6 @@
 
 <p>JSON 格式的 Employee 对象数组</p>
 
-<h2 id="get-all-departments-under-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get All Departments Under The SubCompany By SubCompanyUUID - 根据分公司的 SubCompanyUUID 获取某个分公司所有部门的信息</h2>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET /api/v2/sub_companies/:sub_company_uuid/departments</code></p>
-
-<h3 id="http-parameters">HTTP Parameters</h3>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>类型</th>
-<th>默认值</th>
-<th>必须</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_key</td>
-<td>字符串</td>
-<td></td>
-<td>是</td>
-<td>API Key</td>
-</tr>
-<tr>
-<td>tonce</td>
-<td>整型</td>
-<td></td>
-<td>是</td>
-<td>以秒为单位的UNIX timestamp</td>
-</tr>
-<tr>
-<td>signature</td>
-<td>字符串</td>
-<td></td>
-<td>是</td>
-<td>请求签名</td>
-</tr>
-</tbody></table>
-
-<h3 id="response">Response</h3>
-
-<p>JSON 格式的 Department 对象数组</p>
-
-<h2 id="get-one-department-under-the-subcompany-by-subcompanyuuid-subcompanyuuid">Get One Department Under The SubCompany By SubCompanyUUID - 根据分公司的 SubCompanyUUID 获取某个分公司某个部门的信息</h2>
-
-<h3 id="http-request">HTTP Request</h3>
-
-<p><code class="prettyprint">GET /api/v2/sub_companies/:sub_company_uuid/departments/:uuid</code></p>
-
-<h3 id="http-parameters">HTTP Parameters</h3>
-
-<table><thead>
-<tr>
-<th>参数</th>
-<th>类型</th>
-<th>默认值</th>
-<th>必须</th>
-<th>描述</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>access_key</td>
-<td>字符串</td>
-<td></td>
-<td>是</td>
-<td>API Key</td>
-</tr>
-<tr>
-<td>tonce</td>
-<td>整型</td>
-<td></td>
-<td>是</td>
-<td>以秒为单位的UNIX timestamp</td>
-</tr>
-<tr>
-<td>signature</td>
-<td>字符串</td>
-<td></td>
-<td>是</td>
-<td>请求签名</td>
-</tr>
-</tbody></table>
-
-<h3 id="response">Response</h3>
-
-<p>JSON 格式的 Department 对象数组</p>
-
           <h1 id="companytokens">CompanyTokens - 公司令牌</h1>
 
 <h2 id="company">Company 对象</h2>
@@ -2195,7 +2107,7 @@
 <li>2017-01-08 新增获取子公司、子公司部门、子公司员工信息的 API</li>
 <li>2017-01-17 新增绑定、解绑 Moka 公司以及查询 bind_code 有效性的 API</li>
 <li>2017-03-18 新增出勤打卡 API</li>
-<li>2017-06-06 Department 对象去掉 sub_company 字段</li>
+<li>2017-06-06 Department 对象去掉 sub_company 字段，移除 <code class="prettyprint">GET /api/v2/sub_companies/:sub_company_uuid/departments</code> 和 <code class="prettyprint">GET /api/v2/sub_companies/:sub_company_uuid/departments/:uuid</code> 接口</li>
 </ul>
 
       </div>
