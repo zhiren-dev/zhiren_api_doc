@@ -23,6 +23,7 @@ leave_date | 日期  |        | 离职日期
 status     | 字符串 |       | 员工状态，"regular" 表示在职，"dimission" 表示离职。
 department_uuid | 字符串 |       | 所在部门唯一标示
 exmail | 字符串 |       | 企业邮箱地址
+job_title |字符串| |职位|
 
 
 
