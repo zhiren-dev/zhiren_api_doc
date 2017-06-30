@@ -24,6 +24,10 @@ status     | 字符串 |       | 员工状态，"regular" 表示在职，"dimiss
 department_uuid | 字符串 |       | 所在部门唯一标示
 exmail | 字符串 |       | 企业邮箱地址
 job_title |字符串| |职位|
+job_grade |字符串| |职级|
+nickname |字符串| |昵称|
+dingtalk_id |字符串| |钉钉 ID|
+
 
 
 
