@@ -13,3 +13,4 @@
 * 2017-03-18 新增出勤打卡 API
 * 2017-06-06 Department 对象去掉 sub_company 字段，移除 `GET /api/v2/sub_companies/:sub_company_uuid/departments` 和 `GET /api/v2/sub_companies/:sub_company_uuid/departments/:uuid` 接口
 * 2017-06-20 Employee 对象中新增 job_title 字段
+* 2017-07-07 Employee 对象中新增 leader_uuid, virtual_leader_uuid 字段，Department 对象中新增 charger_uuid 字段，新增根据 uuid 查找员工信息
