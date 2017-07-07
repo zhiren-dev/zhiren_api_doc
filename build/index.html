@@ -850,7 +850,7 @@
 <td>department_uuid</td>
 <td>字符串</td>
 <td></td>
-<td>所在部门唯一标示</td>
+<td>所在部门唯一标示符</td>
 </tr>
 <tr>
 <td>exmail</td>
@@ -881,6 +881,18 @@
 <td>字符串</td>
 <td></td>
 <td>钉钉 ID</td>
+</tr>
+<tr>
+<td>leader_uuid</td>
+<td>字符串</td>
+<td></td>
+<td>汇报人唯一标识符</td>
+</tr>
+<tr>
+<td>virtual_leader_uuid</td>
+<td>字符串</td>
+<td></td>
+<td>虚线汇报人唯一标识符</td>
 </tr>
 </tbody></table>
 
@@ -954,6 +966,64 @@
 <h3 id="response">Response</h3>
 
 <p>JSON 格式的 EmployeePresenter 对象数组</p>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1387c26da1091124264793e123744fbb"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"一般职员"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"empno"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NORMAL-1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"76577261@qq.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18602836721"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18602836721"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"320581199406301913"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"烨伟路313号"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bank_card"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"marriage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"divorced"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1983-07-21"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"join_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-09-29"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"leave_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"waiting"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"department_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f46594b15bc947891fcf8700f3aaa2ba"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"exmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test1@colorway.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTO"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"job_grade"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dingtalk_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"少林扫地僧"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"leader_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"virtual_leader_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8324fb43da1d979fd277473d7984"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8384fb43da1d979fd277473d7984"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"一般职员"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"empno"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NORMAL-1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"337261@qq.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18689992211"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18689992211"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"230581199406301913"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"烨伟路313号"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bank_card"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"marriage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"divorced"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1989-02-21"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"join_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-08-09"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"leave_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"waiting"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"department_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f46594b15bc947891fcf8700f3aaa2ba"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"exmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test2@colorway.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTO"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"job_grade"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dingtalk_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"少林扫地僧"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"leader_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8384fb43da1d979fd277473d7982"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"virtual_leader_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
 
 <h2 id="get-the-employee-by-mobile">Get the Employee by Mobile - 根据员工手机号查找某一员工的信息</h2>
 
@@ -1025,6 +1095,137 @@
 <h3 id="response">Response</h3>
 
 <p>JSON 格式的 Employee 对象</p>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1387c26da1091124264793e123744fbb"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"一般职员"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"empno"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NORMAL-1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"76577261@qq.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18602836721"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18602836721"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"320581199406301913"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"烨伟路313号"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"bank_card"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"marriage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"divorced"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1983-07-21"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"join_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-09-29"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"leave_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"waiting"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"department_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f46594b15bc947891fcf8700f3aaa2ba"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"exmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test1@colorway.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTO"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"job_grade"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"dingtalk_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"少林扫地僧"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"leader_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"virtual_leader_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8324fb43da1d979fd277473d7984"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
+
+<h2 id="get-the-employee-by-uuid">Get the Employee by uuid - 根据唯一标识符查找某一员工的信息</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v2/employees/:uuid</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payload</td>
+<td>JSON字符串</td>
+<td></td>
+<td>是</td>
+<td>JSON Payload</td>
+</tr>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<p><strong>Payload Schema</strong></p>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>token</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>区别公司的标识符</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 Employee 对象</p>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1387c26da1091124264793e123744fbb"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"一般职员"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"empno"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NORMAL-1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"76577261@qq.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18602836721"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18602836721"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"320581199406301913"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"烨伟路313号"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"bank_card"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"marriage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"divorced"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1983-07-21"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"join_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-09-29"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"leave_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"waiting"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"department_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f46594b15bc947891fcf8700f3aaa2ba"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"exmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test1@colorway.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTO"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"job_grade"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"dingtalk_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"少林扫地僧"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"leader_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"virtual_leader_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8324fb43da1d979fd277473d7984"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+
+</span></code></pre>
 
           <h1 id="attendant-employees">Attendant Employees - 出勤员工</h1>
 
@@ -1408,6 +1609,12 @@
 <td></td>
 <td>上级部门唯一标识符</td>
 </tr>
+<tr>
+<td>charger_uuid</td>
+<td>字符串</td>
+<td></td>
+<td>部门负责人唯一标识符</td>
+</tr>
 </tbody></table>
 
 <h2 id="get-all-departments">Get All Departments - 获得公司全部部门的信息</h2>
@@ -1457,47 +1664,56 @@
     </span><span class="p">{</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"管理组"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7684be70c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"charger_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8384fb43da1d979fd277473d7984"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"运营组"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8674be70c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"charger_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8384fb43da1d979fd277473d7984"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"系统组"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8689be70c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"charger_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8384fb43da1d979fd277473d7984"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"知人"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8684qe70c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"charger_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8384fb43da1d979fd277473d7984"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Tower"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8684be00c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"charger_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8384fb43da1d979fd277473d7984"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"行政组"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8684be70c34c524c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"charger_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8384fb43da1d979fd277473d7984"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"产品组"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8684be70c34c554c8fdc062eba4382ke"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"charger_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8384fb43da1d979fd277473d7984"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"移动客户端"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8684be70c34c554c8fdc062eba4382bp"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"charger_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8384fb43da1d979fd277473d7984"</span><span class="w">
     </span><span class="p">},</span><span class="w">
     </span><span class="p">{</span><span class="w">
         </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"测试部门"</span><span class="p">,</span><span class="w">
         </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"49c932694bcab42f688863561cf746e1"</span><span class="p">,</span><span class="w">
-        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8684be70c34c554c8fdc062eba4382be"</span><span class="w">
+        </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8684be70c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
+        </span><span class="nt">"charger_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8384fb43da1d979fd277473d7984"</span><span class="w">
     </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -1544,12 +1760,115 @@
 
 <h3 id="response">Response</h3>
 
-<p>JSON 格式的 Employee 对象</p>
+<p>JSON 格式的 Department 对象</p>
 <pre class="highlight json"><code><span class="p">{</span><span class="w">
     </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"管理组"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7684be70c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+    </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"charger_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8384fb43da1d979fd277473d7984"</span><span class="w">
 </span><span class="p">}</span><span class="w">
+</span></code></pre>
+
+<h2 id="get-the-employees-under-the-department-by-uuid">Get the Employees under the Department by uuid - 根据部门唯一标识符查找某一部门下全部员工的信息</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v2/departments/:uuid/employees</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 Employee 对象数组</p>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1387c26da1091124264793e123744fbb"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"一般职员"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"empno"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NORMAL-1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"76577261@qq.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18602836721"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18602836721"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"320581199406301913"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"烨伟路313号"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bank_card"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"marriage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"divorced"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1983-07-21"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"join_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-09-29"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"leave_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"waiting"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"department_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f46594b15bc947891fcf8700f3aaa2ba"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"exmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test1@colorway.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTO"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"job_grade"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dingtalk_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"少林扫地僧"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"leader_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"virtual_leader_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8324fb43da1d979fd277473d7984"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8384fb43da1d979fd277473d7984"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"一般职员"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"empno"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NORMAL-1"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"337261@qq.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18689992211"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18689992211"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"id_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"230581199406301913"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"烨伟路313号"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"bank_card"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"marriage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"divorced"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1989-02-21"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"join_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-08-09"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"leave_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"waiting"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"department_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f46594b15bc947891fcf8700f3aaa2ba"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"exmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test2@colorway.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTO"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"job_grade"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dingtalk_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"少林扫地僧"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"leader_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8384fb43da1d979fd277473d7982"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"virtual_leader_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+
+</span><span class="p">]</span><span class="w">
 </span></code></pre>
 
           <h1 id="moka-crm">Moka - 招聘 CRM</h1>
@@ -2133,6 +2452,7 @@
 <li>2017-03-18 新增出勤打卡 API</li>
 <li>2017-06-06 Department 对象去掉 sub_company 字段，移除 <code class="prettyprint">GET /api/v2/sub_companies/:sub_company_uuid/departments</code> 和 <code class="prettyprint">GET /api/v2/sub_companies/:sub_company_uuid/departments/:uuid</code> 接口</li>
 <li>2017-06-20 Employee 对象中新增 job_title 字段</li>
+<li>2017-07-07 Employee 对象中新增 leader_uuid, virtual_leader_uuid 字段，Department 对象中新增 charger_uuid 字段，新增根据 uuid 查找员工信息</li>
 </ul>
 
       </div>
