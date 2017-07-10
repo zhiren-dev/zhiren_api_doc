@@ -38,5 +38,11 @@ join_date | 日期   |        | 入职日期
 avatar    | 字符串 |        | 头像
 leave_date | 日期  |        | 离职日期
 status     | 字符串 |       | 员工状态，"regular" 表示在职，"dimission" 表示离职。
-department_uuid | 字符串 |       | 所在部门唯一标示
+department_uuid | 字符串 |       | 所在部门唯一标示符
 exmail | 字符串 |       | 企业邮箱地址
+job_title |字符串| |职位|
+job_grade |字符串| |职级|
+nickname |字符串| |昵称|
+dingtalk_id |字符串| |钉钉 ID|
+leader_uuid |字符串| |汇报人唯一标识符|
+virtual_leader_uuid |字符串| |虚线汇报人唯一标识符|
