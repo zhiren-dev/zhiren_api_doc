@@ -19,6 +19,8 @@ includes:
   - company_tokens
   - employees
   - attendant_employees
+  - attendance_checkings
+  - timelines
   - notify_employees
   - departments
   - moka
