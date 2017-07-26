@@ -1432,6 +1432,251 @@
 
 <p>Employee 对象</p>
 
+          <h1 id="attendance-checking">Attendance Checking - 打卡信息</h1>
+
+<h2 id="attendance-checking">Attendance Checking 对象</h2>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>date</td>
+<td>日期</td>
+<td></td>
+<td>打卡日期</td>
+</tr>
+<tr>
+<td>check_in_time</td>
+<td>时间</td>
+<td></td>
+<td>上班打卡时间</td>
+</tr>
+<tr>
+<td>check_out_time</td>
+<td>时间</td>
+<td></td>
+<td>下班打卡时间</td>
+</tr>
+</tbody></table>
+
+<h2 id="attendance-checkings">Attendance checkings - 检查某位员工某段时间的打卡记录</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v2/employees/:guid/attendance_checkings</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payload</td>
+<td>JSON字符串</td>
+<td></td>
+<td>是</td>
+<td>JSON Payload</td>
+</tr>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<p><strong>Payload Schema</strong></p>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>start_date</td>
+<td>开始日期</td>
+<td></td>
+<td>是</td>
+<td></td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>结束日期</td>
+<td></td>
+<td>是</td>
+<td></td>
+</tr>
+</tbody></table>
+
+<h3 id="respoonse">Respoonse</h3>
+
+<p>Attendance Checking 对象的数组</p>
+
+          <h1 id="timelines">Timelines - 请假或者公出信息</h1>
+
+<h2 id="timelines">Timelines 对象</h2>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>date</td>
+<td>日期</td>
+<td></td>
+<td>发生日期</td>
+</tr>
+<tr>
+<td>category</td>
+<td>字符串</td>
+<td></td>
+<td>leave/business_trip</td>
+</tr>
+<tr>
+<td>duration</td>
+<td>数字</td>
+<td></td>
+<td>时间</td>
+</tr>
+<tr>
+<td>duration_unit</td>
+<td>字符串</td>
+<td></td>
+<td>days/hours/minutes</td>
+</tr>
+<tr>
+<td>start_time</td>
+<td>时间</td>
+<td></td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td>end_time</td>
+<td>时间</td>
+<td></td>
+<td>结束时间</td>
+</tr>
+</tbody></table>
+
+<h2 id="timelines">Timelines - 检查某位员工某段时间的请假或者公出信息</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">get /api/v2/employees/:guid/timelines</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>payload</td>
+<td>JSON字符串</td>
+<td></td>
+<td>是</td>
+<td>JSON Payload</td>
+</tr>
+<tr>
+<td>access_key</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+<tr>
+<td>tonce</td>
+<td>整型</td>
+<td></td>
+<td>是</td>
+<td>以秒为单位的UNIX timestamp</td>
+</tr>
+<tr>
+<td>signature</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>请求签名</td>
+</tr>
+</tbody></table>
+
+<p><strong>Payload Schema</strong></p>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>start_date</td>
+<td>开始日期</td>
+<td></td>
+<td>是</td>
+<td></td>
+</tr>
+<tr>
+<td>end_date</td>
+<td>结束日期</td>
+<td></td>
+<td>是</td>
+<td></td>
+</tr>
+<tr>
+<td>category</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>leave/business_trip</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>Timeline 对象的数组</p>
+
           <h1 id="notifyemployees">NotifyEmployees - 员工提醒</h1>
 
 <h2 id="employee">Employee 对象</h2>
