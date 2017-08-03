@@ -2191,93 +2191,451 @@
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
-          # Vacancy - 招聘职位
+          <h1 id="vacancy">Vacancy - 招聘职位</h1>
 
-## Recruitments::Vacancy 对象
+<h2 id="recruitments-vacancy">Recruitments::Vacancy 对象</h2>
 
-属性      | 类型   | 默认值 | 描述
-----------|--------|--------|------|
-uuid      | 字符串 |        |
-head_count| 字符串 |        | 招聘人数
-status    | 枚举串 |        | 状态
-department_uuid    | 字符串 |        | 部门id
-department_name    | 字符串 |        | 部门名
-job_title_uuid     | 字符串 |        | 职位id
-job_title_name     | 字符串 |        | 职位名
+<h3 id="oauth2">Oauth2 接口</h3>
 
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>字符串</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>head_count</td>
+<td>字符串</td>
+<td></td>
+<td>招聘人数</td>
+</tr>
+<tr>
+<td>status</td>
+<td>枚举串</td>
+<td></td>
+<td>状态</td>
+</tr>
+<tr>
+<td>department_uuid</td>
+<td>字符串</td>
+<td></td>
+<td>部门id</td>
+</tr>
+<tr>
+<td>department_name</td>
+<td>字符串</td>
+<td></td>
+<td>部门名</td>
+</tr>
+<tr>
+<td>job_title_uuid</td>
+<td>字符串</td>
+<td></td>
+<td>职位id</td>
+</tr>
+<tr>
+<td>job_title_name</td>
+<td>字符串</td>
+<td></td>
+<td>职位名</td>
+</tr>
+</tbody></table>
 
-## Get All Employees - 获得公司全部员工的信息
+<h2 id="get-all-vacancies">Get All Vacancies - 获得公司全部招聘职位的信息</h2>
 
-### HTTP Request
+<h3 id="http-request">HTTP Request</h3>
 
-`GET /api/v2/recruitments/vacancies`
+<p><code class="prettyprint">GET /api/v2/recruitments/vacancies</code></p>
 
-### HTTP Parameters
+<h3 id="http-parameters">HTTP Parameters</h3>
 
-参数       | 类型       | 默认值 | 必须 | 描述
------------|------------|--------|------|----------------------------|
-access_token | 字符串     |        | 是   | API Key
-### Response
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+</tbody></table>
 
-JSON 格式的 EmployeePresenter 对象数组
+<h3 id="response">Response</h3>
 
-```json
-[
-  {
-    "uuid": "2387c26da1091124264793e123744fbb",
-    "head_count": "3",
-    "status: "normal",
-    "department_uuid": "3387c26da1091124264793e123744fbb",
-    "department_name": "设计部",
-    "job_title_uuid": "4387c26da1091124264793e123744fbb",
-    "job_title_name": "设计师",
+<p>JSON 格式的 VacancyPresenter 对象数组</p>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2387c26da1091124264793e123744fbb"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"head_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status: "</span><span class="err">normal</span><span class="nt">",
+    "</span><span class="err">department_uuid</span><span class="nt">": "</span><span class="err">3387c26da1091124264793e123744fbb</span><span class="nt">",
+    "</span><span class="err">department_name</span><span class="nt">": "</span><span class="err">设计部</span><span class="nt">",
+    "</span><span class="err">job_title_uuid</span><span class="nt">": "</span><span class="err">4387c26da1091124264793e123744fbb</span><span class="nt">",
+    "</span><span class="err">job_title_name</span><span class="nt">": "</span><span class="err">设计师</span><span class="nt">",
   },
   {
-    "uuid": "2487c26da1091124264793e123744fbb",
-    "head_count": "1",
-    "status: "normal",
-    "department_uuid": "3487c26da1091124264793e123744fbb",
-    "department_name": "研发部",
-    "job_title_uuid": "4487c26da1091124264793e123744fbb",
-    "job_title_name": "工程师",
-  }
+    "</span><span class="err">uuid</span><span class="nt">": "</span><span class="err">2487c26da1091124264793e123744fbb</span><span class="nt">",
+    "</span><span class="err">head_count</span><span class="nt">": "</span><span class="err">1</span><span class="nt">",
+    "</span><span class="err">status</span><span class="p">:</span><span class="w"> </span><span class="s2">"normal"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"department_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3487c26da1091124264793e123744fbb"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"department_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"研发部"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"job_title_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"4487c26da1091124264793e123744fbb"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"job_title_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"工程师"</span><span class="p">,</span><span class="w">
+  </span><span class="err">}</span><span class="w">
 
-]
-```
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
 
+<h2 id="get-the-vacancy-by-uuid-uuid">Get the Vacancy by uuid - 根据uuid查找某一招聘职位的信息</h2>
 
-## Get the Vacancy by uuid - 根据uuid查找某一员工的信息
+<h3 id="http-request">HTTP Request</h3>
 
-### HTTP Request
+<p><code class="prettyprint">GET /api/v2/vacancy/:id</code></p>
 
-`GET /api/v2/vacancy/:id`
+<h3 id="http-parameters">HTTP Parameters</h3>
 
-### HTTP Parameters
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+</tbody></table>
 
-参数       | 类型       | 默认值 | 必须 | 描述
------------|------------|--------|------|----------------------------|
-access_token | 字符串     |        | 是   | API Key
+<h3 id="response">Response</h3>
 
-### Response
+<p>JSON 格式的 Vacancy 对象</p>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2387c26da1091124264793e123744fbb"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"head_count"</span><span class="p">:</span><span class="w"> </span><span class="s2">"3"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status: "</span><span class="err">normal</span><span class="nt">",
+  "</span><span class="err">department_uuid</span><span class="nt">": "</span><span class="err">3387c26da1091124264793e123744fbb</span><span class="nt">",
+  "</span><span class="err">department_name</span><span class="nt">": "</span><span class="err">设计部</span><span class="nt">",
+  "</span><span class="err">job_title_uuid</span><span class="nt">": "</span><span class="err">4387c26da1091124264793e123744fbb</span><span class="nt">",
+  "</span><span class="err">job_title_name</span><span class="nt">": "</span><span class="err">设计师",</span><span class="w">
+</span><span class="err">}</span><span class="w">
 
-JSON 格式的 Vacancy 对象
+</span></code></pre>
 
-```json
+          <h1 id="candidate">Candidate - 候选人</h1>
 
-{
-  "uuid": "2387c26da1091124264793e123744fbb",
-  "head_count": "3",
-  "status: "normal",
-  "department_uuid": "3387c26da1091124264793e123744fbb",
-  "department_name": "设计部",
-  "job_title_uuid": "4387c26da1091124264793e123744fbb",
-  "job_title_name": "设计师",
-}
+<h2 id="recruitments-candidate">Recruitments::Candidate 对象</h2>
 
-```
+<h3 id="oauth2">Oauth2 接口</h3>
 
-          
-          
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>字符串</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td>字符串</td>
+<td></td>
+<td>姓名</td>
+</tr>
+<tr>
+<td>email</td>
+<td>字符串</td>
+<td></td>
+<td>电子邮箱</td>
+</tr>
+<tr>
+<td>mobile</td>
+<td>字符串</td>
+<td></td>
+<td>手机号</td>
+</tr>
+<tr>
+<td>sex</td>
+<td>枚举串</td>
+<td></td>
+<td>性别</td>
+</tr>
+<tr>
+<td>marriage</td>
+<td>枚举串</td>
+<td></td>
+<td>婚姻状况</td>
+</tr>
+<tr>
+<td>birthday</td>
+<td>字符串</td>
+<td></td>
+<td>生日</td>
+</tr>
+<tr>
+<td>degree</td>
+<td>字符串</td>
+<td></td>
+<td>学历</td>
+</tr>
+<tr>
+<td>status</td>
+<td>枚举串</td>
+<td></td>
+<td>候选人状态</td>
+</tr>
+<tr>
+<td>source_name</td>
+<td>字符串</td>
+<td></td>
+<td>招聘源</td>
+</tr>
+<tr>
+<td>source_id</td>
+<td>字符串</td>
+<td></td>
+<td>招聘源 id</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-candidates">Get All Candidates - 获得公司全部候选人的信息</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v2/recruitments/candidates</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 CandidatePresenter 对象数组</p>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2387c26da1091124264793e123744fbb"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"关羽"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"email: "</span><span class="err">guanyu@gmail.com</span><span class="nt">",
+    "</span><span class="err">mobile</span><span class="nt">": "</span><span class="err">13412345678</span><span class="nt">",
+    "</span><span class="err">sex</span><span class="nt">": "</span><span class="err">male</span><span class="nt">",
+    "</span><span class="err">marriage</span><span class="nt">": "</span><span class="err">singled</span><span class="nt">",
+    "</span><span class="err">birthday</span><span class="nt">": "</span><span class="err">1990-05-05</span><span class="nt">",
+    "</span><span class="err">degree</span><span class="nt">": "</span><span class="err">本科</span><span class="nt">",
+    "</span><span class="err">status</span><span class="nt">": "</span><span class="err">recommended</span><span class="nt">",
+    "</span><span class="err">source_name</span><span class="nt">": "</span><span class="err">拉勾</span><span class="nt">",
+    "</span><span class="err">source_id</span><span class="nt">": "</span><span class="err">2487c26da1091124264793e123744fbb</span><span class="nt">"
+  },
+  {
+    "</span><span class="err">uuid</span><span class="nt">": "</span><span class="err">2587c26da1091124264793e123744fbb</span><span class="nt">",
+    "</span><span class="err">name</span><span class="nt">": "</span><span class="err">貂蝉</span><span class="nt">",
+    "</span><span class="err">email</span><span class="p">:</span><span class="w"> </span><span class="s2">"diaochan@gmail.com"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"13512345678"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"female"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"marriage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"marriaged"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1992-05-05"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"degree"</span><span class="p">:</span><span class="w"> </span><span class="s2">"硕士"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"interviewed"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"source_name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51job"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"source_id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2687c26da1091124264793e123744fbb"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
+
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h2 id="get-the-candidate-by-uuid-uuid">Get the Candidate by uuid - 根据uuid查找某一候选人的信息</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v2/candidate/:id</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 Candidate 对象</p>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2587c26da1091124264793e123744fbb"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"貂蝉"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email: "</span><span class="err">diaochan@gmail.com</span><span class="nt">",
+  "</span><span class="err">mobile</span><span class="nt">": "</span><span class="err">13512345678</span><span class="nt">",
+  "</span><span class="err">sex</span><span class="nt">": "</span><span class="err">female</span><span class="nt">",
+  "</span><span class="err">marriage</span><span class="nt">": "</span><span class="err">marriaged</span><span class="nt">",
+  "</span><span class="err">birthday</span><span class="nt">": "</span><span class="err">1992-05-05</span><span class="nt">",
+  "</span><span class="err">degree</span><span class="nt">": "</span><span class="err">硕士</span><span class="nt">",
+  "</span><span class="err">status</span><span class="nt">": "</span><span class="err">interviewed</span><span class="nt">",
+  "</span><span class="err">source_name</span><span class="nt">": "</span><span class="err">51job</span><span class="nt">",
+  "</span><span class="err">source_id</span><span class="nt">": "</span><span class="err">2687c26da1091124264793e123744fbb"</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre>
+
+          <h1 id="source">Source -招聘源</h1>
+
+<h2 id="recruitments-source">Recruitments::Source 对象</h2>
+
+<h3 id="oauth2">Oauth2 接口</h3>
+
+<table><thead>
+<tr>
+<th>属性</th>
+<th>类型</th>
+<th>默认值</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>uuid</td>
+<td>字符串</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>name</td>
+<td>字符串</td>
+<td></td>
+<td>来源名</td>
+</tr>
+</tbody></table>
+
+<h2 id="get-all-sources">Get All Sources - 获得公司全部招聘源信息</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v2/recruitments/sources</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 SourcePresenter 对象数组</p>
+<pre class="highlight json"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2387c26da1091124264793e123744fbb"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"拉勾"</span><span class="p">,</span><span class="w">
+  </span><span class="err">}</span><span class="p">,</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2587c26da1091124264793e123744fbb"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"51job"</span><span class="p">,</span><span class="w">
+  </span><span class="err">}</span><span class="w">
+
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+
+<h2 id="get-the-source-by-uuid-uuid">Get the Source by uuid - 根据uuid查找某一招聘源的信息</h2>
+
+<h3 id="http-request">HTTP Request</h3>
+
+<p><code class="prettyprint">GET /api/v2/source/:id</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table><thead>
+<tr>
+<th>参数</th>
+<th>类型</th>
+<th>默认值</th>
+<th>必须</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td>access_token</td>
+<td>字符串</td>
+<td></td>
+<td>是</td>
+<td>API Key</td>
+</tr>
+</tbody></table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 Source 对象</p>
+<pre class="highlight json"><code><span class="w">
+</span><span class="p">{</span><span class="w">
+  </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2587c26da1091124264793e123744fbb"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"拉勾"</span><span class="p">,</span><span class="w">
+</span><span class="err">}</span><span class="w">
+</span></code></pre>
+
           <h1 id="moka-crm">Moka - 招聘 CRM</h1>
 
 <h2 id="create-candidates">Create candidates - 创建候选人</h2>
