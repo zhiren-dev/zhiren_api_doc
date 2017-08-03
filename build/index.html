@@ -422,6 +422,38 @@
 
 <p>那么最终用于签名的原字符串，就是把这五个部分链接起来皆可（注意顺序不可颠倒）。</p>
 
+          <h1 id="oauth-authorization">Oauth Authorization - 授权</h1>
+
+<p>知人为第三方服务进行标准 Oauth2 协议授权，允许操作用户数据，通过 API 请求用户数据前，需要实现进行授权，并取得授权 token。</p>
+
+<p>对应的每个第三方服务，都有唯一的 <code class="prettyprint">app_id</code> ，<code class="prettyprint">app_secret</code>与
+<code class="prettyprint">callback_url</code>。
+对应的每个第三方服务的每个用户，都有唯一的<code class="prettyprint">response_code</code>， <code class="prettyprint">access_token</code>。</p>
+
+<table><thead>
+<tr>
+<th>参数名</th>
+<th>描述</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><strong>app_id</strong></td>
+<td>客户端访问识别码，当您成为知人第三方服务，对应每个开通服务的公司，都会有一对 app_id， app_secret 和 callback_url, 用于建立ouath请求，并且在用户进行授权请求中附上。</td>
+</tr>
+<tr>
+<td><strong>callback_url</strong></td>
+<td>用户授权后的回调 URL，用户授权后将跳转到该地址。</td>
+</tr>
+<tr>
+<td><strong>response_code</strong></td>
+<td>用户授权后成功后，返回给第三方一个repsonse_code，用于标明是该用户已授权，此时，第三方将app_id，app_secret，callback_url以及response_code一同发送给知人，将返回唯一授权标识access_token。</td>
+</tr>
+<tr>
+<td><strong>access_token</strong></td>
+<td>当用户在第三方请求知人服务时，附上 access_token = <code class="prettyprint">access token value</code> 参数，即可调用知人 Oauth API。</td>
+</tr>
+</tbody></table>
+
           <h1 id="company">Company - 公司</h1>
 
 <p>暂无 API。</p>
@@ -993,9 +1025,16 @@
 <tr>
 <td>token</td>
 <td>字符串</td>
-<td></td>
-<td>是</td>
+<td>     </td>
+<td>是  </td>
 <td>区别公司的标识符</td>
+</tr>
+<tr>
+<td>status</td>
+<td>字符串</td>
+<td>all </td>
+<td>否  </td>
+<td>员工状态, waiting: 待入职, joined: 在职, dimission: 离职</td>
 </tr>
 </tbody></table>
 
@@ -2152,6 +2191,93 @@
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 
+          # Vacancy - 招聘职位
+
+## Recruitments::Vacancy 对象
+
+属性      | 类型   | 默认值 | 描述
+----------|--------|--------|------|
+uuid      | 字符串 |        |
+head_count| 字符串 |        | 招聘人数
+status    | 枚举串 |        | 状态
+department_uuid    | 字符串 |        | 部门id
+department_name    | 字符串 |        | 部门名
+job_title_uuid     | 字符串 |        | 职位id
+job_title_name     | 字符串 |        | 职位名
+
+
+## Get All Employees - 获得公司全部员工的信息
+
+### HTTP Request
+
+`GET /api/v2/recruitments/vacancies`
+
+### HTTP Parameters
+
+参数       | 类型       | 默认值 | 必须 | 描述
+-----------|------------|--------|------|----------------------------|
+access_token | 字符串     |        | 是   | API Key
+### Response
+
+JSON 格式的 EmployeePresenter 对象数组
+
+```json
+[
+  {
+    "uuid": "2387c26da1091124264793e123744fbb",
+    "head_count": "3",
+    "status: "normal",
+    "department_uuid": "3387c26da1091124264793e123744fbb",
+    "department_name": "设计部",
+    "job_title_uuid": "4387c26da1091124264793e123744fbb",
+    "job_title_name": "设计师",
+  },
+  {
+    "uuid": "2487c26da1091124264793e123744fbb",
+    "head_count": "1",
+    "status: "normal",
+    "department_uuid": "3487c26da1091124264793e123744fbb",
+    "department_name": "研发部",
+    "job_title_uuid": "4487c26da1091124264793e123744fbb",
+    "job_title_name": "工程师",
+  }
+
+]
+```
+
+
+## Get the Vacancy by uuid - 根据uuid查找某一员工的信息
+
+### HTTP Request
+
+`GET /api/v2/vacancy/:id`
+
+### HTTP Parameters
+
+参数       | 类型       | 默认值 | 必须 | 描述
+-----------|------------|--------|------|----------------------------|
+access_token | 字符串     |        | 是   | API Key
+
+### Response
+
+JSON 格式的 Vacancy 对象
+
+```json
+
+{
+  "uuid": "2387c26da1091124264793e123744fbb",
+  "head_count": "3",
+  "status: "normal",
+  "department_uuid": "3387c26da1091124264793e123744fbb",
+  "department_name": "设计部",
+  "job_title_uuid": "4387c26da1091124264793e123744fbb",
+  "job_title_name": "设计师",
+}
+
+```
+
+          
+          
           <h1 id="moka-crm">Moka - 招聘 CRM</h1>
 
 <h2 id="create-candidates">Create candidates - 创建候选人</h2>

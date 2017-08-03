@@ -14,6 +14,7 @@ includes:
   - introduction
   - concepts
   - authentication
+  - authorization
   - company
   - sub_companies
   - company_tokens
@@ -23,6 +24,9 @@ includes:
   - timelines
   - notify_employees
   - departments
+  - recruitments_vacancies
+  - recruitments_candidates
+  - recruitments_sources
   - moka
   - attendances
   - errors
