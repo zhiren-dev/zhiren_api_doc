@@ -43,7 +43,7 @@ JSON 格式的 SourcePresenter 对象数组
 
 ### HTTP Request
 
-`GET /api/v2/source/:id`
+`GET /api/v2/recruitments/source/:id`
 
 ### HTTP Parameters
 
