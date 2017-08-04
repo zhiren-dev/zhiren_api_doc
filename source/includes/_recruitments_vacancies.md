@@ -59,7 +59,7 @@ JSON 格式的 VacancyPresenter 对象数组
 
 ### HTTP Request
 
-`GET /api/v2/vacancy/:id`
+`GET /api/v2/recruitments/vacancy/:id`
 
 ### HTTP Parameters
 
