@@ -19,6 +19,7 @@ includes:
   - sub_companies
   - company_tokens
   - employees
+  - arrangement_employees
   - attendant_employees
   - attendance_checkings
   - timelines
