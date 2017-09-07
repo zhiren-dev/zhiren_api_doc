@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+
+		<link rel="stylesheet" href="/css/style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="/js/main.js"></script>
+		<!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>API Docs - 知人</title>
+<meta property="og:title" content="API Docs" />
+<meta name="description" content="Zhiren API documentation." />
+<meta property="og:description" content="Zhiren API documentation." />
+<link rel="canonical" href="http://localhost:4000/" />
+<meta property="og:url" content="http://localhost:4000/" />
+<meta property="og:site_name" content="知人" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "WebSite",
+"name": "知人",
+"headline": "API Docs",
+"description": "Zhiren API documentation.",
+"url": "http://localhost:4000/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+		
+	</head>
+	<body>
+		<header>
+			<h1>
+				<a href="/"><img src="/images/logo.svg" height="40" alt="知人 logo"></a>
+				<button type="button" class="open-nav" id="open-nav"></button>
+			</h1>
+
+			<form action="/search/" method="get">
+				<input type="text" name="q" id="search-input" placeholder="Search">
+				<input type="submit" value="Search" style="display: none;">
+			</form>
+
+			<div id="sidebar" class="sidebar">
+	
+	
+		
+	
+		
+			<section>
+				<h6>Documentation</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="#documentationgetting_started">
+								Getting Started
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="#documentationauthentication">
+								Authentication
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="#documentationerrors">
+								Errors
+								
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>APIs</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="#apibooks_list">
+								/books
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#apibooks_add">
+								/books
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#apibooks_get">
+								/books/:id
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#apibooks_update">
+								/books/:id
+								<span class="endpoint put"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#apibooks_delete">
+								/books/:id
+								<span class="endpoint delete"></span>
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+</div>
+
+
+			<p class="copyright">
+				<a href="https://cloudcannon.com/">
+					Template by CloudCannon
+				</a>
+			</p>
+		</header>
+		<div class="main">
+			
+
+	
+	
+
+	
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="documentationgetting_started">
+						Getting Started
+						
+					</a>
+				</h3>
+				
+
+				<p>欢迎使用知人的应用编程接口 API v2.0 通过 API 您可以接入知人提供的大部分服务。</p>
+
+<p>知人 API v2.0 遵循 RESTful 风格，所有 API 的 URL 都是</p>
+
+<p class="info"><code class="highlighter-rouge">https://zhiren.com/api/v2/&lt;apiname&gt;</code></p>
+
+<ol>
+  <li>请求中的业务数据以 JSON 格式传递，认证数据则以 URL 查询参数的形式传递。</li>
+  <li>响应以 HTTP Status Code 来表示成功（2xx）或失败，如果失败，则会在响应体中以 JSON 格式给出详细的错误信息。</li>
+</ol>
+
+<p class="success">You’ll succeed if you do this.</p>
+
+<p class="info">Here’s some useful information.</p>
+
+<p class="warning">Something may not happen if you try and do this.</p>
+
+<p class="error">Something bad will happen if you do this.</p>
+
+			</section>
+
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="documentationauthentication">
+						Authentication
+						
+					</a>
+				</h3>
+				
+
+				<p>知人第三方服务称为 Product，通过 API 请求知人时，每一个需要验证的请求都要进行签名。</p>
+
+<p>Product 对应每个 Company 都有唯一的 <code class="highlighter-rouge">access_key</code> 与 <code class="highlighter-rouge">secret_key</code> 。</p>
+
+<h6>Parameters</h6><dl>
+  <dt>access_key</dt>
+  <dd>访问识别码，当您成为知人第三方服务，对应每个开通服务的公司，都会有一对 access_key 和 secret_key, 其中 access_key 必须在每次请求中附上，而 secret_key 请务必放在私有的空间，千万不可在请求中传递。</dd>
+  <dt>signature</dt>
+  <dd>使用你的 secret_key 进行签名后的字符串，放入 header 的自定义字段 x-zhiren-signature</dd>
+  <dt>tonce</dt>
+  <dd>请求时间, 必须以 <a href="https://en.wikipedia.org/wiki/Unix_time">Unix Time</a> 的格式发送, tonce与服务器时间不得超过正负 5 分钟, 否则请求将视为无效。</dd>
+  <dt>payload</dt>
+  <dd>被签名的数据体部分，JSON 格式的字符串。</dd>
+</dl>
+
+<h3 id="signature-的算法">signature 的算法</h3>
+
+<p>我们用伪代码表示签名的算法如下：</p>
+
+<p class="info"><strong>signature = HMAC-SHA256( secret_key, string_to_sign )</strong></p>
+
+<p>首先根据请求的参数，把参数转换为 string_to_sign, 然后用 HMAC-SHA256 算法和你的 secret_key 进行签名。</p>
+
+<h3 id="string_to_sign-的生成方式">string_to_sign 的生成方式</h3>
+<p>上面的公式中的 string_to_sign 由五部分组成：</p>
+
+<div title="Ruby" class="language-ruby highlighter-rouge"><pre class="highlight"><code>  <span class="n">string_to_sign</span> <span class="o">=</span> <span class="n">http_method</span> <span class="o">+</span> <span class="n">path</span> <span class="o">+</span> <span class="n">access_key</span> <span class="o">+</span> <span class="n">tonce</span> <span class="o">+</span> <span class="n">payload</span><span class="p">.</span><span class="nf">to_json</span>
+  <span class="n">signature</span> <span class="o">=</span> <span class="no">OpenSSL</span><span class="o">::</span><span class="no">HMAC</span><span class="p">.</span><span class="nf">hexdigest</span> <span class="s1">'SHA256'</span><span class="p">,</span> <span class="n">secret_key</span><span class="p">,</span> <span class="n">string_to_sign</span>
+</code></pre>
+</div>
+
+<div title="Javascript" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">utf8</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"utf8"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">crypto</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"crypto"</span><span class="p">);</span>
+<span class="nx">signature</span> <span class="o">=</span> <span class="nx">crypto</span><span class="p">.</span><span class="nx">createHmac</span><span class="p">(</span><span class="s1">'sha256'</span><span class="p">,</span> <span class="nx">secret_key</span><span class="p">).</span><span class="nx">update</span><span class="p">(</span><span class="nx">utf8</span><span class="p">.</span><span class="nx">encode</span><span class="p">(</span><span class="nx">payload_str</span><span class="p">)).</span><span class="nx">digest</span><span class="p">(</span><span class="s1">'hex'</span><span class="p">);</span>
+</code></pre>
+</div>
+
+<table>
+  <thead>
+    <tr>
+      <th>组成部分</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>http_method</strong></td>
+      <td>必须为大写， 比如 “POST”, “GET”, “DELETE”, “PATCH” 等</td>
+    </tr>
+    <tr>
+      <td><strong>path</strong></td>
+      <td>假设你请求的uri为 https://zhiren.com/api/v2/example 那么 path 应该为 /api/v2/example</td>
+    </tr>
+    <tr>
+      <td><strong>access_key</strong></td>
+      <td>访问识别码</td>
+    </tr>
+    <tr>
+      <td><strong>tonce</strong></td>
+      <td>请求时间</td>
+    </tr>
+    <tr>
+      <td><strong>payload</strong></td>
+      <td>被签名的数据体部分，JSON 格式的字符串。</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>那么最终用于签名的原字符串，就是把这五个部分链接起来皆可（注意顺序不可颠倒）。</p>
+
+			</section>
+
+			
+				<section class="right-code">
+					<div title="jQuery" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"https://zhiren.com/api/v2/employees"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="s2">"access_key"</span><span class="p">:</span> <span class="s2">"YOUR_APP_KEY"</span><span class="p">,</span>
+  <span class="s2">"signature"</span><span class="p">:</span> <span class="s2">"YOUR_SIGNATURE"</span><span class="p">,</span>
+  <span class="s2">"tonce"</span><span class="p">:</span> <span class="s2">"YOUR_TONCE"</span><span class="p">,</span>
+  <span class="s2">"payload"</span><span class="p">:</span> <span class="s2">"YOUR_PAYLOAD"</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<div title="Curl" class="language-bash highlighter-rouge"><pre class="highlight"><code>curl <span class="s2">"https://zhiren.com/api/v2/employees?access_key=YOUR_APP_KEY&amp;</span><span class="se">\</span><span class="s2">
+signature=YOUR_SIGNATURE&amp;</span><span class="se">\</span><span class="s2">
+tonce=YOUR_TONCE&amp;</span><span class="se">\</span><span class="s2">
+payload=YOUR_PAYLOAD"</span>
+</code></pre>
+</div>
+
+				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="documentationerrors">
+						Errors
+						
+					</a>
+				</h3>
+				
+
+				<p>正常API返回的 HTTP Status Code 为 2xx 或 3xx。如果遇到错误，HTTP Status Code 为 4xx 或 5xx,
+同时返回报文内容会包含具体错误信息，包括错误代码和错误消息。</p>
+
+<h2 id="api-错误代码列表">API 错误代码列表</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>错误代码</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>1xxx</strong></td>
+      <td><strong>认证错误</strong></td>
+    </tr>
+    <tr>
+      <td>1001</td>
+      <td>缺少 access_key</td>
+    </tr>
+    <tr>
+      <td>1002</td>
+      <td>缺少签名</td>
+    </tr>
+    <tr>
+      <td>1003</td>
+      <td>缺少 tonce</td>
+    </tr>
+    <tr>
+      <td>1101</td>
+      <td>签名无效</td>
+    </tr>
+    <tr>
+      <td>1102</td>
+      <td>不存在的记录</td>
+    </tr>
+    <tr>
+      <td>1103</td>
+      <td>tonce 无效</td>
+    </tr>
+    <tr>
+      <td>1104</td>
+      <td>没有找到对应的公司</td>
+    </tr>
+    <tr>
+      <td>1105</td>
+      <td>access_key 无效</td>
+    </tr>
+    <tr>
+      <td><strong>2xxx</strong></td>
+      <td><strong>参数错误</strong></td>
+    </tr>
+    <tr>
+      <td>2001</td>
+      <td>未实现：API参数验证错误</td>
+    </tr>
+    <tr>
+      <td>2002</td>
+      <td>对象验证错误</td>
+    </tr>
+    <tr>
+      <td>2003</td>
+      <td>未实现：无效的身份事项代码</td>
+    </tr>
+    <tr>
+      <td>2004</td>
+      <td>JSON 格式错误</td>
+    </tr>
+    <tr>
+      <td><strong>3xxx</strong></td>
+      <td><strong>参数错误</strong></td>
+    </tr>
+    <tr>
+      <td>3001</td>
+      <td>没有权限访问该 API</td>
+    </tr>
+    <tr>
+      <td>3002</td>
+      <td>bind_code 已过期</td>
+    </tr>
+    <tr>
+      <td><strong>9xxx</strong></td>
+      <td><strong>其他错误</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+			</section>
+
+			
+				<section class="right-code">
+					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"code"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="err">xxx</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"text"</span><span class="p">:</span><span class="w"> </span><span class="s2">"error message here"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+				</section>
+			
+		</section>
+	
+
+	
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apibooks_list">
+						/books
+						
+							<span class="endpoint get"></span>
+						
+					</a>
+				</h3>
+				
+					<p class="description">List all books</p>
+				
+
+				<h6>Parameters</h6><dl>
+  <dt>offset</dt>
+  <dd>Offset the results by this amount</dd>
+  <dt>limit</dt>
+  <dd>Limit the number of books returned</dd>
+</dl>
+
+<p class="info">This call will return a maximum of 100 books</p>
+
+<p>Lists all the photos you have access to. You can paginate by using the parameters listed above.</p>
+
+<div title="jQuery" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"http://api.myapp.com/books/"</span><span class="p">,</span> <span class="p">{</span> <span class="s2">"token"</span><span class="p">:</span> <span class="s2">"YOUR_APP_KEY"</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<div title="Python" class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"http://api.myapp.com/books/"</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="s">"YOUR_APP_KEY"</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
+</code></pre>
+</div>
+
+<div title="Node.js" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
+<span class="nx">request</span><span class="p">(</span><span class="s2">"http://api.myapp.com/books?token=YOUR_APP_KEY"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+<div title="Curl" class="language-bash highlighter-rouge"><pre class="highlight"><code>curl http://sampleapi.readme.com/orders?key<span class="o">=</span>YOUR_APP_KEY
+</code></pre>
+</div>
+
+			</section>
+
+			
+				<section class="right-code">
+					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Hunger Games"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dateAdded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12/12/2013"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Hunger Games"</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.7</span><span class="p">,</span><span class="w">
+    </span><span class="nt">"dateAdded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15/12/2013"</span><span class="w">
+  </span><span class="p">},</span><span class="w">
+</span><span class="p">]</span><span class="w">
+</span></code></pre>
+</div>
+
+<div title="Error" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid offset"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apibooks_add">
+						/books
+						
+							<span class="endpoint post"></span>
+						
+					</a>
+				</h3>
+				
+					<p class="description">Create Book</p>
+				
+
+				<h6>Parameters</h6><dl>
+  <dt>title</dt>
+  <dd>The title for the book</dd>
+  <dt>score</dt>
+  <dd>The book’s score between 0 and 5</dd>
+</dl>
+
+<p class="success">The book will automatically be added to your reading list</p>
+
+<p>Adds a book to your collection.</p>
+
+<div title="jQuery" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">"http://api.myapp.com/books/"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="s2">"token"</span><span class="p">:</span> <span class="s2">"YOUR_APP_KEY"</span><span class="p">,</span>
+  <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"The Book Thief"</span><span class="p">,</span>
+  <span class="s2">"score"</span><span class="p">:</span> <span class="mf">4.3</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+			</section>
+
+			
+				<section class="right-code">
+					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Book Thief"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"dateAdded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5/1/2015"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<div title="Error" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid score"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apibooks_get">
+						/books/:id
+						
+							<span class="endpoint get"></span>
+						
+					</a>
+				</h3>
+				
+					<p class="description">Get Book</p>
+				
+
+				<p>Returns a specific book from your collection</p>
+
+<div title="jQuery" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"http://api.myapp.com/books/3"</span><span class="p">,</span> <span class="p">{</span>
+  <span class="na">token</span><span class="p">:</span> <span class="s2">"YOUR_APP_KEY"</span><span class="p">,</span>
+<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+			</section>
+
+			
+				<section class="right-code">
+					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Book Thief"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"dateAdded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5/1/2015"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<div title="Error" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Book doesn't exist"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apibooks_update">
+						/books/:id
+						
+							<span class="endpoint put"></span>
+						
+					</a>
+				</h3>
+				
+					<p class="description">Update Book</p>
+				
+
+				<h6>Parameters</h6><dl>
+  <dt>title</dt>
+  <dd>The title for the book</dd>
+  <dt>score</dt>
+  <dd>The book’s score between 0 and 5</dd>
+</dl>
+
+<p>Update an existing book in your collection.</p>
+
+<div title="jQuery" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"http://api.myapp.com/books/3"</span><span class="p">,</span>
+  <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"PUT"</span><span class="p">,</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"token"</span><span class="p">:</span> <span class="s2">"YOUR_APP_KEY"</span><span class="p">,</span>
+    <span class="s2">"score"</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
+    <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"The Book Stealer"</span>
+  <span class="p">},</span>
+  <span class="s2">"success"</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+			</section>
+
+			
+				<section class="right-code">
+					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Book Stealer"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"dateAdded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5/1/2015"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<div title="Error" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Book doesn't exist"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="apibooks_delete">
+						/books/:id
+						
+							<span class="endpoint delete"></span>
+						
+					</a>
+				</h3>
+				
+					<p class="description">Deletes a book</p>
+				
+
+				<p>Deletes a book in your collection.</p>
+
+<div title="jQuery" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"http://api.myapp.com/books/3"</span><span class="p">,</span>
+  <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"DELETE"</span><span class="p">,</span>
+  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s2">"token"</span><span class="p">:</span> <span class="s2">"YOUR_APP_KEY"</span>
+  <span class="p">},</span>
+  <span class="s2">"success"</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">});</span>
+</code></pre>
+</div>
+
+			</section>
+
+			
+				<section class="right-code">
+					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deleted"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+<div title="Error" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Book doesn't exist"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre>
+</div>
+
+				</section>
+			
+		</section>
+	
+
+
+		</div>
+		<script>
+			document.getElementById("open-nav").addEventListener("click", function () {
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>

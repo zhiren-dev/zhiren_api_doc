@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" >
+
+		<link rel="stylesheet" href="/css/style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="/js/main.js"></script>
+		<!-- Begin Jekyll SEO tag v2.1.0 -->
+<title>Search - 知人</title>
+<meta property="og:title" content="Search" />
+<meta name="description" content="Zhiren API documentation." />
+<meta property="og:description" content="Zhiren API documentation." />
+<link rel="canonical" href="http://localhost:4000/search/" />
+<meta property="og:url" content="http://localhost:4000/search/" />
+<meta property="og:site_name" content="知人" />
+<script type="application/ld+json">
+{"@context": "http://schema.org",
+"@type": "WebPage",
+"headline": "Search",
+"description": "Zhiren API documentation.",
+"url": "http://localhost:4000/search/"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+		
+	</head>
+	<body>
+		<header>
+			<h1>
+				<a href="/"><img src="/images/logo.svg" height="40" alt="知人 logo"></a>
+				<button type="button" class="open-nav" id="open-nav"></button>
+			</h1>
+
+			<form action="/search/" method="get">
+				<input type="text" name="q" id="search-input" placeholder="Search">
+				<input type="submit" value="Search" style="display: none;">
+			</form>
+
+			<div id="sidebar" class="sidebar">
+	
+	
+		
+	
+		
+			<section>
+				<h6>Documentation</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="/#documentationgetting_started">
+								Getting Started
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#documentationauthentication">
+								Authentication
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#documentationerrors">
+								Errors
+								
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>APIs</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="/#apibooks_list">
+								/books
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#apibooks_add">
+								/books
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#apibooks_get">
+								/books/:id
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#apibooks_update">
+								/books/:id
+								<span class="endpoint put"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#apibooks_delete">
+								/books/:id
+								<span class="endpoint delete"></span>
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+</div>
+
+
+			<p class="copyright">
+				<a href="https://cloudcannon.com/">
+					Template by CloudCannon
+				</a>
+			</p>
+		</header>
+		<div class="main">
+			<div class="search-page">
+	<h2>Search Results</h2>
+	
+	<p><span id="search-process">Loading</span> results <span id="search-query-container" style="display: none;">for "<strong id="search-query"></strong>"</span></p>
+	<ul id="search-results"></ul>
+</div>
+
+<script>
+	window.data = {
+		
+			
+				
+					
+						
+						
+						"api-books-add": {
+							"id": "api-books-add",
+							"title": "/books",
+							"category": "api",
+							"description": "Create Book",
+		  				"type": "post",
+							"url": "/#apibooks_add",
+							"content": "title\n  The title for the book\n  score\n  The book’s score between 0 and 5\n\n\nThe book will automatically be added to your reading list\n\nAdds a book to your collection.\n\n$.post(\"http://api.myapp.com/books/\", {\n  \"token\": \"YOUR_APP_KEY\",\n  \"title\": \"The Book Thief\",\n  \"score\": 4.3\n}, function(data) {\n  alert(data);\n});"
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-books-delete": {
+							"id": "api-books-delete",
+							"title": "/books/:id",
+							"category": "api",
+							"description": "Deletes a book",
+		  				"type": "delete",
+							"url": "/#apibooks_delete",
+							"content": "Deletes a book in your collection.\n\n$.ajax({\n  \"url\": \"http://api.myapp.com/books/3\",\n  \"type\": \"DELETE\",\n  \"data\": {\n    \"token\": \"YOUR_APP_KEY\"\n  },\n  \"success\": function(data) {\n    alert(data);\n  }\n});"
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-books-get": {
+							"id": "api-books-get",
+							"title": "/books/:id",
+							"category": "api",
+							"description": "Get Book",
+		  				"type": "get",
+							"url": "/#apibooks_get",
+							"content": "Returns a specific book from your collection\n\n$.get(\"http://api.myapp.com/books/3\", {\n  token: \"YOUR_APP_KEY\",\n}, function(data) {\n  alert(data);\n});"
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-books-list": {
+							"id": "api-books-list",
+							"title": "/books",
+							"category": "api",
+							"description": "List all books",
+		  				"type": "get",
+							"url": "/#apibooks_list",
+							"content": "offset\n  Offset the results by this amount\n  limit\n  Limit the number of books returned\n\n\nThis call will return a maximum of 100 books\n\nLists all the photos you have access to. You can paginate by using the parameters listed above.\n\n$.get(\"http://api.myapp.com/books/\", { \"token\": \"YOUR_APP_KEY\"}, function(data) {\n  alert(data);\n});\n\n\n\nr = requests.get(\"http://api.myapp.com/books/\", token=\"YOUR_APP_KEY\")\nprint r.text\n\n\n\nvar request = require(\"request\");\nrequest(\"http://api.myapp.com/books?token=YOUR_APP_KEY\", function (error, response, body) {\n  if (!error &amp;&amp; response.statusCode == 200) {\n    console.log(body);\n  }\n});\n\n\n\ncurl http://sampleapi.readme.com/orders?key=YOUR_APP_KEY"
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"api-books-update": {
+							"id": "api-books-update",
+							"title": "/books/:id",
+							"category": "api",
+							"description": "Update Book",
+		  				"type": "put",
+							"url": "/#apibooks_update",
+							"content": "title\n  The title for the book\n  score\n  The book’s score between 0 and 5\n\n\nUpdate an existing book in your collection.\n\n$.ajax({\n  \"url\": \"http://api.myapp.com/books/3\",\n  \"type\": \"PUT\",\n  \"data\": {\n    \"token\": \"YOUR_APP_KEY\",\n    \"score\": 5.0,\n    \"title\": \"The Book Stealer\"\n  },\n  \"success\": function(data) {\n    alert(data);\n  }\n});"
+						}
+						
+					
+				
+			
+		
+			
+				
+					
+						,
+						
+						"documentation-authentication": {
+							"id": "documentation-authentication",
+							"title": "Authentication",
+							"category": "documentation",
+							"description": "",
+		  				"type": "",
+							"url": "/#documentationauthentication",
+							"content": "知人第三方服务称为 Product，通过 API 请求知人时，每一个需要验证的请求都要进行签名。\n\nProduct 对应每个 Company 都有唯一的 access_key 与 secret_key 。\n\n\n  access_key\n  访问识别码，当您成为知人第三方服务，对应每个开通服务的公司，都会有一对 access_key 和 secret_key, 其中 access_key 必须在每次请求中附上，而 secret_key 请务必放在私有的空间，千万不可在请求中传递。\n  signature\n  使用你的 secret_key 进行签名后的字符串，放入 header 的自定义字段 x-zhiren-signature\n  tonce\n  请求时间, 必须以 Unix Time 的格式发送, tonce与服务器时间不得超过正负 5 分钟, 否则请求将视为无效。\n  payload\n  被签名的数据体部分，JSON 格式的字符串。\n\n\nsignature 的算法\n\n我们用伪代码表示签名的算法如下：\n\nsignature = HMAC-SHA256( secret_key, string_to_sign )\n\n首先根据请求的参数，把参数转换为 string_to_sign, 然后用 HMAC-SHA256 算法和你的 secret_key 进行签名。\n\nstring_to_sign 的生成方式\n上面的公式中的 string_to_sign 由五部分组成：\n\n  string_to_sign = http_method + path + access_key + tonce + payload.to_json\n  signature = OpenSSL::HMAC.hexdigest 'SHA256', secret_key, string_to_sign\n\n\n\nvar utf8 = require(\"utf8\");\nvar crypto = require(\"crypto\");\nsignature = crypto.createHmac('sha256', secret_key).update(utf8.encode(payload_str)).digest('hex');\n\n\n\n\n  \n    \n      组成部分\n      描述\n    \n  \n  \n    \n      http_method\n      必须为大写， 比如 “POST”, “GET”, “DELETE”, “PATCH” 等\n    \n    \n      path\n      假设你请求的uri为 https://zhiren.com/api/v2/example 那么 path 应该为 /api/v2/example\n    \n    \n      access_key\n      访问识别码\n    \n    \n      tonce\n      请求时间\n    \n    \n      payload\n      被签名的数据体部分，JSON 格式的字符串。\n    \n  \n\n\n那么最终用于签名的原字符串，就是把这五个部分链接起来皆可（注意顺序不可颠倒）。"
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"documentation-errors": {
+							"id": "documentation-errors",
+							"title": "Errors",
+							"category": "documentation",
+							"description": "",
+		  				"type": "",
+							"url": "/#documentationerrors",
+							"content": "正常API返回的 HTTP Status Code 为 2xx 或 3xx。如果遇到错误，HTTP Status Code 为 4xx 或 5xx,\n同时返回报文内容会包含具体错误信息，包括错误代码和错误消息。\n\nAPI 错误代码列表\n\n\n  \n    \n      错误代码\n      描述\n    \n  \n  \n    \n      1xxx\n      认证错误\n    \n    \n      1001\n      缺少 access_key\n    \n    \n      1002\n      缺少签名\n    \n    \n      1003\n      缺少 tonce\n    \n    \n      1101\n      签名无效\n    \n    \n      1102\n      不存在的记录\n    \n    \n      1103\n      tonce 无效\n    \n    \n      1104\n      没有找到对应的公司\n    \n    \n      1105\n      access_key 无效\n    \n    \n      2xxx\n      参数错误\n    \n    \n      2001\n      未实现：API参数验证错误\n    \n    \n      2002\n      对象验证错误\n    \n    \n      2003\n      未实现：无效的身份事项代码\n    \n    \n      2004\n      JSON 格式错误\n    \n    \n      3xxx\n      参数错误\n    \n    \n      3001\n      没有权限访问该 API\n    \n    \n      3002\n      bind_code 已过期\n    \n    \n      9xxx\n      其他错误"
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
+						"documentation-getting-started": {
+							"id": "documentation-getting-started",
+							"title": "Getting Started",
+							"category": "documentation",
+							"description": "",
+		  				"type": "",
+							"url": "/#documentationgetting_started",
+							"content": "欢迎使用知人的应用编程接口 API v2.0 通过 API 您可以接入知人提供的大部分服务。\n\n知人 API v2.0 遵循 RESTful 风格，所有 API 的 URL 都是\n\nhttps://zhiren.com/api/v2/&lt;apiname&gt;\n\n\n  请求中的业务数据以 JSON 格式传递，认证数据则以 URL 查询参数的形式传递。\n  响应以 HTTP Status Code 来表示成功（2xx）或失败，如果失败，则会在响应体中以 JSON 格式给出详细的错误信息。\n\n\nYou’ll succeed if you do this.\n\nHere’s some useful information.\n\nSomething may not happen if you try and do this.\n\nSomething bad will happen if you do this."
+						}
+						
+					
+				
+			
+		
+			
+		
+	};
+</script>
+<script src="/js/lunr.min.js"></script>
+<script src="/js/search.js"></script>
+
+		</div>
+		<script>
+			document.getElementById("open-nav").addEventListener("click", function () {
+				document.body.classList.toggle("nav-open");
+			});
+		</script>
+	</body>
+</html>
