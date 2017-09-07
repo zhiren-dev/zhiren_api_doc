@@ -52,21 +52,28 @@
 					
 						<li>
 							<a href="#documentationgetting_started">
-								Getting Started
+								引言
 								
 							</a>
 						</li>
 					
 						<li>
 							<a href="#documentationauthentication">
-								Authentication
+								认证
 								
 							</a>
 						</li>
 					
 						<li>
 							<a href="#documentationerrors">
-								Errors
+								错误码
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="#documentationchange_log">
+								更新日志
 								
 							</a>
 						</li>
@@ -141,7 +148,7 @@
 			<section class="left-docs">
 				<h3>
 					<a id="documentationgetting_started">
-						Getting Started
+						引言
 						
 					</a>
 				</h3>
@@ -151,20 +158,12 @@
 
 <p>知人 API v2.0 遵循 RESTful 风格，所有 API 的 URL 都是</p>
 
-<p class="info"><code class="highlighter-rouge">https://zhiren.com/api/v2/&lt;apiname&gt;</code></p>
+<p class="info"><strong><code class="highlighter-rouge">https://zhiren.com/api/v2/&lt;apiname&gt;</code></strong></p>
 
 <ol>
   <li>请求中的业务数据以 JSON 格式传递，认证数据则以 URL 查询参数的形式传递。</li>
   <li>响应以 HTTP Status Code 来表示成功（2xx）或失败，如果失败，则会在响应体中以 JSON 格式给出详细的错误信息。</li>
 </ol>
-
-<p class="success">You’ll succeed if you do this.</p>
-
-<p class="info">Here’s some useful information.</p>
-
-<p class="warning">Something may not happen if you try and do this.</p>
-
-<p class="error">Something bad will happen if you do this.</p>
 
 			</section>
 
@@ -175,7 +174,7 @@
 			<section class="left-docs">
 				<h3>
 					<a id="documentationauthentication">
-						Authentication
+						认证
 						
 					</a>
 				</h3>
@@ -281,7 +280,7 @@ payload=YOUR_PAYLOAD"</span>
 			<section class="left-docs">
 				<h3>
 					<a id="documentationerrors">
-						Errors
+						错误码
 						
 					</a>
 				</h3>
@@ -387,6 +386,39 @@ payload=YOUR_PAYLOAD"</span>
 </div>
 
 				</section>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="documentationchange_log">
+						更新日志
+						
+					</a>
+				</h3>
+				
+
+				<p class="info"><code class="highlighter-rouge">2016-09-09</code> <br />创建文档</p>
+
+<p class="info"><code class="highlighter-rouge">2016-12-29</code> <br />新增员工提醒、出勤员工、Moka 候选人 API</p>
+
+<p class="info"><code class="highlighter-rouge">2017-01-08</code> <br />新增获取子公司、子公司部门、子公司员工信息的 API</p>
+
+<p class="info"><code class="highlighter-rouge">2017-01-17</code> <br />新增绑定、解绑 Moka 公司以及查询 bind_code 有效性的 API</p>
+
+<p class="info"><code class="highlighter-rouge">2017-03-18</code> <br />新增出勤打卡 API</p>
+
+<p class="info"><code class="highlighter-rouge">2017-06-06</code> <br />Department 对象去掉 sub_company 字段，移除如下接口：
+<br /><code class="highlighter-rouge">GET /api/v2/sub_companies/:sub_company_uuid/departments</code>
+<br /><code class="highlighter-rouge">GET /api/v2/sub_companies/:sub_company_uuid/departments/:uuid</code></p>
+
+<p class="info"><code class="highlighter-rouge">2017-06-20</code> <br /><code class="highlighter-rouge">Employee</code> 对象中新增 <code class="highlighter-rouge">job_title</code> 字段</p>
+
+<p class="info"><code class="highlighter-rouge">2017-07-07</code> <br /><code class="highlighter-rouge">Employee</code> 对象中新增 <code class="highlighter-rouge">leader_uuid</code>, <code class="highlighter-rouge">virtual_leader_uuid</code> 字段，<code class="highlighter-rouge">Department</code> 对象中新增 <code class="highlighter-rouge">charger_uuid</code> 字段，新增根据 uuid 查找员工信息</p>
+
+			</section>
+
 			
 		</section>
 	

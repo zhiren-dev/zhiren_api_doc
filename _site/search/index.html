@@ -51,21 +51,28 @@
 					
 						<li>
 							<a href="/#documentationgetting_started">
-								Getting Started
+								引言
 								
 							</a>
 						</li>
 					
 						<li>
 							<a href="/#documentationauthentication">
-								Authentication
+								认证
 								
 							</a>
 						</li>
 					
 						<li>
 							<a href="/#documentationerrors">
-								Errors
+								错误码
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#documentationchange_log">
+								更新日志
 								
 							</a>
 						</li>
@@ -233,7 +240,7 @@
 						
 						"documentation-authentication": {
 							"id": "documentation-authentication",
-							"title": "Authentication",
+							"title": "认证",
 							"category": "documentation",
 							"description": "",
 		  				"type": "",
@@ -248,9 +255,26 @@
 					
 						,
 						
+						"documentation-change-log": {
+							"id": "documentation-change-log",
+							"title": "更新日志",
+							"category": "documentation",
+							"description": "",
+		  				"type": "",
+							"url": "/#documentationchange_log",
+							"content": "2016-09-09 创建文档\n\n2016-12-29 新增员工提醒、出勤员工、Moka 候选人 API\n\n2017-01-08 新增获取子公司、子公司部门、子公司员工信息的 API\n\n2017-01-17 新增绑定、解绑 Moka 公司以及查询 bind_code 有效性的 API\n\n2017-03-18 新增出勤打卡 API\n\n2017-06-06 Department 对象去掉 sub_company 字段，移除如下接口：\nGET /api/v2/sub_companies/:sub_company_uuid/departments\nGET /api/v2/sub_companies/:sub_company_uuid/departments/:uuid\n\n2017-06-20 Employee 对象中新增 job_title 字段\n\n2017-07-07 Employee 对象中新增 leader_uuid, virtual_leader_uuid 字段，Department 对象中新增 charger_uuid 字段，新增根据 uuid 查找员工信息"
+						}
+						
+					
+				
+			
+				
+					
+						,
+						
 						"documentation-errors": {
 							"id": "documentation-errors",
-							"title": "Errors",
+							"title": "错误码",
 							"category": "documentation",
 							"description": "",
 		  				"type": "",
@@ -267,12 +291,12 @@
 						
 						"documentation-getting-started": {
 							"id": "documentation-getting-started",
-							"title": "Getting Started",
+							"title": "引言",
 							"category": "documentation",
 							"description": "",
 		  				"type": "",
 							"url": "/#documentationgetting_started",
-							"content": "欢迎使用知人的应用编程接口 API v2.0 通过 API 您可以接入知人提供的大部分服务。\n\n知人 API v2.0 遵循 RESTful 风格，所有 API 的 URL 都是\n\nhttps://zhiren.com/api/v2/&lt;apiname&gt;\n\n\n  请求中的业务数据以 JSON 格式传递，认证数据则以 URL 查询参数的形式传递。\n  响应以 HTTP Status Code 来表示成功（2xx）或失败，如果失败，则会在响应体中以 JSON 格式给出详细的错误信息。\n\n\nYou’ll succeed if you do this.\n\nHere’s some useful information.\n\nSomething may not happen if you try and do this.\n\nSomething bad will happen if you do this."
+							"content": "欢迎使用知人的应用编程接口 API v2.0 通过 API 您可以接入知人提供的大部分服务。\n\n知人 API v2.0 遵循 RESTful 风格，所有 API 的 URL 都是\n\nhttps://zhiren.com/api/v2/&lt;apiname&gt;\n\n\n  请求中的业务数据以 JSON 格式传递，认证数据则以 URL 查询参数的形式传递。\n  响应以 HTTP Status Code 来表示成功（2xx）或失败，如果失败，则会在响应体中以 JSON 格式给出详细的错误信息。"
 						}
 						
 					

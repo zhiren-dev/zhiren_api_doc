@@ -1,5 +1,5 @@
 ---
-title: Authentication
+title: 认证
 position: 2
 right_code: |
   ~~~ javascript

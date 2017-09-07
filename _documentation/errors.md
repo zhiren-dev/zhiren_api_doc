@@ -1,5 +1,5 @@
 ---
-title: Errors
+title: 错误码
 position: 3
 right_code: |
   ~~~ json
