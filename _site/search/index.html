@@ -294,6 +294,23 @@
 	
 		
 			<section>
+				<h6>薪酬 API</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="/#salarysubject_post">
+								员工绩效上传
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
 				<h6>招聘 API</h6>
 				<ul>
 					
@@ -537,7 +554,7 @@
 							"description": "",
 		  				"type": "",
 							"url": "/#documentationerrors",
-							"content": "正常API返回的 HTTP Status Code 为 2xx 或 3xx。如果遇到错误，HTTP Status Code 为 4xx 或 5xx,\n同时返回报文内容会包含具体错误信息，包括错误代码和错误消息。\n\nAPI 错误代码列表\n\n\n  \n    \n      错误代码\n      描述\n    \n  \n  \n    \n      1xxx\n      认证错误\n    \n    \n      1001\n      缺少 access_key\n    \n    \n      1002\n      缺少签名\n    \n    \n      1003\n      缺少 tonce\n    \n    \n      1101\n      签名无效\n    \n    \n      1102\n      不存在的记录\n    \n    \n      1103\n      tonce 无效\n    \n    \n      1104\n      没有找到对应的公司\n    \n    \n      1105\n      access_key 无效\n    \n    \n      2xxx\n      参数错误\n    \n    \n      2001\n      未实现：API参数验证错误\n    \n    \n      2002\n      对象验证错误\n    \n    \n      2003\n      未实现：无效的身份事项代码\n    \n    \n      2004\n      JSON 格式错误\n    \n    \n      3xxx\n      参数错误\n    \n    \n      3001\n      没有权限访问该 API\n    \n    \n      3002\n      bind_code 已过期\n    \n    \n      9xxx\n      其他错误"
+							"content": "正常API返回的 HTTP Status Code 为 2xx 或 3xx。如果遇到错误，HTTP Status Code 为 4xx 或 5xx,\n同时返回报文内容会包含具体错误信息，包括错误代码和错误消息。\n\nAPI 错误代码列表\n\n\n  \n    \n      错误代码\n      描述\n    \n  \n  \n    \n      0\n      成功\n    \n    \n      1xxx\n      认证错误\n    \n    \n      1001\n      缺少 access_key\n    \n    \n      1002\n      缺少签名\n    \n    \n      1003\n      缺少 tonce\n    \n    \n      1101\n      签名无效\n    \n    \n      1102\n      不存在的记录\n    \n    \n      1103\n      tonce 无效\n    \n    \n      1104\n      没有找到对应的公司\n    \n    \n      1105\n      access_key 无效\n    \n    \n      2xxx\n      参数错误\n    \n    \n      2001\n      未实现：API参数验证错误\n    \n    \n      2002\n      对象验证错误\n    \n    \n      2003\n      未实现：无效的身份事项代码\n    \n    \n      2004\n      JSON 格式错误\n    \n    \n      3xxx\n      参数错误\n    \n    \n      3001\n      没有权限访问该 API\n    \n    \n      3002\n      bind_code 已过期\n    \n    \n      9xxx\n      其他错误"
 						}
 						
 					
@@ -792,6 +809,25 @@
 		
 			
 		
+			
+		
+			
+				
+					
+						,
+						
+						"salary-subject-post": {
+							"id": "salary-subject-post",
+							"title": "员工绩效上传",
+							"category": "salary",
+							"description": "",
+		  				"type": "post",
+							"url": "/#salarysubject_post",
+							"content": "本接口开发中\n\nPOST /api/v2/employees/:guid/salary/subjects\n\nHTTP Parameters\n\n\n  \n    \n      参数\n      类型\n      默认值\n      必须\n      描述\n    \n  \n  \n    \n      payload\n      JSON字符串\n       \n      是\n      JSON Payload\n    \n    \n      access_key\n      字符串\n       \n      是\n      API Key\n    \n    \n      tonce\n      整型\n       \n      是\n      以秒为单位的UNIX timestamp\n    \n    \n      signature\n      字符串\n       \n      是\n      请求签名\n    \n  \n\n\n{\n  \"empno\": \"001\",              # 员工工号\n  \"subject_name\": \"绩效工资\",   # 薪酬科目名称\n  \"month\": \"2017-09\",          # 计薪月份，格式: \"yyyy-mm\"\n  \"value\": 1024.12             # 金额，精确到小数点后两位\n}\n\n\n\nResponse\n\n  { \"code\": \"返回码\", \"text\": \"error message\" } # 0 表示成功"
+						}
+						
+					
+				
 			
 		
 			

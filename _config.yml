@@ -26,12 +26,15 @@ collections:
   attendance:
     title: 出勤 API
     position: 6
+  salary:
+    title: 薪酬 API
+    position: 7
   recruit:
     title: 招聘 API
-    position: 7
+    position: 8
   moka:
     title: Moka API
-    position: 8
+    position: 9
   fangke:
     title: 访客 API
     position: 11

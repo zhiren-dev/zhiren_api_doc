@@ -295,6 +295,23 @@
 	
 		
 			<section>
+				<h6>薪酬 API</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="#salarysubject_post">
+								员工绩效上传
+								<span class="endpoint post"></span>
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
 				<h6>招聘 API</h6>
 				<ul>
 					
@@ -552,6 +569,10 @@ payload=YOUR_PAYLOAD"</span>
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td>0</td>
+      <td>成功</td>
+    </tr>
     <tr>
       <td><strong>1xxx</strong></td>
       <td><strong>认证错误</strong></td>
@@ -2523,6 +2544,89 @@ payload=YOUR_PAYLOAD"</span>
 
 <h3 id="response-1">Response</h3>
 <p><a href="#objecttimeline">Timeline 对象</a> 数组</p>
+
+			</section>
+
+			
+		</section>
+	
+
+	
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="salarysubject_post">
+						员工绩效上传
+						
+							<span class="endpoint post"></span>
+						
+					</a>
+				</h3>
+				
+
+				<p class="error">本接口开发中</p>
+
+<p class="success"><strong>POST</strong> <code class="highlighter-rouge">/api/v2/employees/:guid/salary/subjects</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>payload</td>
+      <td>JSON字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>JSON Payload</td>
+    </tr>
+    <tr>
+      <td>access_key</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>API Key</td>
+    </tr>
+    <tr>
+      <td>tonce</td>
+      <td>整型</td>
+      <td> </td>
+      <td>是</td>
+      <td>以秒为单位的UNIX timestamp</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>请求签名</td>
+    </tr>
+  </tbody>
+</table>
+
+<div title="payload 数据结构" class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="p">{</span>
+  <span class="s2">"empno"</span><span class="p">:</span> <span class="s2">"001"</span><span class="p">,</span>              <span class="c1"># 员工工号</span>
+  <span class="s2">"subject_name"</span><span class="p">:</span> <span class="s2">"绩效工资"</span><span class="p">,</span>   <span class="c1"># 薪酬科目名称</span>
+  <span class="s2">"month"</span><span class="p">:</span> <span class="s2">"2017-09"</span><span class="p">,</span>          <span class="c1"># 计薪月份，格式: "yyyy-mm"</span>
+  <span class="s2">"value"</span><span class="p">:</span> <span class="mi">1024</span><span class="o">.</span><span class="mi">12</span>             <span class="c1"># 金额，精确到小数点后两位</span>
+<span class="p">}</span>
+</code></pre>
+</div>
+
+<h3 id="response">Response</h3>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code>  <span class="p">{</span> <span class="s2">"code"</span><span class="p">:</span> <span class="s2">"返回码"</span><span class="p">,</span> <span class="s2">"text"</span><span class="p">:</span> <span class="s2">"error message"</span> <span class="p">}</span> <span class="c1"># 0 表示成功</span>
+</code></pre>
+</div>
 
 			</section>
 
