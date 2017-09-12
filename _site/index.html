@@ -301,7 +301,7 @@
 					
 						<li>
 							<a href="#salarysubject_post">
-								员工绩效上传
+								薪酬科目上传
 								<span class="endpoint post"></span>
 							</a>
 						</li>
@@ -2557,7 +2557,7 @@ payload=YOUR_PAYLOAD"</span>
 			<section class="left-docs">
 				<h3>
 					<a id="salarysubject_post">
-						员工绩效上传
+						薪酬科目上传
 						
 							<span class="endpoint post"></span>
 						
@@ -2567,7 +2567,7 @@ payload=YOUR_PAYLOAD"</span>
 
 				<p class="error">本接口开发中</p>
 
-<p class="success"><strong>POST</strong> <code class="highlighter-rouge">/api/v2/employees/:guid/salary/subjects</code></p>
+<p class="success"><strong>POST</strong> <code class="highlighter-rouge">/api/v2/salary/subjects</code></p>
 
 <h3 id="http-parameters">HTTP Parameters</h3>
 
@@ -2621,6 +2621,8 @@ payload=YOUR_PAYLOAD"</span>
 <span class="p">}</span>
 </code></pre>
 </div>
+
+<p class="warning">同一员工薪酬如果上传多次（相同月份），则以最后一次数据为准</p>
 
 <h3 id="response">Response</h3>
 

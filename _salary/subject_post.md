@@ -1,5 +1,5 @@
 ---
-title: 员工绩效上传
+title: 薪酬科目上传
 position: 10.2
 type: post
 ---
@@ -7,9 +7,8 @@ type: post
 本接口开发中
 {: .error }
 
-**POST** `/api/v2/employees/:guid/salary/subjects`
+**POST** `/api/v2/salary/subjects`
 {: .success }
-
 
 
 ### HTTP Parameters
@@ -31,6 +30,9 @@ signature  | 字符串     |        | 是   | 请求签名
 }
 ```
 {: title="payload 数据结构" }
+
+同一员工薪酬如果上传多次（相同月份），则以最后一次数据为准
+{: .warning }
 
 ### Response
 
