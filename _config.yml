@@ -11,9 +11,27 @@ collections:
   documentation:
     title: Documentation
     position: 1
-  api:
-    title: APIs
+  object:
+    title: 对象
     position: 2
+  sub_company:
+    title: 分公司 API
+    position: 3
+  department:
+    title: 部门 API
+    position: 4
+  employee:
+    title: 员工 API
+    position: 5
+  attendance:
+    title: 出勤 API
+    position: 6
+  fangke:
+    title: 访客系统 API
+    position: 11
+  # api:
+  #   title: APIs
+  #   position: 4
 gems:
   - jekyll-sitemap
   - jekyll-seo-tag

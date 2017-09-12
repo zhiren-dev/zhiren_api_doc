@@ -7,7 +7,7 @@ body, .main {
   min-height: 100vh; }
 
 html {
-  font-size: 62.5%;
+  font-size: 50%;
   color: #474a54;
   background: #232323;
   height: 100vh; }
@@ -181,6 +181,11 @@ h3 .endpoint {
   color: #7E57C2; }
   .endpoint.put:after {
     content: "PUT"; }
+
+.endpoint.patch {
+  color: #7E57C2; }
+  .endpoint.patch:after {
+    content: "PATCH"; }
 
 .endpoint.delete {
   color: #FF7043; }

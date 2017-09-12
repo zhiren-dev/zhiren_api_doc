@@ -1,6 +1,6 @@
 ---
 title: 错误码
-position: 3
+position: 4
 right_code: |
   ~~~ json
   {

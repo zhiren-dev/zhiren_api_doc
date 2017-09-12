@@ -65,6 +65,13 @@
 						</li>
 					
 						<li>
+							<a href="#documentationauthorization">
+								授权
+								
+							</a>
+						</li>
+					
+						<li>
 							<a href="#documentationerrors">
 								错误码
 								
@@ -84,42 +91,218 @@
 	
 		
 			<section>
-				<h6>APIs</h6>
+				<h6>对象</h6>
 				<ul>
 					
 					
 						<li>
-							<a href="#apibooks_list">
-								/books
+							<a href="#objectcompany">
+								公司
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="#objectsub_company">
+								分公司
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="#objectdepartment">
+								部门
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="#objectemployee">
+								员工
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="#objectcandidate">
+								候选人
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="#objectarrangement">
+								排班
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="#objectattendance_checking">
+								打卡
+								
+							</a>
+						</li>
+					
+						<li>
+							<a href="#objecttimeline">
+								Timeline
+								
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>分公司 API</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="#sub_companysub_companies_get">
+								获取所有分公司
 								<span class="endpoint get"></span>
 							</a>
 						</li>
 					
 						<li>
-							<a href="#apibooks_add">
-								/books
+							<a href="#sub_companysub_company_get">
+								获取单个分公司
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#sub_companyemployees_get">
+								查询分公司员工
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#sub_companyemployee_get">
+								单个员工查询
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>部门 API</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="#departmentdepartments_get">
+								获取所有部门
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#departmentdepartment_get">
+								获取单个部门
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#departmentemployees_get">
+								查询部门员工
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>员工 API</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="#employeeemployees_get">
+								获取所有员工
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#employeeemployee_by_mobile_get">
+								按手机号查询员工
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#employeeemployee_by_uuid_get">
+								按uuid查询员工
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>考勤 API</h6>
+				<ul>
+					
+					
+						<li>
+							<a href="#attendanceattendance_check_get">
+								检查员工当天是否出勤
+								<span class="endpoint get"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#attendancepunches_post">
+								导入员工打卡记录
 								<span class="endpoint post"></span>
 							</a>
 						</li>
 					
 						<li>
-							<a href="#apibooks_get">
-								/books/:id
+							<a href="#attendancearrangements_get">
+								查询员工排班
 								<span class="endpoint get"></span>
 							</a>
 						</li>
 					
 						<li>
-							<a href="#apibooks_update">
-								/books/:id
-								<span class="endpoint put"></span>
+							<a href="#attendancetimelines_get">
+								查询请假和公出
+								<span class="endpoint get"></span>
 							</a>
 						</li>
 					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>访客系统 API</h6>
+				<ul>
+					
+					
 						<li>
-							<a href="#apibooks_delete">
-								/books/:id
-								<span class="endpoint delete"></span>
+							<a href="#fangkecompany_tokens_update">
+								更新公司令牌
+								<span class="endpoint patch"></span>
 							</a>
 						</li>
 					
@@ -279,6 +462,54 @@ payload=YOUR_PAYLOAD"</span>
 		<section class="doc-content">
 			<section class="left-docs">
 				<h3>
+					<a id="documentationauthorization">
+						授权
+						
+					</a>
+				</h3>
+				
+
+				<p>知人为第三方服务进行标准 Oauth2 协议授权，允许操作用户数据，通过 API 请求用户数据前，需要实现进行授权，并取得授权 token。</p>
+
+<p>对应的每个第三方服务，都有唯一的 <code class="highlighter-rouge">app_id</code> ，<code class="highlighter-rouge">app_secret</code>与
+<code class="highlighter-rouge">callback_url</code>。
+对应的每个第三方服务的每个用户，都有唯一的<code class="highlighter-rouge">response_code</code>， <code class="highlighter-rouge">access_token</code>。</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数名</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>app_id</strong></td>
+      <td>客户端访问识别码，当您成为知人第三方服务，对应每个开通服务的公司，都会有一对 app_id， app_secret 和 callback_url, 用于建立ouath请求，并且在用户进行授权请求中附上。</td>
+    </tr>
+    <tr>
+      <td><strong>callback_url</strong></td>
+      <td>用户授权后的回调 URL，用户授权后将跳转到该地址。</td>
+    </tr>
+    <tr>
+      <td><strong>response_code</strong></td>
+      <td>用户授权后成功后，返回给第三方一个repsonse_code，用于标明是该用户已授权，此时，第三方将app_id，app_secret，callback_url以及response_code一同发送给知人，将返回唯一授权标识access_token。</td>
+    </tr>
+    <tr>
+      <td><strong>access_token</strong></td>
+      <td>当用户在第三方请求知人服务时，附上 access_token = <code class="highlighter-rouge">access token value</code> 参数，即可调用知人 Oauth API。</td>
+    </tr>
+  </tbody>
+</table>
+
+			</section>
+
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
 					<a id="documentationerrors">
 						错误码
 						
@@ -428,51 +659,956 @@ payload=YOUR_PAYLOAD"</span>
 		<section class="doc-content">
 			<section class="left-docs">
 				<h3>
-					<a id="apibooks_list">
-						/books
+					<a id="objectcompany">
+						公司
+						
+					</a>
+				</h3>
+				
+
+				<p class="success">Company</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>uuid</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>姓名</td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>公司简称</td>
+    </tr>
+    <tr>
+      <td>full_name</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>公司全称</td>
+    </tr>
+    <tr>
+      <td>logo</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>logo</td>
+    </tr>
+  </tbody>
+</table>
+
+			</section>
+
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="objectsub_company">
+						分公司
+						
+					</a>
+				</h3>
+				
+
+				<p class="success">Sub Company</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>uuid</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>分公司唯一标识符</td>
+    </tr>
+    <tr>
+      <td>company_uuid</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>母公司唯一标识符</td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>分公司名称</td>
+    </tr>
+    <tr>
+      <td>short_name</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>分公司简称</td>
+    </tr>
+    <tr>
+      <td>registered_address</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>注册地址</td>
+    </tr>
+    <tr>
+      <td>boss</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>法人姓名</td>
+    </tr>
+  </tbody>
+</table>
+
+			</section>
+
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="objectdepartment">
+						部门
+						
+					</a>
+				</h3>
+				
+
+				<p class="success">Department</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>name</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>部门名称</td>
+    </tr>
+    <tr>
+      <td>uuid</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>部门唯一标识符</td>
+    </tr>
+    <tr>
+      <td>superior_uuid</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>上级部门唯一标识符</td>
+    </tr>
+    <tr>
+      <td>charger_uuid</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>部门负责人唯一标识符</td>
+    </tr>
+  </tbody>
+</table>
+
+			</section>
+
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="objectemployee">
+						员工
+						
+					</a>
+				</h3>
+				
+
+				<p class="success">Employee</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>uuid</td>
+      <td>字符串</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>姓名</td>
+    </tr>
+    <tr>
+      <td>sex</td>
+      <td>枚举串</td>
+      <td> </td>
+      <td>性别</td>
+    </tr>
+    <tr>
+      <td>email</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>邮箱</td>
+    </tr>
+    <tr>
+      <td>mobile</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>手机号</td>
+    </tr>
+    <tr>
+      <td>empno</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>员工编号</td>
+    </tr>
+    <tr>
+      <td>phone_number</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>手机号</td>
+    </tr>
+    <tr>
+      <td>id_number</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>身份证号</td>
+    </tr>
+    <tr>
+      <td>address</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>详细地址</td>
+    </tr>
+    <tr>
+      <td>bank_card</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>银行卡号</td>
+    </tr>
+    <tr>
+      <td>photo</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>头像</td>
+    </tr>
+    <tr>
+      <td>marriage</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>婚姻状况</td>
+    </tr>
+    <tr>
+      <td>birthday</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>公历生日</td>
+    </tr>
+    <tr>
+      <td>join_date</td>
+      <td>日期</td>
+      <td> </td>
+      <td>入职日期</td>
+    </tr>
+    <tr>
+      <td>avatar</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>头像</td>
+    </tr>
+    <tr>
+      <td>leave_date</td>
+      <td>日期</td>
+      <td> </td>
+      <td>离职日期</td>
+    </tr>
+    <tr>
+      <td>status</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>员工状态，详见说明</td>
+    </tr>
+    <tr>
+      <td>department_uuid</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>所在部门唯一标示符</td>
+    </tr>
+    <tr>
+      <td>exmail</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>企业邮箱地址</td>
+    </tr>
+    <tr>
+      <td>job_title</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>职位</td>
+    </tr>
+    <tr>
+      <td>job_grade</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>职级</td>
+    </tr>
+    <tr>
+      <td>nickname</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>昵称</td>
+    </tr>
+    <tr>
+      <td>dingtalk_id</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>钉钉 ID</td>
+    </tr>
+    <tr>
+      <td>leader_uuid</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>汇报人唯一标识符</td>
+    </tr>
+    <tr>
+      <td>virtual_leader_uuid</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>虚线汇报人唯一标识符</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="员工状态说明">员工状态说明</h3>
+<h6>Parameters</h6><dl>
+  <dt>waiting</dt>
+  <dd>待入职</dd>
+  <dt>regular</dt>
+  <dd>在职</dd>
+  <dt>dimission</dt>
+  <dd>离职</dd>
+</dl>
+
+			</section>
+
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="objectcandidate">
+						候选人
+						
+					</a>
+				</h3>
+				
+
+				<p class="success">Candidate</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>uuid</td>
+      <td>字符串</td>
+      <td> </td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>姓名</td>
+    </tr>
+    <tr>
+      <td>email</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>电子邮箱</td>
+    </tr>
+    <tr>
+      <td>mobile</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>手机号</td>
+    </tr>
+    <tr>
+      <td>sex</td>
+      <td>枚举串</td>
+      <td> </td>
+      <td>性别</td>
+    </tr>
+    <tr>
+      <td>marriage</td>
+      <td>枚举串</td>
+      <td> </td>
+      <td>婚姻状况</td>
+    </tr>
+    <tr>
+      <td>birthday</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>生日</td>
+    </tr>
+    <tr>
+      <td>degree</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>学历</td>
+    </tr>
+    <tr>
+      <td>status</td>
+      <td>枚举串</td>
+      <td> </td>
+      <td>候选人状态</td>
+    </tr>
+    <tr>
+      <td>source_name</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>招聘源</td>
+    </tr>
+    <tr>
+      <td>source_id</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>招聘源 id</td>
+    </tr>
+  </tbody>
+</table>
+
+			</section>
+
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="objectarrangement">
+						排班
+						
+					</a>
+				</h3>
+				
+
+				<p class="success">Arrangement</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>attenance_rule_name</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>出勤规则名称</td>
+    </tr>
+    <tr>
+      <td>workshift_name</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>班次</td>
+    </tr>
+    <tr>
+      <td>empno</td>
+      <td>枚举串</td>
+      <td> </td>
+      <td>员工工号</td>
+    </tr>
+    <tr>
+      <td>date</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>排班日期</td>
+    </tr>
+    <tr>
+      <td>time_range</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>工作时间段</td>
+    </tr>
+  </tbody>
+</table>
+
+			</section>
+
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="objectattendance_checking">
+						打卡
+						
+					</a>
+				</h3>
+				
+
+				<p class="info">Attendance Checking</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>date</td>
+      <td>日期</td>
+      <td> </td>
+      <td>打卡日期</td>
+    </tr>
+    <tr>
+      <td>check_in_time</td>
+      <td>时间</td>
+      <td> </td>
+      <td>上班打卡时间</td>
+    </tr>
+    <tr>
+      <td>check_out_time</td>
+      <td>时间</td>
+      <td> </td>
+      <td>下班打卡时间</td>
+    </tr>
+  </tbody>
+</table>
+
+			</section>
+
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="objecttimeline">
+						Timeline
+						
+					</a>
+				</h3>
+				
+
+				<p class="success">Timeline</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>date</td>
+      <td>日期</td>
+      <td> </td>
+      <td>发生日期</td>
+    </tr>
+    <tr>
+      <td>category</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>leave: 请假; business_trip: 公出</td>
+    </tr>
+    <tr>
+      <td>duration</td>
+      <td>数字</td>
+      <td> </td>
+      <td>时间</td>
+    </tr>
+    <tr>
+      <td>duration_unit</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>days: 天；hours: 小时；minutes: 分钟</td>
+    </tr>
+    <tr>
+      <td>start_time</td>
+      <td>时间</td>
+      <td> </td>
+      <td>开始时间</td>
+    </tr>
+    <tr>
+      <td>end_time</td>
+      <td>时间</td>
+      <td> </td>
+      <td>结束时间</td>
+    </tr>
+  </tbody>
+</table>
+
+			</section>
+
+			
+		</section>
+	
+
+	
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="sub_companysub_companies_get">
+						获取所有分公司
 						
 							<span class="endpoint get"></span>
 						
 					</a>
 				</h3>
 				
-					<p class="description">List all books</p>
+
+				<p class="success"><strong>GET</strong> <code class="highlighter-rouge">/api/v2/sub_companies</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>access_key</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>API Key</td>
+    </tr>
+    <tr>
+      <td>tonce</td>
+      <td>整型</td>
+      <td> </td>
+      <td>是</td>
+      <td>以秒为单位的UNIX timestamp</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>请求签名</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 <a href="#objectsub_company">分公司对象</a> 数组</p>
+
+			</section>
+
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="sub_companysub_company_get">
+						获取单个分公司
+						
+							<span class="endpoint get"></span>
+						
+					</a>
+				</h3>
 				
 
-				<h6>Parameters</h6><dl>
-  <dt>offset</dt>
-  <dd>Offset the results by this amount</dd>
-  <dt>limit</dt>
-  <dd>Limit the number of books returned</dd>
+				<p class="success"><strong>GET</strong> <code class="highlighter-rouge">/api/v2/sub_companies/:sub_company_uuid</code></p>
+
+<h6>Parameters</h6><dl>
+  <dt>sub_company_uuid</dt>
+  <dd>分公司 uuid</dd>
 </dl>
 
-<p class="info">This call will return a maximum of 100 books</p>
+<h3 id="http-parameters">HTTP Parameters</h3>
 
-<p>Lists all the photos you have access to. You can paginate by using the parameters listed above.</p>
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>access_key</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>API Key</td>
+    </tr>
+    <tr>
+      <td>tonce</td>
+      <td>整型</td>
+      <td> </td>
+      <td>是</td>
+      <td>以秒为单位的UNIX timestamp</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>请求签名</td>
+    </tr>
+  </tbody>
+</table>
 
-<div title="jQuery" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"http://api.myapp.com/books/"</span><span class="p">,</span> <span class="p">{</span> <span class="s2">"token"</span><span class="p">:</span> <span class="s2">"YOUR_APP_KEY"</span><span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre>
-</div>
+<h3 id="response">Response</h3>
 
-<div title="Python" class="language-python highlighter-rouge"><pre class="highlight"><code><span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s">"http://api.myapp.com/books/"</span><span class="p">,</span> <span class="n">token</span><span class="o">=</span><span class="s">"YOUR_APP_KEY"</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">r</span><span class="o">.</span><span class="n">text</span>
-</code></pre>
-</div>
+<p>JSON 格式的 <a href="#objectsub_company">分公司对象</a></p>
 
-<div title="Node.js" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">request</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"request"</span><span class="p">);</span>
-<span class="nx">request</span><span class="p">(</span><span class="s2">"http://api.myapp.com/books?token=YOUR_APP_KEY"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">error</span><span class="p">,</span> <span class="nx">response</span><span class="p">,</span> <span class="nx">body</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">error</span> <span class="o">&amp;&amp;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">statusCode</span> <span class="o">==</span> <span class="mi">200</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-</code></pre>
-</div>
+			</section>
 
-<div title="Curl" class="language-bash highlighter-rouge"><pre class="highlight"><code>curl http://sampleapi.readme.com/orders?key<span class="o">=</span>YOUR_APP_KEY
-</code></pre>
-</div>
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="sub_companyemployees_get">
+						查询分公司员工
+						
+							<span class="endpoint get"></span>
+						
+					</a>
+				</h3>
+				
+
+				<p class="success"><strong>GET</strong> <code class="highlighter-rouge">/api/v2/sub_companies/:sub_company_uuid/employees</code></p>
+
+<h6>Parameters</h6><dl>
+  <dt>sub_company_uuid</dt>
+  <dd>分公司 uuid</dd>
+</dl>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>access_key</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>API Key</td>
+    </tr>
+    <tr>
+      <td>tonce</td>
+      <td>整型</td>
+      <td> </td>
+      <td>是</td>
+      <td>以秒为单位的UNIX timestamp</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>请求签名</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 <a href="#objectemployee">员工对象</a> 数组</p>
+
+			</section>
+
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="sub_companyemployee_get">
+						单个员工查询
+						
+							<span class="endpoint get"></span>
+						
+					</a>
+				</h3>
+				
+
+				<p class="success"><strong>GET</strong> <code class="highlighter-rouge">/api/v2/sub_companies/:sub_company_uuid/employees/:uuid</code></p>
+
+<h6>Parameters</h6><dl>
+  <dt>sub_company_uuid</dt>
+  <dd>分公司 uuid</dd>
+  <dt>uuid</dt>
+  <dd>员工 uuid</dd>
+</dl>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>access_key</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>API Key</td>
+    </tr>
+    <tr>
+      <td>tonce</td>
+      <td>整型</td>
+      <td> </td>
+      <td>是</td>
+      <td>以秒为单位的UNIX timestamp</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>请求签名</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 <a href="#objectemployee">员工对象</a> 数组</p>
+
+			</section>
+
+			
+		</section>
+	
+
+	
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="departmentdepartments_get">
+						获取所有部门
+						
+							<span class="endpoint get"></span>
+						
+					</a>
+				</h3>
+				
+
+				<hr />
+
+<p class="success"><strong>GET</strong> <code class="highlighter-rouge">/api/v2/departments</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>access_key</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>API Key</td>
+    </tr>
+    <tr>
+      <td>tonce</td>
+      <td>整型</td>
+      <td> </td>
+      <td>是</td>
+      <td>以秒为单位的UNIX timestamp</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>请求签名</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 <a href="#objectdepartment">部门对象</a> 数组</p>
 
 			</section>
 
@@ -480,28 +1616,27 @@ payload=YOUR_PAYLOAD"</span>
 				<section class="right-code">
 					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Hunger Games"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.5</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"dateAdded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"12/12/2013"</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"管理组"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7684be70c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"charger_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8384fb43da1d979fd277473d7984"</span><span class="w">
   </span><span class="p">},</span><span class="w">
   </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Hunger Games"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.7</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"dateAdded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"15/12/2013"</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"运营组"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8674be70c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"charger_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8384fb43da1d979fd277473d7984"</span><span class="w">
   </span><span class="p">},</span><span class="w">
+  </span><span class="p">{</span><span class="w">
+      </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"系统组"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"8689be70c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+      </span><span class="nt">"charger_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8384fb43da1d979fd277473d7984"</span><span class="w">
+  </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
 </div>
 
-<div title="Error" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid offset"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
-
 				</section>
 			
 		</section>
@@ -509,164 +1644,72 @@ payload=YOUR_PAYLOAD"</span>
 		<section class="doc-content">
 			<section class="left-docs">
 				<h3>
-					<a id="apibooks_add">
-						/books
-						
-							<span class="endpoint post"></span>
-						
-					</a>
-				</h3>
-				
-					<p class="description">Create Book</p>
-				
-
-				<h6>Parameters</h6><dl>
-  <dt>title</dt>
-  <dd>The title for the book</dd>
-  <dt>score</dt>
-  <dd>The book’s score between 0 and 5</dd>
-</dl>
-
-<p class="success">The book will automatically be added to your reading list</p>
-
-<p>Adds a book to your collection.</p>
-
-<div title="jQuery" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">post</span><span class="p">(</span><span class="s2">"http://api.myapp.com/books/"</span><span class="p">,</span> <span class="p">{</span>
-  <span class="s2">"token"</span><span class="p">:</span> <span class="s2">"YOUR_APP_KEY"</span><span class="p">,</span>
-  <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"The Book Thief"</span><span class="p">,</span>
-  <span class="s2">"score"</span><span class="p">:</span> <span class="mf">4.3</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre>
-</div>
-
-			</section>
-
-			
-				<section class="right-code">
-					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Book Thief"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.3</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"dateAdded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5/1/2015"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
-
-<div title="Error" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Invalid score"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
-
-				</section>
-			
-		</section>
-	
-		<section class="doc-content">
-			<section class="left-docs">
-				<h3>
-					<a id="apibooks_get">
-						/books/:id
+					<a id="departmentdepartment_get">
+						获取单个部门
 						
 							<span class="endpoint get"></span>
 						
 					</a>
 				</h3>
 				
-					<p class="description">Get Book</p>
-				
 
-				<p>Returns a specific book from your collection</p>
+				<p class="success"><strong>GET</strong> <code class="highlighter-rouge">/api/v2/departments/:uuid</code></p>
 
-<div title="jQuery" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="s2">"http://api.myapp.com/books/3"</span><span class="p">,</span> <span class="p">{</span>
-  <span class="na">token</span><span class="p">:</span> <span class="s2">"YOUR_APP_KEY"</span><span class="p">,</span>
-<span class="p">},</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-  <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-<span class="p">});</span>
-</code></pre>
-</div>
-
-			</section>
-
-			
-				<section class="right-code">
-					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Book Thief"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mf">4.3</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"dateAdded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5/1/2015"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
-
-<div title="Error" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Book doesn't exist"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
-
-				</section>
-			
-		</section>
-	
-		<section class="doc-content">
-			<section class="left-docs">
-				<h3>
-					<a id="apibooks_update">
-						/books/:id
-						
-							<span class="endpoint put"></span>
-						
-					</a>
-				</h3>
-				
-					<p class="description">Update Book</p>
-				
-
-				<h6>Parameters</h6><dl>
-  <dt>title</dt>
-  <dd>The title for the book</dd>
-  <dt>score</dt>
-  <dd>The book’s score between 0 and 5</dd>
+<h6>Parameters</h6><dl>
+  <dt>uuid</dt>
+  <dd>部门 uuid</dd>
 </dl>
 
-<p>Update an existing book in your collection.</p>
+<h3 id="http-parameters">HTTP Parameters</h3>
 
-<div title="jQuery" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"http://api.myapp.com/books/3"</span><span class="p">,</span>
-  <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"PUT"</span><span class="p">,</span>
-  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">"token"</span><span class="p">:</span> <span class="s2">"YOUR_APP_KEY"</span><span class="p">,</span>
-    <span class="s2">"score"</span><span class="p">:</span> <span class="mf">5.0</span><span class="p">,</span>
-    <span class="s2">"title"</span><span class="p">:</span> <span class="s2">"The Book Stealer"</span>
-  <span class="p">},</span>
-  <span class="s2">"success"</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-</code></pre>
-</div>
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>access_key</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>API Key</td>
+    </tr>
+    <tr>
+      <td>tonce</td>
+      <td>整型</td>
+      <td> </td>
+      <td>是</td>
+      <td>以秒为单位的UNIX timestamp</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>请求签名</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 <a href="#objectdepartment">部门对象</a></p>
 
 			</section>
 
 			
 				<section class="right-code">
 					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"The Book Stealer"</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"score"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"dateAdded"</span><span class="p">:</span><span class="w"> </span><span class="s2">"5/1/2015"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
-
-<div title="Error" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Book doesn't exist"</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"管理组"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"7684be70c34c554c8fdc062eba4382be"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"superior_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"charger_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8384fb43da1d979fd277473d7984"</span><span class="w">
 </span><span class="p">}</span><span class="w">
 </span></code></pre>
 </div>
@@ -678,51 +1721,882 @@ payload=YOUR_PAYLOAD"</span>
 		<section class="doc-content">
 			<section class="left-docs">
 				<h3>
-					<a id="apibooks_delete">
-						/books/:id
+					<a id="departmentemployees_get">
+						查询部门员工
 						
-							<span class="endpoint delete"></span>
+							<span class="endpoint get"></span>
 						
 					</a>
 				</h3>
 				
-					<p class="description">Deletes a book</p>
+
+				<hr />
+
+<p class="success"><strong>GET</strong> <code class="highlighter-rouge">/api/v2/departments/:uuid/employees</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>access_key</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>API Key</td>
+    </tr>
+    <tr>
+      <td>tonce</td>
+      <td>整型</td>
+      <td> </td>
+      <td>是</td>
+      <td>以秒为单位的UNIX timestamp</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>请求签名</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 <a href="#objectemployee">员工对象</a> 数组</p>
+
+			</section>
+
+			
+				<section class="right-code">
+					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">[{</span><span class="w">
+  </span><span class="nt">"uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1387c26da1091124264793e123744fbb"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"一般职员"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"sex"</span><span class="p">:</span><span class="w"> </span><span class="s2">"male"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"empno"</span><span class="p">:</span><span class="w"> </span><span class="s2">"NORMAL-1"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"email"</span><span class="p">:</span><span class="w"> </span><span class="s2">"76577261@qq.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"mobile"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18602836721"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"phone_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"18602836721"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"id_number"</span><span class="p">:</span><span class="w"> </span><span class="s2">"320581199406301913"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"烨伟路313号"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"bank_card"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"photo"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"marriage"</span><span class="p">:</span><span class="w"> </span><span class="s2">"divorced"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"birthday"</span><span class="p">:</span><span class="w"> </span><span class="s2">"1983-07-21"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"join_date"</span><span class="p">:</span><span class="w"> </span><span class="s2">"2012-09-29"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"avatar"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"leave_date"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"waiting"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"department_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"f46594b15bc947891fcf8700f3aaa2ba"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"exmail"</span><span class="p">:</span><span class="w"> </span><span class="s2">"test1@colorway.com"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"job_title"</span><span class="p">:</span><span class="w"> </span><span class="s2">"CTO"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"job_grade"</span><span class="p">:</span><span class="w"> </span><span class="s2">""</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"dingtalk_id"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"nickname"</span><span class="p">:</span><span class="w"> </span><span class="s2">"少林扫地僧"</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"leader_uuid"</span><span class="p">:</span><span class="w"> </span><span class="kc">null</span><span class="p">,</span><span class="w">
+  </span><span class="nt">"virtual_leader_uuid"</span><span class="p">:</span><span class="w"> </span><span class="s2">"fbfd8324fb43da1d979fd277473d7984"</span><span class="w">
+</span><span class="p">}]</span><span class="w">
+</span></code></pre>
+</div>
+
+				</section>
+			
+		</section>
+	
+
+	
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="employeeemployees_get">
+						获取所有员工
+						
+							<span class="endpoint get"></span>
+						
+					</a>
+				</h3>
 				
 
-				<p>Deletes a book in your collection.</p>
+				<p class="success"><strong>GET</strong> <code class="highlighter-rouge">/api/v2/employees</code></p>
 
-<div title="jQuery" class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
-  <span class="s2">"url"</span><span class="p">:</span> <span class="s2">"http://api.myapp.com/books/3"</span><span class="p">,</span>
-  <span class="s2">"type"</span><span class="p">:</span> <span class="s2">"DELETE"</span><span class="p">,</span>
-  <span class="s2">"data"</span><span class="p">:</span> <span class="p">{</span>
-    <span class="s2">"token"</span><span class="p">:</span> <span class="s2">"YOUR_APP_KEY"</span>
-  <span class="p">},</span>
-  <span class="s2">"success"</span><span class="p">:</span> <span class="kd">function</span><span class="p">(</span><span class="nx">data</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">alert</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">});</span>
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>payload</td>
+      <td>JSON字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>JSON Payload</td>
+    </tr>
+    <tr>
+      <td>access_key</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>API Key</td>
+    </tr>
+    <tr>
+      <td>tonce</td>
+      <td>整型</td>
+      <td> </td>
+      <td>是</td>
+      <td>以秒为单位的UNIX timestamp</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>请求签名</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Payload Schema</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>token</td>
+      <td>字符串</td>
+      <td>     </td>
+      <td>是  </td>
+      <td>区别公司的标识符</td>
+    </tr>
+    <tr>
+      <td>status</td>
+      <td>字符串</td>
+      <td>all </td>
+      <td>否  </td>
+      <td><a href="#objectemployee">员工状态</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 <a href="#objectemployee">员工对象</a> 数组</p>
+
+			</section>
+
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="employeeemployee_by_mobile_get">
+						按手机号查询员工
+						
+							<span class="endpoint get"></span>
+						
+					</a>
+				</h3>
+				
+
+				<p class="success"><strong>GET</strong> <code class="highlighter-rouge">/api/v2/employees/:mobile</code></p>
+
+<h6>Parameters</h6><dl>
+  <dt>mobile</dt>
+  <dd>手机号码</dd>
+</dl>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>payload</td>
+      <td>JSON字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>JSON Payload</td>
+    </tr>
+    <tr>
+      <td>access_key</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>API Key</td>
+    </tr>
+    <tr>
+      <td>tonce</td>
+      <td>整型</td>
+      <td> </td>
+      <td>是</td>
+      <td>以秒为单位的UNIX timestamp</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>请求签名</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Payload Schema</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>token</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>区别公司的标识符</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 <a href="#objectemployee">员工对象</a></p>
+
+			</section>
+
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="employeeemployee_by_uuid_get">
+						按uuid查询员工
+						
+							<span class="endpoint get"></span>
+						
+					</a>
+				</h3>
+				
+
+				<p class="success"><strong>GET</strong> <code class="highlighter-rouge">/api/v2/employees/:uuid</code></p>
+
+<h6>Parameters</h6><dl>
+  <dt>uuid</dt>
+  <dd>员工 uuid</dd>
+</dl>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>payload</td>
+      <td>JSON字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>JSON Payload</td>
+    </tr>
+    <tr>
+      <td>access_key</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>API Key</td>
+    </tr>
+    <tr>
+      <td>tonce</td>
+      <td>整型</td>
+      <td> </td>
+      <td>是</td>
+      <td>以秒为单位的UNIX timestamp</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>请求签名</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Payload Schema</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>token</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>区别公司的标识符</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="response">Response</h3>
+
+<p>JSON 格式的 <a href="#objectemployee">员工对象</a></p>
+
+			</section>
+
+			
+		</section>
+	
+
+	
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="attendanceattendance_check_get">
+						检查员工当天是否出勤
+						
+							<span class="endpoint get"></span>
+						
+					</a>
+				</h3>
+				
+
+				<p class="success"><strong>GET</strong> <code class="highlighter-rouge">/api/v2/employees/:uuid/check_attendance</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>payload</td>
+      <td>JSON字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>JSON Payload</td>
+    </tr>
+    <tr>
+      <td>access_key</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>API Key</td>
+    </tr>
+    <tr>
+      <td>tonce</td>
+      <td>整型</td>
+      <td> </td>
+      <td>是</td>
+      <td>以秒为单位的UNIX timestamp</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>请求签名</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Payload Schema</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>token</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>区别公司的标识符</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="response">Response</h3>
+<p><a href="#objectemployee">员工对象</a></p>
+
+			</section>
+
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="attendancepunches_post">
+						导入员工打卡记录
+						
+							<span class="endpoint post"></span>
+						
+					</a>
+				</h3>
+				
+
+				<p class="success"><strong>POST</strong> <code class="highlighter-rouge">/api/v2/attendance_punches</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>payload</td>
+      <td>JSON字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>JSON Payload</td>
+    </tr>
+    <tr>
+      <td>access_key</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>API Key</td>
+    </tr>
+    <tr>
+      <td>tonce</td>
+      <td>整型</td>
+      <td> </td>
+      <td>是</td>
+      <td>以秒为单位的UNIX timestamp</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>请求签名</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Payload Schema</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>attendances</td>
+      <td>哈希数组</td>
+      <td> </td>
+      <td>是</td>
+      <td>打卡记录</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="ss">attendances: </span><span class="p">[</span>
+  <span class="p">{</span> <span class="s2">"empno"</span><span class="p">:</span> <span class="s2">"NORMAL-1"</span><span class="p">,</span> <span class="s2">"punched_at"</span><span class="p">:</span> <span class="s2">"2017-02-03 08:00"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="s2">"empno"</span><span class="p">:</span> <span class="s2">"1100"</span><span class="p">,</span> <span class="s2">"punched_at"</span><span class="p">:</span> <span class="s2">"2017-02-03 08:00"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="s2">"empno"</span><span class="p">:</span> <span class="s2">"1100"</span><span class="p">,</span> <span class="s2">"punched_at"</span><span class="p">:</span> <span class="s2">"2017-02-03 08:00"</span> <span class="p">}</span>
+<span class="p">]</span>
+</code></pre>
+</div>
+
+<h3 id="response">Response</h3>
+
+<p>包含传递过来的每一条打卡数据的状态，格式为：</p>
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="p">[{</span> <span class="ss">code: </span><span class="s2">"0k"</span><span class="p">,</span> <span class="ss">empno: </span><span class="s2">"007"</span> <span class="p">},</span> <span class="p">{</span> <span class="ss">code: </span><span class="s2">"error"</span><span class="p">,</span> <span class="ss">empno: </span><span class="s2">"008"</span><span class="p">,</span> <span class="ss">error_message: </span><span class="s2">"employee not found"</span> <span class="p">}]</span>
 </code></pre>
 </div>
 
 			</section>
 
 			
-				<section class="right-code">
-					<div title="Response" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"status"</span><span class="p">:</span><span class="w"> </span><span class="s2">"deleted"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="attendancearrangements_get">
+						查询员工排班
+						
+							<span class="endpoint get"></span>
+						
+					</a>
+				</h3>
+				
 
-<div title="Error" class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"error"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"message"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Book doesn't exist"</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+				<p class="success"><strong>GET</strong> <code class="highlighter-rouge">/api/v2/arrangement_employees</code></p>
 
-				</section>
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>payload</td>
+      <td>JSON字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>JSON Payload</td>
+    </tr>
+    <tr>
+      <td>access_key</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>API Key</td>
+    </tr>
+    <tr>
+      <td>tonce</td>
+      <td>整型</td>
+      <td> </td>
+      <td>是</td>
+      <td>以秒为单位的UNIX timestamp</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>请求签名</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Payload Schema</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>empnoes</td>
+      <td>列表</td>
+      <td> </td>
+      <td>是</td>
+      <td>员工工号列表，例如：[‘1001’, ‘1002’, ‘1003’]</td>
+    </tr>
+    <tr>
+      <td>start_date</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>查询开始日期</td>
+    </tr>
+    <tr>
+      <td>end_date</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>查询结束日期</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="response">Response</h3>
+<p><a href="#objectarrangement">排班对象</a> 数组</p>
+
+			</section>
+
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="attendancetimelines_get">
+						查询请假和公出
+						
+							<span class="endpoint get"></span>
+						
+					</a>
+				</h3>
+				
+
+				<p class="success"><strong>GET</strong> <code class="highlighter-rouge">/api/v2/employees/:guid/timelines</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>payload</td>
+      <td>JSON字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>JSON Payload</td>
+    </tr>
+    <tr>
+      <td>access_key</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>API Key</td>
+    </tr>
+    <tr>
+      <td>tonce</td>
+      <td>整型</td>
+      <td> </td>
+      <td>是</td>
+      <td>以秒为单位的UNIX timestamp</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>请求签名</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Payload Schema</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>start_date</td>
+      <td>开始日期</td>
+      <td> </td>
+      <td>是</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>end_date</td>
+      <td>结束日期</td>
+      <td> </td>
+      <td>是</td>
+      <td> </td>
+    </tr>
+    <tr>
+      <td>category</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>leave: 请假；business_trip: 公出</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="response">Response</h3>
+
+<h3 id="response-1">Response</h3>
+<p><a href="#objecttimeline">Timeline 对象</a> 数组</p>
+
+			</section>
+
+			
+		</section>
+	
+
+	
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="fangkecompany_tokens_update">
+						更新公司令牌
+						
+							<span class="endpoint patch"></span>
+						
+					</a>
+				</h3>
+				
+
+				<p class="success"><strong>PATCH</strong> <code class="highlighter-rouge">/api/v2/company_tokens/:guid</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>payload</td>
+      <td>JSON字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>JSON Payload</td>
+    </tr>
+    <tr>
+      <td>access_key</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>API Key</td>
+    </tr>
+    <tr>
+      <td>tonce</td>
+      <td>整型</td>
+      <td> </td>
+      <td>是</td>
+      <td>以秒为单位的UNIX timestamp</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>请求签名</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Payload Schema</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>token</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>区别</td>
+    </tr>
+    <tr>
+      <td>zhiren_visitor_token</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>fangke 提供给 zhiren 的令牌</td>
+    </tr>
+  </tbody>
+</table>
+
+			</section>
+
 			
 		</section>
 	

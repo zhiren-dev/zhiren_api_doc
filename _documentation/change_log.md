@@ -1,6 +1,6 @@
 ---
 title: 更新日志
-position: 4
+position: 5
 ---
 `2016-09-09` <br/>创建文档
 {: .info }
