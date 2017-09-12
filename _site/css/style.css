@@ -7,7 +7,7 @@ body, .main {
   min-height: 100vh; }
 
 html {
-  font-size: 50%;
+  font-size: 56%;
   color: #474a54;
   background: #232323;
   height: 100vh; }
@@ -405,7 +405,7 @@ header {
   @media (min-width: 700px) {
     header {
       background-color: transparent;
-      width: 210px;
+      width: 211px;
       right: auto;
       bottom: auto; }
       header .open-nav {

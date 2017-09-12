@@ -1,11 +1,13 @@
 ---
-title: 导入员工打卡记录
-position: 6.2
+title: 提醒员工接见访客
+position: 10.2
 type: post
 ---
 
-**POST** `/api/v2/attendance_punches`
+**POST** `/api/v2/employees/:guid/notify`
 {: .success }
+
+
 
 ### HTTP Parameters
 
@@ -20,22 +22,10 @@ signature  | 字符串     |        | 是   | 请求签名
 
 属性  | 类型   | 默认值 | 必须 | 描述
 ------|--------|--------|------|-------------------|
-attendances | 哈希数组 |        | 是   | 打卡记录
-
-~~~ ruby
-attendances: [
-  { "empno": "NORMAL-1", "punched_at": "2017-02-03 08:00" },
-  { "empno": "1100", "punched_at": "2017-02-03 08:00" },
-  { "empno": "1100", "punched_at": "2017-02-03 08:00" }
-]
-~~~
+token | 字符串 |        | 是   | 区别公司的标识符
+name  | 字符串 |        | 是   | 访客姓名
+time  | 字符串 |        | 是   | 到访时间
 
 ### Response
 
-包含传递过来的每一条打卡数据的状态，格式为：
-~~~ ruby
-[
-  { code: "0k", empno: "007" },
-  { code: "error", empno: "008", error_message: "employee not found" }
-]
-~~~
+[员工对象](#objectemployee)

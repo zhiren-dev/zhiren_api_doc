@@ -257,7 +257,7 @@
 	
 		
 			<section>
-				<h6>考勤 API</h6>
+				<h6>出勤 API</h6>
 				<ul>
 					
 					
@@ -295,7 +295,27 @@
 	
 		
 			<section>
-				<h6>访客系统 API</h6>
+				<h6>招聘 API</h6>
+				<ul>
+					
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>Moka API</h6>
+				<ul>
+					
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>访客 API</h6>
 				<ul>
 					
 					
@@ -303,6 +323,13 @@
 							<a href="#fangkecompany_tokens_update">
 								更新公司令牌
 								<span class="endpoint patch"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="#fangkeemployee_notify_post">
+								提醒员工接见访客
+								<span class="endpoint post"></span>
 							</a>
 						</li>
 					
@@ -2287,7 +2314,10 @@ payload=YOUR_PAYLOAD"</span>
 <h3 id="response">Response</h3>
 
 <p>包含传递过来的每一条打卡数据的状态，格式为：</p>
-<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="p">[{</span> <span class="ss">code: </span><span class="s2">"0k"</span><span class="p">,</span> <span class="ss">empno: </span><span class="s2">"007"</span> <span class="p">},</span> <span class="p">{</span> <span class="ss">code: </span><span class="s2">"error"</span><span class="p">,</span> <span class="ss">empno: </span><span class="s2">"008"</span><span class="p">,</span> <span class="ss">error_message: </span><span class="s2">"employee not found"</span> <span class="p">}]</span>
+<div class="language-ruby highlighter-rouge"><pre class="highlight"><code><span class="p">[</span>
+  <span class="p">{</span> <span class="ss">code: </span><span class="s2">"0k"</span><span class="p">,</span> <span class="ss">empno: </span><span class="s2">"007"</span> <span class="p">},</span>
+  <span class="p">{</span> <span class="ss">code: </span><span class="s2">"error"</span><span class="p">,</span> <span class="ss">empno: </span><span class="s2">"008"</span><span class="p">,</span> <span class="ss">error_message: </span><span class="s2">"employee not found"</span> <span class="p">}</span>
+<span class="p">]</span>
 </code></pre>
 </div>
 
@@ -2507,6 +2537,12 @@ payload=YOUR_PAYLOAD"</span>
 
 	
 	
+
+	
+	
+
+	
+	
 		<section class="doc-content">
 			<section class="left-docs">
 				<h3>
@@ -2594,6 +2630,110 @@ payload=YOUR_PAYLOAD"</span>
     </tr>
   </tbody>
 </table>
+
+			</section>
+
+			
+		</section>
+	
+		<section class="doc-content">
+			<section class="left-docs">
+				<h3>
+					<a id="fangkeemployee_notify_post">
+						提醒员工接见访客
+						
+							<span class="endpoint post"></span>
+						
+					</a>
+				</h3>
+				
+
+				<p class="success"><strong>POST</strong> <code class="highlighter-rouge">/api/v2/employees/:guid/notify</code></p>
+
+<h3 id="http-parameters">HTTP Parameters</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>参数</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>payload</td>
+      <td>JSON字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>JSON Payload</td>
+    </tr>
+    <tr>
+      <td>access_key</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>API Key</td>
+    </tr>
+    <tr>
+      <td>tonce</td>
+      <td>整型</td>
+      <td> </td>
+      <td>是</td>
+      <td>以秒为单位的UNIX timestamp</td>
+    </tr>
+    <tr>
+      <td>signature</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>请求签名</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><strong>Payload Schema</strong></p>
+
+<table>
+  <thead>
+    <tr>
+      <th>属性</th>
+      <th>类型</th>
+      <th>默认值</th>
+      <th>必须</th>
+      <th>描述</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>token</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>区别公司的标识符</td>
+    </tr>
+    <tr>
+      <td>name</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>访客姓名</td>
+    </tr>
+    <tr>
+      <td>time</td>
+      <td>字符串</td>
+      <td> </td>
+      <td>是</td>
+      <td>到访时间</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="response">Response</h3>
+
+<p><a href="#objectemployee">员工对象</a></p>
 
 			</section>
 

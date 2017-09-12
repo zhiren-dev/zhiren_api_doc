@@ -256,7 +256,7 @@
 	
 		
 			<section>
-				<h6>考勤 API</h6>
+				<h6>出勤 API</h6>
 				<ul>
 					
 					
@@ -294,7 +294,27 @@
 	
 		
 			<section>
-				<h6>访客系统 API</h6>
+				<h6>招聘 API</h6>
+				<ul>
+					
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>Moka API</h6>
+				<ul>
+					
+					
+				</ul>
+			</section>
+		
+	
+		
+			<section>
+				<h6>访客 API</h6>
 				<ul>
 					
 					
@@ -302,6 +322,13 @@
 							<a href="/#fangkecompany_tokens_update">
 								更新公司令牌
 								<span class="endpoint patch"></span>
+							</a>
+						</li>
+					
+						<li>
+							<a href="/#fangkeemployee_notify_post">
+								提醒员工接见访客
+								<span class="endpoint post"></span>
 							</a>
 						</li>
 					
@@ -375,7 +402,7 @@
 							"description": "",
 		  				"type": "post",
 							"url": "/#attendancepunches_post",
-							"content": "POST /api/v2/attendance_punches\n\nHTTP Parameters\n\n\n  \n    \n      参数\n      类型\n      默认值\n      必须\n      描述\n    \n  \n  \n    \n      payload\n      JSON字符串\n       \n      是\n      JSON Payload\n    \n    \n      access_key\n      字符串\n       \n      是\n      API Key\n    \n    \n      tonce\n      整型\n       \n      是\n      以秒为单位的UNIX timestamp\n    \n    \n      signature\n      字符串\n       \n      是\n      请求签名\n    \n  \n\n\nPayload Schema\n\n\n  \n    \n      属性\n      类型\n      默认值\n      必须\n      描述\n    \n  \n  \n    \n      attendances\n      哈希数组\n       \n      是\n      打卡记录\n    \n  \n\n\nattendances: [\n  { \"empno\": \"NORMAL-1\", \"punched_at\": \"2017-02-03 08:00\" },\n  { \"empno\": \"1100\", \"punched_at\": \"2017-02-03 08:00\" },\n  { \"empno\": \"1100\", \"punched_at\": \"2017-02-03 08:00\" }\n]\n\n\n\nResponse\n\n包含传递过来的每一条打卡数据的状态，格式为：\n[{ code: \"0k\", empno: \"007\" }, { code: \"error\", empno: \"008\", error_message: \"employee not found\" }]"
+							"content": "POST /api/v2/attendance_punches\n\nHTTP Parameters\n\n\n  \n    \n      参数\n      类型\n      默认值\n      必须\n      描述\n    \n  \n  \n    \n      payload\n      JSON字符串\n       \n      是\n      JSON Payload\n    \n    \n      access_key\n      字符串\n       \n      是\n      API Key\n    \n    \n      tonce\n      整型\n       \n      是\n      以秒为单位的UNIX timestamp\n    \n    \n      signature\n      字符串\n       \n      是\n      请求签名\n    \n  \n\n\nPayload Schema\n\n\n  \n    \n      属性\n      类型\n      默认值\n      必须\n      描述\n    \n  \n  \n    \n      attendances\n      哈希数组\n       \n      是\n      打卡记录\n    \n  \n\n\nattendances: [\n  { \"empno\": \"NORMAL-1\", \"punched_at\": \"2017-02-03 08:00\" },\n  { \"empno\": \"1100\", \"punched_at\": \"2017-02-03 08:00\" },\n  { \"empno\": \"1100\", \"punched_at\": \"2017-02-03 08:00\" }\n]\n\n\n\nResponse\n\n包含传递过来的每一条打卡数据的状态，格式为：\n[\n  { code: \"0k\", empno: \"007\" },\n  { code: \"error\", empno: \"008\", error_message: \"employee not found\" }\n]"
 						}
 						
 					
@@ -610,6 +637,25 @@
 					
 				
 			
+				
+					
+						,
+						
+						"fangke-employee-notify-post": {
+							"id": "fangke-employee-notify-post",
+							"title": "提醒员工接见访客",
+							"category": "fangke",
+							"description": "",
+		  				"type": "post",
+							"url": "/#fangkeemployee_notify_post",
+							"content": "POST /api/v2/employees/:guid/notify\n\nHTTP Parameters\n\n\n  \n    \n      参数\n      类型\n      默认值\n      必须\n      描述\n    \n  \n  \n    \n      payload\n      JSON字符串\n       \n      是\n      JSON Payload\n    \n    \n      access_key\n      字符串\n       \n      是\n      API Key\n    \n    \n      tonce\n      整型\n       \n      是\n      以秒为单位的UNIX timestamp\n    \n    \n      signature\n      字符串\n       \n      是\n      请求签名\n    \n  \n\n\nPayload Schema\n\n\n  \n    \n      属性\n      类型\n      默认值\n      必须\n      描述\n    \n  \n  \n    \n      token\n      字符串\n       \n      是\n      区别公司的标识符\n    \n    \n      name\n      字符串\n       \n      是\n      访客姓名\n    \n    \n      time\n      字符串\n       \n      是\n      到访时间\n    \n  \n\n\nResponse\n\n员工对象"
+						}
+						
+					
+				
+			
+		
+			
 		
 			
 				
@@ -747,6 +793,8 @@
 						
 					
 				
+			
+		
 			
 		
 			
