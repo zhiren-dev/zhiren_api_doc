@@ -405,7 +405,7 @@ header {
   @media (min-width: 700px) {
     header {
       background-color: transparent;
-      width: 211px;
+      width: 210px;
       right: auto;
       bottom: auto; }
       header .open-nav {
