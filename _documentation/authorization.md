@@ -10,7 +10,7 @@ position: 3
 
 参数名 | 描述
 -------- | -------
-**app_id** | 客户端访问识别码，当您成为知人第三方服务，对应每个开通服务的公司，都会有一对 app_id， app_secret 和 callback_url, 用于建立ouath请求，并且在用户进行授权请求中附上。
+**app_id** | 客户端访问识别码，当您成为知人第三方服务，对应每个开通服务的公司，都会有一对 app_id， app_secret 和 callback_url, 用于建立 oauth 请求，并且在用户进行授权请求中附上。
 **callback_url**  | 用户授权后的回调 URL，用户授权后将跳转到该地址。
 **response_code**  | 用户授权后成功后，返回给第三方一个repsonse_code，用于标明是该用户已授权，此时，第三方将app_id，app_secret，callback_url以及response_code一同发送给知人，将返回唯一授权标识access_token。
 **access_token**  | 当用户在第三方请求知人服务时，附上 access_token = `access token value` 参数，即可调用知人 Oauth API。
