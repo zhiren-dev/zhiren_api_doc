@@ -7,7 +7,7 @@ type: post
 本接口开发中
 {: .error }
 
-**POST** `/api/v2/salary/subjects`
+**POST** `/api/v2/salary/subject_values`
 {: .success }
 
 
