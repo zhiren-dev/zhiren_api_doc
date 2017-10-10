@@ -23,6 +23,10 @@ signature  | 字符串     |        | 是   | 请求签名
 ------|--------|--------|------|-------------------|
 token | 字符串 |        | 是   | 区别公司的标识符
 status | 字符串 | all   | 否   | [员工状态](#objectemployee)
+join_date_start | 字符串 |   | 否   | 入职开始日期，格式: '2017-10-01'
+join_date_end | 字符串 |   | 否   | 入职截止日期
+leave_date_start | 字符串 |   | 否   | 离职开始日期
+leave_date_end | 字符串 |   | 否   | 离职截止日期
 
 ### Response
 
