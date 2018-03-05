@@ -38,6 +38,10 @@ collections:
   fangke:
     title: 访客 API
     position: 11
+
+  approval:
+    title: 审批 API
+    position: 12
   # api:
   #   title: APIs
   #   position: 4
