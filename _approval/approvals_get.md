@@ -6,48 +6,76 @@ right_code: |
   ~~~ json
   [
     {
-      "number_series": "20170612296548",
-      "creator": "孙秀",
-      "created_at": "2017年6月12日 下午19点05分",
-      "status": "passed",
-      "status_name": "通过",
-      "updated_at": "2017年6月12日 下午19点05分",
-      "category": "onboarding",
-      "workflow_name": "员工入职",
-      "form_values": {
-        "社保公积金": {
-          "参缴方案": "公积金方案_1",
-          "社保基数": 800.0,
-          "公积金基数": 600.0,
-          "生效日期": "2017-06"
+      "number_series": "20170712355448",
+      "creator": "辛宪英",
+      "created_at": "2017-07-12T17:29:30.000+08:00",
+      "status": "denied",
+      "status_name": "不通过",
+      "updated_at": "2017-07-12T17:30:51.000+08:00",
+      "category": "dimission",
+      "workflow_name": "员工离职",
+      "form_values": [
+        {
+          "section": "行政审批",
+          "fields": [
+            {
+              "name": "确认办公用品是否归还",
+              "value": "否"
+            }
+          ]
         },
-        "考勤规则": {
-          "考勤规则": "排班规则_1"
+        {
+          "section": "财务结算",
+          "fields": [
+            {
+              "name": "停薪日期",
+              "value": "2017-07-12"
+            }
+          ]
         },
-        "假期发放规则": {
-          "假期_1": "手动发放"
+        {
+          "section": "款项结算",
+          "fields": [
+            {
+              "name": "确认是否还有未结往来款项",
+              "value": "否"
+            }
+          ]
+        },
+        {
+          "section": "服务关闭",
+          "fields": [
+            {
+              "name": "公司邮箱",
+              "value": "否"
+            }
+          ]
         }
-      }
+      ]
     },
     {
-      "number_series": "20170708347419",
-      "creator": "张布",
-      "created_at": "2017年7月8日 上午08点58分",
+      "number_series": "20170721372181",
+      "creator": "袁绍",
+      "created_at": "2017-07-21T16:00:06.000+08:00",
       "status": "passed",
       "status_name": "通过",
-      "updated_at": "2017年7月8日 上午08点59分",
-      "category": "business_travel",
-      "workflow_name": "出差申请",
-      "form_values": {
-        "开始日期": "2017-07-08",
-        "开始日期时间段": "全天",
-        "结束日期": "2017-07-10",
-        "结束日期时间段": "全天",
-        "出差时长": 3.0,
-        "原因": "出差",
-        "申请调休假": 0,
-        "有效时间": 180
-      }
+      "updated_at": "2017-07-21T16:00:09.000+08:00",
+      "category": "onboarding",
+      "workflow_name": "员工入职",
+      "form_values": [
+        {
+          "section": "适用规则",
+          "fields": [
+            {
+              "name": "假期发放规则",
+              "value": {
+                "假期_11": null,
+                "假期_1": null
+              }
+            }
+          ]
+        }
+      ]
     }
   ]
   ~~~
