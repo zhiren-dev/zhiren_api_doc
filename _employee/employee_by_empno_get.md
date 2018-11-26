@@ -1,12 +1,15 @@
 ---
-title: 获取所有员工
-position: 5.1
+title: 按工号查询员工
+position: 5.2
 type: get
 
 ---
 
-**GET** `/api/v2/employees`
+**GET** `/api/v2/employees/:empno`
 {: .success }
+
+empno
+: 员工工号
 
 ### HTTP Parameters
 
@@ -21,14 +24,9 @@ signature  | 字符串     |        | 是   | 请求签名
 
 属性  | 类型   | 默认值 | 必须 | 描述
 ------|--------|--------|------|-------------------|
-token | 字符串 |        | 是   | 区别公司的标识符
-status | 字符串 | all   | 否   | [员工状态](#objectemployee)
-join_date_start | 字符串 |   | 否   | 入职开始日期，格式: '2017-10-01'
-join_date_end | 字符串 |   | 否   | 入职截止日期
-leave_date_start | 字符串 |   | 否   | 离职开始日期
-leave_date_end | 字符串 |   | 否   | 离职截止日期
-name | 字符串 |   | 否   | 员工姓名
+token | 字符串 |        | 是   | 区别公司的标识符
+
 
 ### Response
 
-JSON 格式的 [员工对象](#objectemployee) 数组
+JSON 格式的 [员工对象](#objectemployee)
