@@ -22,6 +22,7 @@ photo     | 字符串 |        | 头像
 marriage  | 字符串 |        | 婚姻状况
 birthday  | 字符串 |        | 公历生日
 join_date | 日期   |        | 入职日期
+probation_end_date | 日期   |       | 试用期转正日期
 avatar    | 字符串 |        | 头像
 leave_date | 日期  |        | 离职日期
 category | 字符串  |        | 员工类型，详见下方说明
