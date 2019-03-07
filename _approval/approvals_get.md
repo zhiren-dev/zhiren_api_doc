@@ -84,10 +84,6 @@ right_code: |
 ---
 
 
-本接口开发中
-{: .error }
-
-
 **GET** `/api/v2/approvals`
 {: .success }
 
@@ -104,10 +100,35 @@ signature  | 字符串     |        | 是   | 请求签名
 ``` ruby
 {
   "start_date": "2018-02-01",              # 发起审批开始日期
-  "end_date": "2018-03-01"                 # 发起审批截止日期
+  "end_date": "2018-03-01",                # 发起审批截止日期
+  "category": "leave"                      # 审批类型，不传该参数代表获取所有审批类型
 }
 ```
 {: title="payload 数据结构" }
+
+### 审批类型参数列表
+
+参数                   | 类型
+----------------------|------------|
+leave                 | 请假
+adjustment            | 员工调整
+contract              | 合同签署
+dimission             | 员工离职
+enrollment            | 员工转正
+payroll_submit        | 工资表审批
+recruit               | 重新入职
+salary_change         | 薪资调整
+attendance_recheck    | 补签
+overtime              | 加班
+business_trip         | 公出
+sub_company_transfer  | 分公司调动
+onboarding            | 员工入职
+business_travel       | 出差
+intern_regularization | 实习生转全职
+breastfeeding_leave   | 哺乳假申请
+duty                  | 值班申请
+arrangement           | 调班申请
+custom                | 自定义审批
 
 
 ### Response

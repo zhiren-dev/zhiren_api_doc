@@ -33,6 +33,7 @@ job_title |字符串| |职位|
 job_grade |字符串| |职级|
 nickname |字符串| |昵称|
 dingtalk_id |字符串| |钉钉 ID|
+wework_id |字符串| |企业微信 ID|
 leader_uuid |字符串| |汇报人唯一标识符|
 virtual_leader_uuid |字符串| |虚线汇报人唯一标识符|
 
