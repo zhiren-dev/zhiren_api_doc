@@ -56,8 +56,14 @@ contractor
 waiting
 : 待入职
 
+probation
+: 试用期
+
 regular
 : 在职
 
 dimission
 : 离职
+
+internship
+: 实习期
