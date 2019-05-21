@@ -17,6 +17,7 @@ empno     | 字符串 |        | 员工编号
 phone_number | 字符串|      | 手机号
 id_number | 字符串 |        | 身份证号
 address   | 字符串 |        | 详细地址
+bank_name | 字符串 |        | 开户行
 bank_card | 字符串 |        | 银行卡号
 photo     | 字符串 |        | 头像
 marriage  | 字符串 |        | 婚姻状况
@@ -36,6 +37,7 @@ dingtalk_id |字符串| |钉钉 ID|
 wework_id |字符串| |企业微信 ID|
 leader_uuid |字符串| |汇报人唯一标识符|
 virtual_leader_uuid |字符串| |虚线汇报人唯一标识符|
+sub_company |字符串| |合同公司|
 
 
 ### 员工类型说明 (category)
