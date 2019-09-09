@@ -5,7 +5,7 @@ type: get
 
 ---
 
-**GET** `/v2/employees/:guid/attendance_checkings`
+**GET** `/api/v2/employees/:guid/attendance_checkings`
 {: .success }
 
 ### HTTP Parameters
