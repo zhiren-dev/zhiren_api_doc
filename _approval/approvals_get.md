@@ -102,6 +102,7 @@ signature  | 字符串     |        | 是   | 请求签名
   "start_date": "2018-02-01",              # 发起审批开始日期
   "end_date": "2018-03-01",                # 发起审批截止日期
   "category": "leave"                      # 审批类型，不传该参数代表获取所有审批类型
+  "status": "waiting"                      # 审批状态，不传该参数代表获取所有审批状态
 }
 ```
 {: title="payload 数据结构" }
@@ -130,6 +131,13 @@ duty                  | 值班申请
 arrangement           | 调班申请
 custom                | 自定义审批
 
+### 审批状态参数列表
+
+参数                   | 类型
+----------------------|------------|
+waiting               | 审批中
+passed                | 通过
+denied                | 拒绝
 
 ### Response
 
